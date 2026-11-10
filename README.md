@@ -10,9 +10,9 @@ A six-act, evidence-linked investigation into how everyday human communication b
 
 > **The argument:** The cost of a conversation is not determined by the words alone. It depends on how systems interpret them, the work they perform, the value they create and the resources they consume.
 
-![A preview of the Courtesy Constellation, an interactive radial evidence network](previews/desktop_act2_v13.png)
+[![Illustrative schematic of the Courtesy Constellation, a radial network of human meaning, computation and consequence](previews/courtesy_constellation_schematic.svg)](https://chrisdhayes.github.io/the-cost-of-courtesy/)
 
-*The Courtesy Constellation is a conceptual evidence map. The fine radial filaments are an artistic structural motif—not individual data records, statistical distances or measured causal links.*
+*Illustrative schematic of the interactive Courtesy Constellation (not a screenshot). Select the preview to open the full experience. The fine radial filaments are an artistic structural motif—not individual data records, statistical distances or measured causal links.*
 
 ## Why this exists
 
