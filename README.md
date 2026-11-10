@@ -6,7 +6,7 @@
 
 A six-act, evidence-linked investigation into how everyday human communication becomes machine work, how that work relates to useful outcomes, and why its environmental consequences are harder to measure than a token count suggests.
 
-**[Explore the interactive experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · [Research methods](methods/METHODS.md) · [Sources and attribution](LICENSE_AND_ATTRIBUTION.md) · [Latest release notes](RELEASE_NOTES_V1_3.md)
+**[Explore the interactive experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · [Full research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Substack draft](publication/SUBSTACK_ARTICLE_DRAFT.md) · [Methods](methods/METHODS.md) · [Sources & attribution](LICENSE_AND_ATTRIBUTION.md)
 
 > **The argument:** The cost of a conversation is not determined by the words alone. It depends on how systems interpret them, the work they perform, the value they create and the resources they consume.
 
@@ -22,14 +22,18 @@ The project puts these otherwise separate findings in conversation with one anot
 
 ## Follow the story
 
-| Act | Question |
+**Select an act to open that chapter in the interactive experience.**
+
+| Act — open in the experience | Question |
 | --- | --- |
-| **01 — Two words** | What happens when a thank-you generates another response? |
-| **02 — The contradiction** | Why might courtesy add work in one setting but affect output length in another? |
-| **03 — The value question** | Is the shortest answer necessarily the most useful or efficient? |
-| **04 — The language divide** | Why can model efficiency and evaluation results vary across languages? |
-| **05 — The physical footprint** | Where do electricity and water impacts actually arise? |
-| **06 — The design choice** | What should responsible AI systems do differently? |
+| **[01 — Two words](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-1)** | What happens when a thank-you generates another response? |
+| **[02 — The contradiction](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-2)** | Why might courtesy add work in one setting but affect output length in another? |
+| **[03 — The value question](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-3)** | Is the shortest answer necessarily the most useful or efficient? |
+| **[04 — The language divide](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-4)** | Why can model efficiency and evaluation results vary across languages? |
+| **[05 — The physical footprint](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-5)** | Where do electricity and water impacts actually arise? |
+| **[06 — The design choice](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-6)** | What should responsible AI systems do differently? |
+
+The chapter links point to anchors present in V1.3's `index.html`. They work once GitHub Pages has successfully deployed.
 
 Use **Guided Story** to follow 15 scroll-driven evidence checkpoints, **Explore** to inspect the full radial Constellation and supporting instruments, and **Evidence & Methods** to examine measurement boundaries and limitations. Source-linked evidence receipts explain what is measured, derived, inferred or still unknown.
 
@@ -49,36 +53,25 @@ Use **Guided Story** to follow 15 scroll-driven evidence checkpoints, **Explore*
 | [Elsworth et al. (2025), Google-scale inference measurement](https://arxiv.org/abs/2508.15734) | Published production energy and cooling-water estimates | Not measurements of the thank-you experiment; the numbers must not be fused |
 | [WRI Aqueduct 4.0](https://www.wri.org/data/aqueduct-global-maps-40-data) | Environmental water-stress context | No request-level infrastructure location or site-specific water burden is claimed |
 
-The project uses **measured → derived/modelled → interpreted** labels and documents evidence relationships in [`data/research_relationships.json`](data/research_relationships.json). Additional primary sources and terms are listed in [LICENSE_AND_ATTRIBUTION.md](LICENSE_AND_ATTRIBUTION.md).
+The project uses **reported/measured → derived/modelled → interpreted → unknown/hypothesis** labels. The [methods and evidence contract](methods/METHODS.md) documents the nine typed relationships and explains why the radial filaments are not individual observations. Primary sources, data reuse conditions and attribution are summarized in [LICENSE_AND_ATTRIBUTION.md](LICENSE_AND_ATTRIBUTION.md).
 
 **What this experience does not claim:** a single causal effect of politeness on AI energy; verified energy per successfully resolved task; real-world routing of a user's prompt; universal national or cultural rankings; or independently replicated raw results for all cited studies.
 
-## Run the project
+## Read the research and reuse the experience
 
-**Online:** The [GitHub Pages experience](https://chrisdhayes.github.io/the-cost-of-courtesy/) uses `index.html`, `app.css`, `radial_engine.js`, `app.js`, `story.js` and the `data/` directory. The Pages URL works after GitHub Pages is enabled for `main` → `/(root)`.
+- **[Full research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md)** — the central argument, evidence review, proposed decision frameworks, limitations and primary references.
+- **[Shorter Substack article draft](publication/SUBSTACK_ARTICLE_DRAFT.md)** — an engaging, personal introduction with links to all six acts; a draft, not a published Substack post.
+- **[Methods and evidence contract](methods/METHODS.md)** — study boundaries, calculations, uncertainty and relationship semantics.
+- **[Sources, licensing and attribution](LICENSE_AND_ATTRIBUTION.md)** — provenance and conditions for third-party material.
+- **[V1.3 release notes](RELEASE_NOTES_V1_3.md)** — what changed in Evidence Threads.
 
-**Offline:** Open `standalone.html` in a browser. That version embeds the visual code and source extracts in one file.
+### Open the experience
 
-**Local development:** Serve the repository over a local HTTP server (rather than opening modular `index.html` with `file://`):
+- **Online:** [Launch the six-act experience](https://chrisdhayes.github.io/the-cost-of-courtesy/) when GitHub Pages reports a successful deployment.
+- **Offline:** Download `index.html` from this repository and open it in a modern browser. The deployed `index.html` is **self-contained**, with embedded styles, scripts and the necessary data extracts.
+- **Source organization:** the underlying modular release also contains separated JavaScript, CSS and datasets; the current GitHub Pages entry point does **not** require those external files.
 
-```bash
-python -m http.server 8000
-```
-
-Then visit `http://localhost:8000/`.
-
-```text
-index.html                 GitHub Pages entry point
-standalone.html            Self-contained offline edition
-app.css / app.js           Interface and analytical interactions
-radial_engine.js           Radial evidence architecture
-story.js                   Scrollytelling states
- data/                     Source-linked research extracts and relationships
- methods/                  Methods, QA, scientific boundaries and design rationale
- previews/                 Project screenshots
-LICENSE_AND_ATTRIBUTION.md Rights and research credits
-RELEASE_NOTES_V1_3.md      Current release changes
-```
+The [preview](previews/courtesy_constellation_schematic.svg) is an **illustrative schematic**, not a screenshot or underlying dataset.
 
 ## Reuse, licenses and attribution
 
@@ -88,7 +81,7 @@ This repository mixes original writing/code with **third-party research excerpts
 
 ## Quality and publication status
 
-V1.3 is a **research-led interactive release candidate**. Its 15 checkpoints and evidence-link controls were tested in four Chromium viewport emulations, including keyboard selection and return from Explore mode. See [QA details](methods/QA_V1_3.json) and [testing notes](methods/TESTING.md).
+V1.3 is a **research-led interactive release candidate**. Its 15 checkpoints and evidence-link controls were tested in four Chromium viewport emulations, including keyboard selection and return from Explore mode. The verification scope and important limitations are summarized in the [research methods](methods/METHODS.md) and [V1.3 release notes](RELEASE_NOTES_V1_3.md).
 
 Not yet certified: full WCAG conformance, Safari/Firefox, physical-device field testing, an independent academic review or complete replication of all underlying raw datasets.
 
