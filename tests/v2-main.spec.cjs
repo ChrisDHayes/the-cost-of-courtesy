@@ -1,12 +1,12 @@
 const { test, expect } = require('@playwright/test');
 const path='/';
 
-test('V2 preview loads all three stories, baseline data and no runtime errors', async ({page})=>{
+test('Complete story-first V2 loads all six acts, evidence and baseline data without runtime errors', async ({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  const response=await page.goto(path);expect(response?.status()).toBe(200);
  await expect(page).toHaveTitle(/The Cost of Courtesy.*Christopher Hayes/);
- await expect(page.locator('.scene')).toHaveCount(3);
- await expect(page.locator('.evidence')).toHaveCount(3);
+ await expect(page.locator('.scene')).toHaveCount(6);
+ await expect(page.locator('.evidence')).toHaveCount(6);
  await expect.poll(()=>page.evaluate(()=>window.CourtesyV2PrototypeQA?.languageRows)).toBe(122);
  await expect.poll(()=>page.evaluate(()=>window.CourtesyV2PrototypeQA?.modelRows)).toBe(5);
  expect(errors).toEqual([]);
