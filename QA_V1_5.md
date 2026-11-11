@@ -2,7 +2,7 @@
 
 ## Scope and publication state
 
-Reviewed `index.html`, the research essay, the Substack draft, and the repository README. The interactive site is [GitHub Pages](https://chrisdhayes.github.io/the-cost-of-courtesy/). This document records source-level checks, **not** a claim of successful browser-based or mobile-device testing.
+Reviewed `index.html`, the research essay, the Substack draft, and the repository README. The interactive site is [GitHub Pages](https://chrisdhayes.github.io/the-cost-of-courtesy/). This document records source-level checks and the subsequent V1.5.1 desktop/mobile Chromium automated browser validation. It does not certify real-phone or live GitHub Pages deployment testing.
 
 ## Verified checks
 
@@ -29,6 +29,12 @@ Reviewed `index.html`, the research essay, the Substack draft, and the repositor
 
 ## Important limitations and release gate
 
-- Static code/data inspection cannot certify that the page **renders and responds correctly** on Chrome, Safari, Android, iOS, different viewport sizes or with keyboard-only navigation. No browser runtime, network-served GitHub Pages deployment, or mobile test was exercised in this check.
+- The V1.5.1 GitHub Actions suite successfully exercised desktop and mobile Chromium browser simulations. Safari, real hardware and the separately deployed GitHub Pages site have not been independently tested.
 - Before a publication announcement, open the GitHub Pages URL in a real browser, navigate to both anchors, toggle every matrix option, select first/last/censored cells, verify source links, inspect narrow-screen horizontal scrolling, switch light/dark mode, and check the browser console for uncaught errors.
 - No new experimental results were generated. The two matrices are **separate study surfaces**. The evidence does not establish a joint model × language × politeness × energy experiment.
+
+## V1.5.1 browser test update — November 11, 2026
+
+**Passed: 10 of 10 Playwright browser tests** in GitHub Actions run [43017445936](https://github.com/ChrisDHayes/the-cost-of-courtesy/actions/runs/43017445936) on an Ubuntu 24.04 runner. Five tests ran in desktop Chromium and five in mobile Chromium, exercising direct links, the courtesy and energy matrices, row selection, the Tibetan Qwen3–14B censored flag, all 122 distinct language bubbles, theme switching and guided/explore navigation. The QA runner fix was merged in [PR #1](https://github.com/ChrisDHayes/the-cost-of-courtesy/pull/1).
+
+**Boundary:** these are real browser tests against a local static server serving the repository snapshot, not independent verification of the live GitHub Pages deployment or real Android/iOS hardware. The live GitHub Pages URL could not be fetched by the current external checker; its deployed state is not yet separately confirmed.
