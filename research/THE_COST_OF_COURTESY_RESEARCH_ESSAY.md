@@ -198,6 +198,38 @@ I don't think people should have to abandon ordinary courtesy to make AI respons
 
 ---
 
+## New evidence: courtesy has no universal model–language response
+
+The [2026 PLUM study by Mehta, Saxena, Chhikara and Kumar](https://arxiv.org/html/2604.16275) adds a useful but methodologically distinct layer to this investigation. It evaluates 22,500 prompt–response pairs across five models (Gemini-Pro, GPT-4o Mini, Claude 3.7 Sonnet, DeepSeek-Chat and Llama 3), English, Hindi and Spanish, five conversational-prompt categories, and three prior-history conditions. The authors report an equally weighted **composite quality score (CQS)** derived from eight automated indicators, including coherence, clarity, depth, responsiveness, context adherence, toxicity, conciseness and readability. This is **not** a task-success rate, human preference estimate, correctness percentage or energy measurement.
+
+The published Table IV gives sharply different within-model patterns. In English, GPT-4o Mini scores **0.636** for the direct bald-on-record category versus **0.567** for positive politeness; Claude 3.7 Sonnet instead reaches **0.626** for positive politeness versus **0.573** for positive impoliteness. For Hindi, Llama 3 scores **0.630** under negative politeness versus **0.506** for positive politeness. In Spanish, DeepSeek-Chat scores **0.643** for positive impoliteness versus **0.583** for positive politeness. Those are associations in the authors' design, not rules for better human conduct, recommendations to be rude, or guarantees of superior answers on real tasks.
+
+Conversation history is a second dimension, not something we can reconstruct by multiplying the paper's marginal tables. In Table V, English Llama 3 scores **0.639** after polite history and **0.578** after impolite history. Yet in Hindi DeepSeek-Chat records **0.582** after impolite history versus **0.565** after polite history. The effect changes across model and language. Our interactive **[Courtesy Response Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix)** lets readers inspect each published mean by category or history, separately, preserving this important distinction.
+
+### What this does—and does not—establish
+
+The contribution is not a universal instruction to say *please*, avoid *please*, or become abrasive. It is a challenge to treating social tone as a uniform parameter of computation. A model's apparent response to a prompt depends on the language and task design, its conversational context and the evaluation instrument. As a secondary synthesis, we should resist assigning causality to individual numerical cells or inferring that the reported CQS differences translate directly into accuracy or user value.
+
+The PLUM preprint offers human-validated prompts, but its cross-linguistic comparison still depends on the validity of automated scoring pipelines. Notably, language-sensitive readability and English-focused automated evaluators can distort comparisons; the eight-factor equal weighting is an analytical choice, not a universally agreed objective function. It is also a preprint rather than independently replicated production-system evidence. Consequently we retain the exact source scores and do not normalize the exhibit into a new, supposedly scientific universal courtesy index.
+
+## Another distinction: language-related computation varies by model
+
+The [Deng et al. EMNLP 2026 study](https://aclanthology.org/2026.emnlp-main.2113/) provides a source-controlled twelve-language cross-model table distinct from its full 122-language Qwen3–8B experiment. The new [Multilingual Energy Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix) compares measured **joules per output token** for Qwen3–8B, Qwen3–14B and Llama 3.1–8B. In this table, Pashto is **0.774**, **2.041** and **0.230 J/token**, respectively; Shan is **1.080**, **2.731** and **1.179 J/token**. The Qwen3–14B Tibetan value **2.900 J/token** is source-censored and is explicitly marked in the exhibit.
+
+A model-level language cost cannot be inferred from national electricity grids, and J/output token is not total J/request. The energy exhibit therefore cannot be directly joined to PLUM's model–language courtesy outcomes: the models, tasks, datasets, metrics and measurement settings differ. **The interaction surface is multilingual; the cost surface is model-dependent; the evidence surfaces are not yet a common experiment.** The research opportunity is to design a factorial experiment measuring language, culturally validated politeness categories, model version, success, generation length, hardware energy and history together.
+
+### An emerging research question: equitable resolution efficiency
+
+A linguistically disadvantaged user may face two distinct burdens: extra inference resources for the same visible unit of output, and a lower probability of a correct or useful completion. We cannot quantify a joint penalty from these two studies. A responsible future metric would use **verified task-resolution energy conditional on language and model** alongside success probability, latency and error costs. This would test whether a shorter, apparently cheaper response actually delivers greater human value or merely shifts the cost to retries and human correction.
+
+**Editorial interpretation:** The duty of courtesy should not be shifted from people to an imagined efficient style. The design duty is to build systems that can recognize closure, perform robustly across linguistic communities, measure useful outcomes and explicitly account for disparate computational burdens.
+
+### New source notes
+
+6. Mehta, H., Saxena, A., Chhikara, G., & Kumar, R. (2026). *No Universal Courtesy: A Cross-Linguistic, Multi-Model Study of Politeness Effects on LLMs Using the PLUM Corpus*. arXiv:2604.16275, version 1, 17 April 2026. Tables IV and V: https://arxiv.org/html/2604.16275. Preprint and automated composite-quality evaluation; no reported energy measurements.
+7. Deng et al. (2026). *The Language–Energy Divide*. EMNLP. Twelve-language cross-model comparison: https://github.com/MichiganNLP/language-energy-divide/blob/master/results/cross_model_12lang_table.csv. One source-censored Qwen3–14B Tibetan value.
+
+
 ## References
 
 1. **Delavande, J., Pierrard, R., & Luccioni, S.** (2026). *Small Talk, Big Impact: The Energy Cost of Thanking AI*. arXiv. https://arxiv.org/abs/2601.22357. See also the [authors' measurement explainer](https://huggingface.co/blog/jdelavande/thank-you-energy).
