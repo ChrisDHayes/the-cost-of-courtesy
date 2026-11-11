@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
-<meta name="description" content="The Cost of Courtesy: a story-first interactive investigation into human expression, AI responses, and multilingual energy. Three redesigned chapters; full six-act research edition preserved.">
+<meta name="description" content="The Cost of Courtesy: a six-act interactive story about human meaning, model responses, useful outcomes, multilingual energy, environmental boundaries, and AI design choices.">
 <meta name="author" content="Christopher Hayes">
 <meta name="release" content="Six-act Story-First 2026-11-11">
 <meta property="og:type" content="article">
@@ -160,6 +160,7 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
 </style>
+<link rel="stylesheet" href="./story-six-act.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the story</a>
@@ -173,7 +174,7 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
 <aside class="chapter-rail" aria-label="Story wayfinder"><span class="rail-label">SIX ACTS</span><a href="#opening"><b>01</b><span>Human moment</span></a><a href="#courtesy"><b>02</b><span>Politeness</span></a><a href="#useful"><b>03</b><span>Useful resolution</span></a><a href="#uneven"><b>04</b><span>122 languages</span></a><a href="#footprint"><b>05</b><span>Physical footprint</span></a><a href="#choice"><b>06</b><span>Design choices</span></a><span class="rail-foot">Detailed measurements:<br><a href="./archive/v1.5.1/">Research studio ↗</a></span></aside>
 <main id="main">
   <section class="scene opening" id="opening" aria-labelledby="opening-title">
-    <div class="hero-topline"><span>CHAPTER 01 / THE HUMAN MOMENT</span><span>THE HUMAN MOMENT</span></div>
+    <div class="hero-topline"><span>ACT 01 / THE HUMAN MOMENT</span><span>THE HUMAN MOMENT</span></div>
     <div class="hero-layout">
       <div class="hero-copy">
         <p class="eyebrow">AN INVESTIGATION INTO HUMAN MEANING AND MACHINE WORK</p>
@@ -226,7 +227,7 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
   </section>
 
   <section class="scene courtesy" id="courtesy" aria-labelledby="courtesy-title">
-    <div class="section-kicker"><span>CHAPTER 02 / THE COURTESY PARADOX</span><span>THE COURTESY PARADOX</span></div>
+    <div class="section-kicker"><span>ACT 02 / THE COURTESY PARADOX</span><span>THE COURTESY PARADOX</span></div>
     <div class="section-head">
       <p class="eyebrow">THE SAME WORDS DON'T WORK THE SAME WAY EVERYWHERE</p>
       <h2 id="courtesy-title">Does being polite<br><em>change the answer?</em></h2>
@@ -485,7 +486,7 @@ window.COURTESY_V2_DATA={"provenance":{"languageDataset":"https://github.com/Mic
   addEventListener('resize',updateScroll,{passive:true});
   updateScroll();
   if('IntersectionObserver' in window) {
-    const links=Array.from(document.querySelectorAll('.chapter-rail a, .topnav a'));
+    const links=Array.from(document.querySelectorAll('.chapter-rail a, .topnav a, .mobile-chapters a'));
     const observer=new IntersectionObserver(entries=>{
       const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
       if(!visible[0])return;
@@ -723,4 +724,5 @@ window.COURTESY_V2_DATA={"provenance":{"languageDataset":"https://github.com/Mic
   window.addEventListener('hashchange',activate);
 })();
 </script>
+<script src="./story-six-act.js"></script>
 </body></html>
