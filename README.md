@@ -6,9 +6,22 @@
 
 **What happens when a human ending becomes another task for a machine?**
 
-The homepage now opens the **Story-First Edition**, introducing the human thank-you, a five-model/three-language courtesy comparison, and the complete 122-language energy atlas through three more inviting chapters. The original, deeper **six-act V1.5.1 research experience remains available in full**—including the detailed cross-model energy matrix, methodology and research instruments.
+The homepage now presents the **complete six-act Story-First Edition**: a thank-you that becomes machine work; politeness and model response quality; the difference between a short reply and a useful result; the 122-language energy divide; the physical boundaries of computation; and the choices designers make about when AI should reply. The original, more instrument-rich **V1.5.1 research studio remains available in full** with detailed model matrices, provenance and methods. The new sections are intentionally readable first and interactive second.
 
 **[Read the main Story-First Experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · **[Explore all six research acts](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/)** · [Research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Substack draft](publication/SUBSTACK_ARTICLE_DRAFT.md) · [Methods](methods/METHODS.md) · [Sources and attribution](LICENSE_AND_ATTRIBUTION.md)
+
+#### Six acts in the main story
+
+| Act | Chapter | Reader's discovery |
+|---|---|---|
+| [01](https://chrisdhayes.github.io/the-cost-of-courtesy/#opening) | The human moment | A thank-you might mean closure to a person and another task to a machine |
+| [02](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy) | Does politeness help? | Published response scores vary across models and languages |
+| [03](https://chrisdhayes.github.io/the-cost-of-courtesy/#useful) | A useful answer | The first reply does not tell us whether the task was resolved |
+| [04](https://chrisdhayes.github.io/the-cost-of-courtesy/#uneven) | The language divide | Mean and median conceal substantial variation across 122 tested conditions |
+| [05](https://chrisdhayes.github.io/the-cost-of-courtesy/#footprint) | The physical footprint | Study boundaries and unknown serving locations matter |
+| [06](https://chrisdhayes.github.io/the-cost-of-courtesy/#choice) | The design choice | Three hypothetical endings expose trade-offs rather than a predetermined winner |
+
+Acts 3 and 6 use explicitly hypothetical examples; Act 5 compares separate published studies without merging their water and energy estimates. None of the six acts claims a new combined experiment.
 
 #### Editorial lens
 
