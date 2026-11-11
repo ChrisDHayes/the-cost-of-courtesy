@@ -36,9 +36,9 @@ The test runs against the **committed self-contained `index.html` served by a lo
 - Direct chapter/exhibit links (including `#language-distribution`) reveal the intended interactive view.
 - Original 12-language illustration and new 122-language distribution initialize.
 - Both 122-point energy and accuracy charts render; arithmetic mean and median values match canonical source-derived figures.
-- Distance versus linked distribution toggle and strict/lenient/scoring-gap controls operate as designed.
+- Distance versus linked distribution toggle and strict/lenient switching were exercised. The scoring-gap option is present, but was not separately exercised by the automated suite.
 - Language selection updates the source inspector; the French evaluation-format sensitivity example returns expected values.
-- Theme toggle, methods panel open/close, source presentation structures and keyboard-focusable chart scrolling are verified.
+- Theme toggle, methods panel open/close and keyboard-focusable chart regions are verified. Individual source receipt links were not exhaustively clicked.
 - No **document-level** horizontal overflow was detected at the tested viewport widths. The energy and accuracy plots intentionally allow **region-level** horizontal scrolling on narrow screens.
 - Mobile swipe guidance is visible and the Guided/Explore switch remains accessible at 320px.
 - Chromium, WebKit and Firefox cross-engine smoke checks report no page errors.
