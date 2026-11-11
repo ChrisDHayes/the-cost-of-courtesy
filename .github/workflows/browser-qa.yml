@@ -45,7 +45,7 @@ jobs:
             npx playwright install --with-deps chromium
           fi
       - name: Run homepage and preserved research regressions on desktop/mobile
-        run: npx playwright test tests/v2-main.spec.cjs tests/browser-smoke.spec.cjs
+        run: npx playwright test tests/v2-main.spec.cjs tests/v2-six-act.spec.cjs tests/browser-smoke.spec.cjs
       - name: Upload failure diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
