@@ -14,7 +14,7 @@ Research essay, Substack draft, methods, source attribution and README revised t
 ## QA recorded
 
 - Verified energy matrix's 36 source-table entries and censor flag against the public CSV.
-- Verified 120 courtesy-category values and 45 history values against published Tables IV–V.
+- Verified 75 courtesy-category values and 45 history values against published Tables IV–V.
 - HTML static checks: source retains all six acts, previous 122 language records, Explore instruments, 2 new matrices, matched script tags and source-extract links.
 - **Not certified:** execution of the live deployed GitHub Pages page in a browser, complete JS syntax parsing, keyboard/mobile touch interactions, accessibility audit, full cross-browser regression or scientific replication.
 
