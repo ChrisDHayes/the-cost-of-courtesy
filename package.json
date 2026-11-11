@@ -1,0 +1,12 @@
+{
+  "name": "the-cost-of-courtesy-qa",
+  "private": true,
+  "version": "1.5.1",
+  "description": "Browser regression checks for the interactive evidence experience",
+  "scripts": {
+    "test:browser": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.0"
+  }
+}
