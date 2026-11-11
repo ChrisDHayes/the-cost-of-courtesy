@@ -104,11 +104,28 @@ Deng and colleagues' *The Language–Energy Divide* investigates multilingual in
 
 One interpretation is the **linguistic double penalty**: a user can incur more computational work and receive a less reliable outcome. But it would be wrong to translate these specific benchmark findings into a claim that any language is inherently “inefficient,” or that the same gap exists in every model, device and task. Tokenizer and serving configurations, task translation, evaluation format, output behaviour and language-resource availability all shape the measured result.
 
-Even accuracy needs careful interpretation. A strict scoring rule that rejects a correct answer with extra formatting can produce a different ranking from a lenient rule. The experience's language instrument includes both forms of accuracy precisely because **measurement design can influence what looks like model competence**. Its twelve displayed source rows are a purposive excerpt, not a representative analysis of all 122 languages.
+### A distribution, not a universal average
+
+To understand the shape of that divide, I reanalysed the authors' [canonical Qwen3–8B / Belebele 0-shot table](https://github.com/MichiganNLP/language-energy-divide/blob/master/results/belebele_canonical_Qwen3-8B_0shot.csv), using all **122 reported language-condition aggregates** and giving each language equal weight.
+
+| Measure across 122 language conditions | Median | Unweighted mean |
+| --- | ---: | ---: |
+| Reported steady-state energy / output token | **0.132 J** | **0.173 J** |
+| Lenient benchmark accuracy | **68.3%** | **61.5%** |
+
+*My derived summaries of the published source table, rounded for reading. The mean per-token energy is approximately **31.2% above** its median. These are not users, populations, model-independent language costs, confidence intervals, or worldwide-traffic-weighted averages.*
+
+Why show both reference lines? Because a right-tailed distribution can make the arithmetic mean look like the normal case when many observations lie below it. On the accuracy side, the direction reverses: the mean is **below** the median. The two distributions cannot be reduced to one fairness score, but viewing them in parallel exposes an important risk of managing AI by an enterprise-wide average.
+
+The published source associates cost differences with **both per-output-token energy and inflated output-token counts**. A per-token chart cannot substitute for end-to-end request energy. The paper's approximately **179×** total-energy contrast refers to its particular fixed request-set benchmark; it is not a universal multiplier between languages [3]. Nor does a descriptive higher-energy/lower-accuracy flag prove a direct causal relationship.
+
+Even accuracy needs careful interpretation. A strict scoring rule that rejects an otherwise valid answer with extra formatting can produce a different ranking from a lenient rule. In the source row for French, for instance, strict accuracy is about **0.1%** while lenient accuracy is about **91.7%**, with **899 formatting failures among 900 evaluated items**. This is a dramatic warning against equating a strict benchmark number with general language understanding. It does not mean French-language users receive 0.1% accuracy in ordinary conversations.
+
+The updated Act 4 instrument displays **all 122** language records, independent median and mean markers, and synchronized energy and accuracy strips. The original twelve highlighted languages remain as a nonrepresentative guided subset and detailed scoring view. Each point is a single *language-condition aggregate*, not an individual request or person. **Measurement design can change what appears to be model competence.**
 
 This changes the governance question. Instead of asking for one average energy-per-token KPI, an AI service may need to examine **quality, resource cost and accessibility by language, task and user context**. A system optimized only for the most common language can look efficient in a consolidated dashboard while shifting cost and frustration to others.
 
-[Interactive exhibit — Act 4: language and evaluation](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-4)
+[Interactive exhibit — The Median Isn't Neutral: all 122 languages](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution) · [Act 4 guided explanation](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-4)
 
 ## 6. Two geographies—and an important unknown
 
@@ -163,7 +180,7 @@ This design could adjudicate the central question: can an interface **preserve h
 
 This project was built as a **structured cross-study synthesis**, not an exhaustive systematic literature review. Study selection was purposive. No raw H100 energy records were independently acquired or re-measured, no original production prompt traces were obtained, and no harmonized individual-level dataset links energy, response quality, retries, facility site and water accounting. The source-specific comparisons use different tasks, models, serving arrangements and metrics. Some supporting chart values are transparent calculations or model scenarios derived from published authors' results, not new observed facts.
 
-That distinction is also a visual obligation. The interactive [Courtesy Constellation](https://chrisdhayes.github.io/the-cost-of-courtesy/#constellation) uses eight conceptual nodes and nine explicitly typed evidence relationships. Hundreds of fine radial filaments provide a visual structure; they do **not** represent observation counts, causal effect sizes, measured distances or request routes. Solid source-specific links, interpretive links, gaps and design hypotheses are distinct.
+That distinction is also a visual obligation. The interactive [Courtesy Constellation](https://chrisdhayes.github.io/the-cost-of-courtesy/#constellation) uses eight conceptual nodes and nine explicitly typed evidence relationships. Act 4's [Language Distance instrument](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution) provides a separate, source-specific distributional view, not another set of network edges. Hundreds of fine radial filaments provide a visual structure; they do **not** represent observation counts, causal effect sizes, measured distances or request routes. Solid source-specific links, interpretive links, gaps and design hypotheses are distinct.
 
 If a reader cannot determine what was measured, what was calculated, what was interpreted and what remains unobserved, the visualization has not done its job—regardless of how polished it looks.
 
