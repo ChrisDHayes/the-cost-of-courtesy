@@ -1,6 +1,6 @@
 # The Cost of Courtesy
 
-### The Living Constellation · Interactive research experience · V1.5
+### The Living Constellation · Interactive research experience · V1.5.1
 
 **What does it cost when we say “thank you” to AI—and is that the right question?**
 
@@ -8,6 +8,8 @@ A six-act, evidence-linked investigation into how everyday human communication b
 
 **[Explore the interactive experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · [Full research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Substack draft](publication/SUBSTACK_ARTICLE_DRAFT.md) · [Methods](methods/METHODS.md) · [Sources & attribution](LICENSE_AND_ATTRIBUTION.md) · [V1.5 verification](QA_V1_5.md) · [V1.4 notes](RELEASE_NOTES_V1_4.md)
 
+
+**Live deployment verified — November 11, 2026:** [GitHub Actions production browser verification](https://github.com/ChrisDHayes/the-cost-of-courtesy/actions/runs/43019642597) passed **10/10** tests across desktop and mobile Chromium; the public site's HTML matched the repository release exactly. [Full QA record](QA_V1_5.md). Physical-device Safari testing remains outside the test scope.
 
 ### Two new evidence atlases (V1.5)
 
