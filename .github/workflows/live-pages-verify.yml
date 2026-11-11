@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'story-six-act.css'
+      - 'story-six-act.js'
       - 'archive/v1.5.1/index.html'
       - 'tests/live-pages.spec.cjs'
       - 'playwright.live.config.cjs'
@@ -29,7 +31,9 @@ jobs:
           import hashlib, pathlib, time, urllib.request, urllib.error, sys
           root='https://chrisdhayes.github.io/the-cost-of-courtesy/'
           assets=[
-            ('index.html',root,(b'Christopher Hayes',b'window.COURTESY_V2_DATA',b'wealth-management dealer',b'id="implications-title"')),
+            ('index.html',root,(b'Christopher Hayes',b'window.COURTESY_V2_DATA',b'wealth-management dealer',b'id="implications-title"',b'id="choice"',b'id="footprint"')),
+            ('story-six-act.css',root+'story-six-act.css',(b'.scene.story-addition',b'.ending-option')),
+            ('story-six-act.js',root+'story-six-act.js',(b'CourtesySixActQA',b'changeEnding')),
             ('archive/v1.5.1/index.html',root+'archive/v1.5.1/',(b'CourtesyLanguage122',b'courtesy-response-matrix',b'language-energy-matrix'))
           ]
           for path,url,required in assets:
