@@ -32,9 +32,19 @@ The display maintains four **non-interchangeable** tracks:
 
 ## Exhibit 3 — Language and scoring
 
-The experience uses a **purposive, twelve-row subset** of published MichiganNLP viewer results from an investigation covering 122 languages. The 12 displayed rows are *not representative*. X = reported steady-state energy per output token (joules); Y = strict or lenient evaluation accuracy (proportion), user selectable. Formatting errors and exact scoring definitions can change apparent relative performance. No regression, national characterization, causal inference about language or politeness, or general population ranking is claimed.
+**V1.4 primary Act 4 instrument — full 122-language distribution.** The experience now includes every row from the authors' [canonical Qwen3–8B, 0-shot Belebele benchmark CSV](https://github.com/MichiganNLP/language-energy-divide/blob/master/results/belebele_canonical_Qwen3-8B_0shot.csv), preserved in [the attributed source-derived extract](../data/language122_qwen3_8b_belebele.json). The full 122-row cohort, not the purposive guided subset, determines all reference lines.
 
-If redistributing the selected rows from MichiganNLP, preserve the applicable **CC BY-SA 4.0** attribution and ShareAlike terms. See [rights and attribution](../LICENSE_AND_ATTRIBUTION.md).
+Each record is a **language-condition aggregate**, not a user, nation, random observation of worldwide activity or causal intervention. For a metric `x`, the unweighted mean is `sum(x_i)/122`; the median is the midpoint of the 61st and 62nd ordered records. The interquartile band uses the source cohort's 25th and 75th percentile order statistics (indices 30 and 90 in zero-based, 122-row indexing). Bubble size is constant; vertical jitter is deterministic and represents **no data dimension**. Higher- and lower-resource colouring follows the authors' classification and does not grade language complexity or importance.
+
+For **steady-state energy per generated output token**, the 122-language median is **0.131875976 J** and mean **0.173013988 J**, about **31.19% higher than the median**. Distance-to-median cost positions use `log2(language J/token / cohort median J/token)`, with ratios explicitly marked on the x-axis. The mean and median reference rules are transformed onto this axis, preserving their **arithmetic**, not geometric, definitions.
+
+For **lenient benchmark accuracy**, median = **68.33%**, mean = **61.54%**; strict accuracy and the lenient-minus-strict scoring gap are alternative, independently labelled lenses. Accuracy positions show **percentage-point deviation** from the median for that accuracy metric, not a log ratio. The descriptive double-penalty flag identifies only records with energy above the energy median **and lenient accuracy below the lenient median**. It is *not* a composite index, causal effect, hypothesis test, or population fairness estimate. Total output tokens across 900 tasks are retained in the inspector but **not** equated with energy per token.
+
+The older **12-language illustrative scatterplot is preserved** below the new chart, with strict/lenient switching and exact formatting-failure counts. It remains a *purposively selected*, nonrepresentative drill-down. The full 122-row instrument and the 12-row scatter are two views of the same study, not independent replications.
+
+In the source record for French, strict accuracy is approximately **0.11%** versus **91.67%** lenient accuracy, with **899 formatting failures in 900 tasks**. This shows why scoring criteria are part of the result, not a claim that French speakers have near-zero real-world model accuracy. No regression, national characterization, causal inference about language or politeness, or universal model/population ranking is made.
+
+**Reuse:** Original MichiganNLP repository code is Apache 2.0, while the selected data from the authors' Hugging Face dataset is identified as **CC BY-SA 4.0**. Preserve source attribution and applicable ShareAlike conditions on source-derived data; do not treat the whole original visualization codebase as automatically subject to that dataset license. See [rights and attribution](../LICENSE_AND_ATTRIBUTION.md).
 
 ## Exhibit 4 — Geography and water
 
@@ -46,6 +56,6 @@ Full model reply, lightweight interface acknowledgment and silent closure are **
 
 ## Replication and disclosure
 
-The publication includes source URLs and an analytical receipt for each central number. No independently reproduced inference-run measurements, original controlled A/B tests, joined request-level facility data, or validated per-resolution efficiency dataset are claimed. QA reported for V1.3 is targeted browser-functional testing, not independent scientific replication, Safari/Firefox field validation, or a formal WCAG conformance audit.
+The publication includes source URLs and an analytical receipt for each central number. No independently reproduced inference-run measurements, original controlled A/B tests, joined request-level facility data, or validated per-resolution efficiency dataset are claimed. QA reported for the original V1.3 is targeted browser-functional testing. V1.4's new distribution has had source and JavaScript syntax checks, but not a formal accessibility, device or comprehensive browser validation, not independent scientific replication, Safari/Firefox field validation, or a formal WCAG conformance audit.
 
 **Citation practice:** cite primary papers for their own results, and label all cross-paper reasoning as interpretation. See the [research essay](../research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) for the argument, alternatives and source notes.
