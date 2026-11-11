@@ -386,7 +386,7 @@ html{scroll-padding-top:154px}
 .language-dist-stage .ld-ministats span{font-size:10px;color:var(--muted)}
 .language-dist-stage svg{display:block;width:100%;max-height:195px}
 .language-dist-stage .ld-mini-note{font-size:11px;color:var(--muted);line-height:1.6}
-@media(max-width:750px){#language-distribution .ld-stats{grid-template-columns:repeat(2,minmax(0,1fr))}#language-distribution .ld-details{grid-template-columns:repeat(2,minmax(0,1fr))}#language-distribution .ld-modes{width:100%}#language-distribution button.ld-mode{flex:1}#language-distribution .ld-plot{overflow-x:auto}#language-distribution svg.ld-chart{min-width:460px;min-height:0}}
+@media(max-width:750px){#language-distribution .ld-stats{grid-template-columns:repeat(2,minmax(0,1fr))}#language-distribution .ld-details{grid-template-columns:repeat(2,minmax(0,1fr))}#language-distribution .ld-modes{width:100%}#language-distribution button.ld-mode{flex:1}#language-distribution .ld-plot{overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--compute) var(--panel2)}#language-distribution .ld-plot::before{content:'SWIPE CHART HORIZONTALLY  ↔';display:block;margin:0 14px 3px;font-size:10px;letter-spacing:.06em;color:var(--muted)}#language-distribution svg.ld-chart{min-width:460px;min-height:0}}
 @media(max-width:430px){#language-distribution .ld-controls{align-items:stretch}#language-distribution select{max-width:100%;width:100%}#language-distribution .ld-details{gap:10px}#language-distribution .ld-stats{gap:13px}}
 
 </style>
@@ -395,7 +395,7 @@ html{scroll-padding-top:154px}
 <a class="skip" href="#main">Skip to the investigation</a>
 <div class="reading-line" id="readingLine"></div>
 <header class="topbar">
-<a aria-label="The Cost of Courtesy, back to top" class="wordmark" href="#start"><span class="brand-dot"></span> THE COST OF COURTESY <span class="edition">/ 1.3</span></a>
+<a aria-label="The Cost of Courtesy, back to top" class="wordmark" href="#start"><span class="brand-dot"></span> THE COST OF COURTESY <span class="edition">/ 1.4</span></a>
 <div class="top-actions">
 <div aria-label="Reading mode" class="mode-switch" role="group"><button aria-pressed="true" class="mode-btn is-active" id="guidedMode" type="button">Guided</button><button aria-pressed="false" class="mode-btn" id="exploreMode" type="button">Explore</button></div>
 <span class="top-label">AN EVIDENCE-LED INVESTIGATION</span>
@@ -568,8 +568,8 @@ html{scroll-padding-top:154px}
   </div>
   <div class="ld-legend" aria-label="Chart legend"><span class="ld-key"><i class="ld-circle"></i>Higher-resource</span><span class="ld-key"><i class="ld-circle low"></i>Lower-resource</span><span class="ld-key"><i class="ld-circle flag"></i>Higher energy + lower lenient accuracy (descriptive flag)</span><span class="ld-key" style="color:var(--value)">Solid: median</span><span class="ld-key" style="color:var(--compute)">Dashed: mean</span></div>
   <p class="ld-read" id="ldModeExplain">Both distributions include all 122 source language records. Twelve previously featured examples appear more brightly; select any point to inspect exact values.</p>
-  <div class="ld-plot"><div class="ld-plot-head"><strong>01 / Computation per generated token</strong><span>Position: ratio to 122-language median (log₂)</span></div><svg id="ldEnergyChart" class="ld-chart" viewBox="0 0 900 210" role="group" aria-label="Distribution of energy per output token across 122 source languages"></svg></div>
-  <div class="ld-plot" id="ldAccuracyPanel"><div class="ld-plot-head"><strong>02 / Benchmark accuracy</strong><span id="ldAccuracyDescription">Lenient accuracy, percentage-point distance from median</span></div><svg id="ldAccuracyChart" class="ld-chart" viewBox="0 0 900 210" role="group" aria-label="Distribution of benchmark accuracy across the same 122 languages"></svg></div>
+  <div class="ld-plot" tabindex="0" role="region" aria-label="Energy distribution chart; swipe horizontally on small screens"><div class="ld-plot-head"><strong>01 / Computation per generated token</strong><span>Position: ratio to 122-language median (log₂)</span></div><svg id="ldEnergyChart" class="ld-chart" viewBox="0 0 900 210" role="group" aria-label="Distribution of energy per output token across 122 source languages"></svg></div>
+  <div class="ld-plot" id="ldAccuracyPanel" tabindex="0" role="region" aria-label="Benchmark accuracy distribution chart; swipe horizontally on small screens"><div class="ld-plot-head"><strong>02 / Benchmark accuracy</strong><span id="ldAccuracyDescription">Lenient accuracy, percentage-point distance from median</span></div><svg id="ldAccuracyChart" class="ld-chart" viewBox="0 0 900 210" role="group" aria-label="Distribution of benchmark accuracy across the same 122 languages"></svg></div>
   <div class="ld-select"><label for="ldLanguageSelect">Inspect language</label><select id="ldLanguageSelect" aria-label="Select one of 122 languages"></select></div>
   <div class="ld-detail" aria-live="polite"><span class="ld-eyebrow">Published source row · one model, one benchmark</span><h4 id="ldSelected">—</h4><p id="ldResource">—</p><div class="ld-details">
     <div><span>Energy / output token</span><strong id="ldJ">—</strong></div><div><span>Energy vs median</span><strong id="ldDelta">—</strong></div><div><span>Total output tokens / 900 tasks</span><strong id="ldTokens">—</strong></div>
