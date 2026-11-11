@@ -29,7 +29,21 @@ main{min-width:0}.opening{position:relative;overflow:hidden;padding:64px max(34p
 @media(max-width:410px){.opening h1{font-size:61px}.top-actions{gap:6px}.topbar .ghost{padding:6px}.bar-item{grid-template-columns:50px 1fr 62px;gap:5px}.geo-boundaries{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
-.mode-switch{display:flex;border:1px solid var(--rule);border-radius:40px;padding:3px;gap:2px}.mode-btn{font-size:10px;background:transparent;border:0;color:var(--muted);border-radius:30px;padding:5px 10px}.mode-btn.is-active{background:var(--text);color:var(--bg);font-weight:700}.explore-bar{display:flex;position:sticky;top:68px;z-index:29;background:var(--panel);gap:20px;align-items:center;justify-content:center;min-height:41px;border-bottom:1px solid var(--rule);font-size:11px}.explore-bar span{font-size:9px;color:var(--subtle);letter-spacing:.1em}.explore-bar a{text-decoration:none;color:var(--muted)}.explore-bar a:hover{color:var(--accent)}@media(max-width:1020px){.explore-bar{top:60px}.mode-btn{padding:4px 7px}.mobile-acts{top:60px}html.explore .mobile-acts{top:101px}}@media(max-width:730px){.explore-bar{flex-wrap:wrap;gap:6px 12px;padding:8px 10px}.explore-bar span{width:100%;text-align:center}.wordmark .edition{display:none}}@media(max-width:380px){.mode-switch{display:none}}
+.mode-switch{display:flex;border:1px solid var(--rule);border-radius:40px;padding:3px;gap:2px}.mode-btn{font-size:10px;background:transparent;border:0;color:var(--muted);border-radius:30px;padding:5px 10px}.mode-btn.is-active{background:var(--text);color:var(--bg);font-weight:700}.explore-bar{display:flex;position:sticky;top:68px;z-index:29;background:var(--panel);gap:20px;align-items:center;justify-content:center;min-height:41px;border-bottom:1px solid var(--rule);font-size:11px}.explore-bar span{font-size:9px;color:var(--subtle);letter-spacing:.1em}.explore-bar a{text-decoration:none;color:var(--muted)}.explore-bar a:hover{color:var(--accent)}@media(max-width:1020px){.explore-bar{top:60px}.mode-btn{padding:4px 7px}.mobile-acts{top:60px}html.explore .mobile-acts{top:101px}}@media(max-width:730px){.explore-bar{flex-wrap:wrap;gap:6px 12px;padding:8px 10px}.explore-bar span{width:100%;text-align:center}.wordmark .edition{display:none}}@media(max-width:380px){
+/* Keep Guided and Explore accessible on compact phone viewports. */
+.topbar{height:86px;display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-rows:34px 35px;gap:0 5px;padding:6px 9px;align-content:center}
+.wordmark{grid-column:1;grid-row:1;font-size:9px;letter-spacing:0;gap:4px;min-width:0}
+.top-actions{display:contents}
+.mode-switch{display:flex;grid-column:1 / -1;grid-row:2;justify-self:center;align-self:center}
+.mode-btn{font-size:10px;padding:6px 14px}
+#methodToggle{grid-column:2;grid-row:1;justify-self:end;font-size:10px;padding:5px}
+#themeToggle{grid-column:3;grid-row:1;justify-self:end;width:31px;height:31px}
+.explore-bar{top:86px}
+.mobile-acts{top:86px}
+html.explore .mobile-acts{top:146px}
+html{scroll-padding-top:154px}
+.act{scroll-margin-top:154px}
+}
 
 /* Phase 9A — Human Signal / System Trace · semantic editorial layer */
 #act-1{--chapter-accent:var(--human)}#act-2{--chapter-accent:var(--compute)}#act-3{--chapter-accent:var(--value)}#act-4{--chapter-accent:var(--compute)}#act-5{--chapter-accent:var(--environment)}#act-6{--chapter-accent:var(--human)}
