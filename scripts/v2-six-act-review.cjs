@@ -8,7 +8,7 @@ const fs=require('fs');
  for(const cfg of cases){
    const page=await browser.newPage({viewport:{width:cfg.width,height:cfg.height},isMobile:cfg.isMobile,deviceScaleFactor:1});
    await page.goto('http://127.0.0.1:4174/');
-   await page.addStyleTag({content:'.topbar,.progress,.mobile-chapters{position:static!important} html{scroll-behavior:auto!important}'});
+   await page.addStyleTag({content:'.topbar,.progress,.mobile-chapters{position:static!important}.skip{display:none!important} html{scroll-behavior:auto!important}'});
    for(const [id,number] of [['useful','03'],['footprint','05'],['choice','06']]){
      await page.locator('#'+id).screenshot({path:'design-review-six-act/'+number+'-'+id+'-'+cfg.name+'.png',animations:'disabled'});
    }
