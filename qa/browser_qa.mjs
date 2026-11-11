@@ -44,6 +44,7 @@ try {
     await page.waitForTimeout(320);
     check(prefix+'local site 200', goto?.status()===200);
     check(prefix+'title', (await page.title()).includes('The Cost of Courtesy'));
+    check(prefix+'edition label V1.4', (await page.locator('.wordmark .edition').textContent()).includes('1.4'));
     check(prefix+'six guided acts', await page.locator('section.story-act').count()===6);
     check(prefix+'fifteen story checkpoints', await page.locator('.story-beat').count()===15);
     check(prefix+'no initial JS errors', errors.length===0, errors.join(' | '));
@@ -62,6 +63,8 @@ try {
     check(prefix+'all 122 languages in selector', await page.locator('#ldLanguageSelect option').count()===122);
     check(prefix+'122 energy bubbles', await page.locator('#ldEnergyChart circle.ld-dot').count()===122);
     check(prefix+'122 accuracy bubbles', await page.locator('#ldAccuracyChart circle.ld-dot').count()===122);
+    check(prefix+'charts keyboard focusable', await page.locator('#language-distribution .ld-plot[tabindex="0"]').count()===2);
+    if(cfg.mobile && cfg.width<750){const swipe=await page.locator('#language-distribution .ld-plot').first().evaluate(el=>getComputedStyle(el,'::before').content);check(prefix+'mobile swipe cue visible',swipe.includes('SWIPE'),swipe);}
     check(prefix+'median displays expected value', sampledText(await page.locator('#ldMedEnergy').textContent()).includes('0.132'));
     check(prefix+'mean displays expected value', sampledText(await page.locator('#ldMeanEnergy').textContent()).includes('0.173'));
     const mode = page.locator('[data-ld-mode=distance]');
@@ -95,7 +98,7 @@ try {
     await context.close();
   }
   // Verify deep-link behaviour in a separate clean browser context, including touch/mobile.
-  for (const width of [390,1440]) {
+  for (const width of [320,390,1440]) {
     const context=await browser.newContext({viewport:{width,height:844},isMobile:width<500,hasTouch:width<500});
     const page=await context.newPage();
     const errors=[];page.on('pageerror',e=>errors.push(e.message));
