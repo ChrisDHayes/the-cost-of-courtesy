@@ -1513,7 +1513,14 @@ $('#prevStoryStep').addEventListener('click',()=>stepBy(-1));
 $('#nextStoryStep').addEventListener('click',()=>stepBy(1));
 window.__storyRestore=()=>{restoring=true;const el=document.getElementById('beat-'+restoreStep);if(el){el.scrollIntoView({behavior:'instant',block:innerWidth<=1020?'start':'center'});activate(beatById[restoreStep],true)}setTimeout(()=>{restoring=false;recalc()},350)};
 // Resume source-linked deep links from the original article, while enabling hidden Explore views.
-if(['#constellation','#signal','#language','#language-distribution','#geography','#design-boundary'].includes(location.hash)){document.querySelector('#exploreMode').click();setTimeout(()=>{let el=document.querySelector(location.hash);if(el)el.scrollIntoView({behavior:'instant'})},100)}
+const exploreDeepLinks=new Set(['#constellation','#signal','#language','#language-distribution','#language-energy-matrix','#courtesy-response-matrix','#geography','#design-boundary']);
+function revealExploreDeepLink(){
+ if(!exploreDeepLinks.has(location.hash))return;
+ if(!document.documentElement.classList.contains('explore'))document.querySelector('#exploreMode').click();
+ setTimeout(()=>{const el=document.getElementById(location.hash.slice(1));if(el)el.scrollIntoView({behavior:'instant',block:'start'});},100);
+}
+revealExploreDeepLink();
+window.addEventListener('hashchange',revealExploreDeepLink);
 // Preserve manual URL section navigation. No automatic scroll-to-next or scroll-jacking.
 activate(beats[0],true);setTimeout(recalc,80);
 window.__courtesyStoryQA={active:()=>current.id,view:()=>current.view,stageLab:()=>stageLab,stepCount:()=>beats.length,goStep:id=>{const el=document.getElementById('beat-'+id);if(el)el.scrollIntoView({behavior:'instant',block:innerWidth<=1020?'start':'center'})}};
