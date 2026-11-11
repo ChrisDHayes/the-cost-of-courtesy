@@ -1,12 +1,20 @@
 # The Cost of Courtesy
 
-### The Living Constellation · Interactive research experience · V1.4
+### The Living Constellation · Interactive research experience · V1.5
 
 **What does it cost when we say “thank you” to AI—and is that the right question?**
 
 A six-act, evidence-linked investigation into how everyday human communication becomes machine work, how that work relates to useful outcomes, and why its environmental consequences are harder to measure than a token count suggests.
 
-**[Explore the interactive experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · [Full research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Substack draft](publication/SUBSTACK_ARTICLE_DRAFT.md) · [Methods](methods/METHODS.md) · [Sources & attribution](LICENSE_AND_ATTRIBUTION.md) · [V1.4 notes](RELEASE_NOTES_V1_4.md)
+**[Explore the interactive experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · [Full research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Substack draft](publication/SUBSTACK_ARTICLE_DRAFT.md) · [Methods](methods/METHODS.md) · [Sources & attribution](LICENSE_AND_ATTRIBUTION.md) · [V1.5 verification](QA_V1_5.md) · [V1.4 notes](RELEASE_NOTES_V1_4.md)
+
+
+### Two new evidence atlases (V1.5)
+
+- **[Courtesy Response Matrix — Act 2](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix):** 5 models × 3 languages using the reported composite-quality means from Mehta et al. (2026), arXiv preprint Tables IV and V. Toggle *prompt category* or *conversation history*. These are distinct aggregated cuts, **not** a joint four-dimensional effect or independently verified response accuracy.
+- **[Language–Energy Matrix — Act 4](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix):** 12 languages × 3 models drawn from Deng et al.'s published cross-model table (J per output token). Switch between within-model and absolute colour scales; the Tibetan Qwen3–14B source-censored record is flagged. **Do not** mistake this subset for complete coverage of 122 languages across five models.
+
+Both matrices expose exact numerical values and clickable source-linked detail panels. The existing 122-language atlas is retained. Neither study, by itself or in combination, provides a measured estimate of energy attributable to politeness across languages and models.
 
 > **The argument:** The cost of a conversation is not determined by the words alone. It depends on how systems interpret them, the work they perform, the value they create and the resources they consume.
 
