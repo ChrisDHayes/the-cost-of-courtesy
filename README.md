@@ -41,7 +41,7 @@ Use **Guided Story** to follow 15 scroll-driven evidence checkpoints, **Explore*
 
 - **The Courtesy Constellation:** an eight-node conceptual network with nine typed research relationships. Relationship styles distinguish within-study evidence, interpretation, evidence gaps and design proposals.
 - **Resolution Signal Plate:** published hardware energy components, explicitly *modelled* GPU sensitivity scenarios and PromptTone output-length comparisons, shown in their own units.
-- **[The Median Isn't Neutral — Act 4](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution):** all 122 published source language records, arithmetic mean/median and IQR, distance-from-median and synchronized cost/accuracy distributions. The original 12 highlighted languages remain available for closer evaluation scrutiny.
+- **[The Median Isn't Neutral — Act 4](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution):** all 122 published source language records, arithmetic mean/median and IQR, distance-from-median and synchronized cost/accuracy distributions. The original 12 highlighted languages remain available for closer evaluation scrutiny. [Inspect the attributed 122-row data extract](data/language122_qwen3_8b_belebele.json).
 - **Geography of a Thank You:** environmental accounting context without inventing the route, serving region or data centre used by any individual request.
 
 ## Evidence and scientific boundaries
