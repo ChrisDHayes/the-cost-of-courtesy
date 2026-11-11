@@ -104,9 +104,13 @@ Can an AI system recognize the difference between a request and an acknowledgmen
 
 Those are questions about how we design intelligence.
 
-I built **[The Cost of Courtesy — The Living Constellation](https://chrisdhayes.github.io/the-cost-of-courtesy/)** as a six-act interactive investigation. The visual experience distinguishes measured results, derived comparisons, interpretations and evidence gaps—and lets readers inspect the studies behind the matrices rather than accepting the colours on trust.
+I built **[The Cost of Courtesy — Story-First Edition](https://chrisdhayes.github.io/the-cost-of-courtesy/)** as a six-act interactive investigation. It starts with an ordinary human moment, then lets each finding unfold before asking readers to inspect the evidence. The complete [Research Studio](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/) remains available for those who want the full analytical instruments, underlying tables and source boundaries.
 
-[**Explore Act 6 — The design choice**](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-6)
+One practical implication matters to me as a Data & AI leader: **don't measure the success of an AI interaction by the number of replies it produces or the number of tokens it saves**. Measure whether the person achieved a useful, reliable outcome; whether the system handled their language fairly; and whether additional computation was justified.
+
+Consider a wealth-management dealer as one example, not a study finding about any particular organization. An advisor preparing for a client meeting might value an answer that is complete, permissioned and accurate more than one that is merely concise. Any automated explanation should remain reviewable, with appropriate human accountability for advice. In that setting, the goal isn't to make the model talk less. It's to make every additional response earn its place.
+
+[**Explore Act 6 — Three ways a conversation could end**](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-6)
 
 The question I keep coming back to isn't whether we should be less polite to machines. It's whether designers and leaders are asking the harder question: **are we building systems that deliver useful outcomes fairly, regardless of how people naturally communicate?**
 
@@ -121,6 +125,6 @@ People should not have to sound less human—or speak the dominant language—to
 
 **Research and sources:** [Read the full evidence-based essay](https://github.com/ChrisDHayes/the-cost-of-courtesy/blob/main/research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Methods and limitations](https://github.com/ChrisDHayes/the-cost-of-courtesy/blob/main/methods/METHODS.md) · [Attribution and source rights](https://github.com/ChrisDHayes/the-cost-of-courtesy/blob/main/LICENSE_AND_ATTRIBUTION.md)
 
-*Draft for Substack, not yet published. The interactive chapter links point to the GitHub Pages release independently verified on 11 November 2026. This article synthesizes published studies; it does not report original experimental measurements.*
+*Draft for Substack, not yet published. The interactive chapter links open the six-act Story-First Edition; the complete V1.5.1 Research Studio remains archived. The experience synthesizes published studies and illustrative design alternatives; it does not report original experimental measurements.*
 
 **Suggested tags:** #ArtificialIntelligence #DataScience #HumanCentredAI #InformationDesign #AIGovernance
