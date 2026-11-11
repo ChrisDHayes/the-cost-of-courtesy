@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="A design-study preview of The Cost of Courtesy V2.0: story-first narrative, model–language comparisons and the 122-language energy atlas.">
+<title>The Cost of Courtesy — V2 Story-First Design Study</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the story</a>
+<header class="topbar" id="top">
+  <a class="brand" href="#top" aria-label="Cost of Courtesy prototype home"><span class="brand-mark" aria-hidden="true"></span><span>THE COST OF COURTESY <small>STORY STUDY / V2.0</small></span></a>
+  <nav class="topnav" aria-label="Prototype chapters"><a href="#opening">The moment</a><a href="#courtesy">The language</a><a href="#uneven">The divide</a></nav>
+  <div class="top-actions"><span class="prototype-tag">DESIGN PROTOTYPE · NOT PUBLISHED V2</span><button id="themeToggle" class="icon-control" type="button" aria-label="Switch to light appearance" title="Switch appearance">◑</button></div>
+</header>
+<div class="progress" aria-hidden="true"><span id="progressFill"></span></div>
+<aside class="chapter-rail" aria-label="Study outline"><span class="rail-label">THREE STUDIES</span><a href="#opening"><b>A</b><span>Human moment</span></a><a href="#courtesy"><b>B</b><span>Model × language</span></a><a href="#uneven"><b>C</b><span>122 languages</span></a><span class="rail-foot">Six-act V2 planned.<br>These are the three design slices.</span></aside>
+<main id="main">
+  <section class="scene opening" id="opening" aria-labelledby="opening-title">
+    <div class="hero-topline"><span>PROTOTYPE A / PROLOGUE + ACT 01</span><span>THE HUMAN MOMENT</span></div>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="eyebrow">AN INVESTIGATION INTO HUMAN MEANING AND MACHINE WORK</p>
+        <h1 id="opening-title">Two words.<br><em>Another response.</em></h1>
+        <p class="hero-deck">What happens when a human ending becomes another task for a machine?</p>
+        <p>You've just finished asking an AI assistant for help. Maybe it explained something difficult, helped you write a message, or solved a problem that had been on your mind.</p>
+        <p>You type two familiar words.</p>
+        <a class="quiet-link" href="#human-message">Follow those words <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div>
+        <div class="signal-core"><span class="core-dot"></span><span class="signal-caption">HUMAN<br>MEANING</span></div>
+        <div class="signal-thread"></div>
+        <div class="signal-point point-a"></div><div class="signal-point point-b"></div><div class="signal-point point-c"></div>
+        <div class="art-whisper">AN ENDING / A BEGINNING?</div>
+      </div>
+    </div>
+    <div class="message-study" id="human-message">
+      <div class="message-narrative">
+        <p class="chapter-id">01 / THE MISMATCH</p>
+        <h2>The conversation might already be over.</h2>
+        <p>To another person, “thank you” often means the work is done. It's an acknowledgment, not a request to keep going.</p>
+        <p>But a conversational interface can treat that same message as another turn. It may read the earlier exchange again and generate another reply, even if no new answer was requested.</p>
+        <p><strong>For us, a closing gesture. For the system, perhaps a fresh task.</strong></p>
+        <p>That small difference is what sent me looking at the research. The interesting question isn't whether being courteous is wrong. It's whether the system has learned to distinguish a request from a goodbye.</p>
+        <details class="evidence" id="evidence-opening"><summary><span class="evidence-icon" aria-hidden="true">i</span><span>How do we know?</span><span class="chev" aria-hidden="true">⌄</span></summary><div class="evidence-content"><p><b>What researchers measured</b> — Delavande, Pierrard and Luccioni reported a mean of 0.245 Wh across GPU, CPU and estimated RAM energy for generated thank-you replies in a specified Llama 3.1–8B/H100 experiment.</p><p><b>What it does not prove</b> — It is not a universal ChatGPT cost, a water measurement or evidence that every reply is unnecessary.</p><a href="https://arxiv.org/abs/2601.22357" target="_blank" rel="noopener noreferrer">Read the original thank-you study <span aria-hidden="true">↗</span></a></div></details>
+      </div>
+      <div class="message-art">
+        <div class="chat-window">
+          <div class="chat-header"><span class="chat-led"></span><span>AN EVERYDAY EXCHANGE</span><span class="chat-more" aria-hidden="true">···</span></div>
+          <div class="chat-log">
+            <p class="chat-system">Here's a clearer version of your message. It says what you need without sounding abrupt.</p>
+            <p class="chat-person">Thank you.</p>
+            <div id="messageOutcome" class="reply-placeholder" aria-live="polite"><span class="reply-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>What should happen next?</span></div>
+          </div>
+          <div class="chat-action"><button id="showReply" type="button" class="primary-button">See one possible response <span aria-hidden="true">↗</span></button></div>
+        </div>
+        <div class="response-trace" id="responseTrace" hidden>
+          <div class="trace-item"><span class="trace-idx">01</span><span><b>Human intention</b><small>Possibly saying we're done</small></span></div>
+          <div class="trace-separator" aria-hidden="true"></div>
+          <div class="trace-item"><span class="trace-idx">02</span><span><b>Possible system behaviour</b><small>Generate one more reply</small></span></div>
+          <div class="trace-separator" aria-hidden="true"></div>
+          <div class="trace-item"><span class="trace-idx">03</span><span><b>One study's measured mean</b><small>0.245 Wh per generated thank-you reply under its test conditions</small></span></div>
+        </div>
+        <p class="visual-note">Illustrative chat scene. The measured energy figure comes from a separate controlled study, not this fictional exchange.</p>
+      </div>
+    </div>
+    <div class="bridge"><span>THE NEXT QUESTION</span><p>But saying “thank you” after a task and saying “please” <em>inside</em> a task aren't the same thing.</p><a href="#courtesy" class="bridge-link">See why that matters <span aria-hidden="true">↓</span></a></div>
+  </section>
+
+  <section class="scene courtesy" id="courtesy" aria-labelledby="courtesy-title">
+    <div class="section-kicker"><span>PROTOTYPE B / ACT 02</span><span>THE COURTESY PARADOX</span></div>
+    <div class="section-head">
+      <p class="eyebrow">THE SAME WORDS DON'T WORK THE SAME WAY EVERYWHERE</p>
+      <h2 id="courtesy-title">Does being polite<br><em>change the answer?</em></h2>
+      <p class="section-deck">A thank-you after we're finished can invite another response. A polite request made during the work changes the task's wording. What does that change actually do?</p>
+    </div>
+    <div class="narrative-grid">
+      <div class="story-prose">
+        <p>We tend to imagine that courtesy is a simple setting: turn it up and people—and perhaps machines—will respond better. But language models don't necessarily follow that rule.</p>
+        <p>In a 2026 research preprint, five models were evaluated across English, Hindi and Spanish using different ways of phrasing requests. The results depended on which model, language and form of politeness the researchers examined.</p>
+        <p>Consider one English-language comparison for GPT-4o Mini. Under the study's scoring method, a direct request received a score of <strong>0.636</strong>. A positively polite request received <strong>0.567</strong>.</p>
+        <p>Those numbers aren't accuracy percentages. They're scores produced by the researchers' combined evaluation method. Still, the contrast complicates a familiar assumption: more polite wording does not always produce a higher evaluated score.</p>
+        <p>And this is only one pair of results. The fuller picture is more uneven.</p>
+        <details class="evidence" id="evidence-courtesy"><summary><span class="evidence-icon" aria-hidden="true">i</span><span>How do we know?</span><span class="chev" aria-hidden="true">⌄</span></summary><div class="evidence-content"><p><b>What is shown</b> — PLUM (Mehta et al., 2026), Table IV, composite response-quality means for five models × three languages × five prompt categories.</p><p><b>What is not shown</b> — These are automatically scored results, not independently validated task success or energy. Table V evaluates previous conversation histories separately; we do not invent their combined effect.</p><a href="https://arxiv.org/html/2604.16275" target="_blank" rel="noopener noreferrer">Read the original PLUM preprint <span aria-hidden="true">↗</span></a></div></details>
+      </div>
+      <div class="figure-card spotlight-figure">
+        <div class="figure-head"><span>ONE CONTRAST / BEFORE THE FULL PICTURE</span><span class="figure-source">PLUM · TABLE IV</span></div>
+        <h3>One model. Two ways of asking.</h3>
+        <p class="figure-subhead">GPT-4o Mini · English · Study-defined composite response score</p>
+        <div class="bar-compare">
+          <div class="bar-row"><div><span>Direct request</span><b>0.636</b></div><div class="bar-track"><div class="bar-value bar-direct" style="width:63.6%"></div></div></div>
+          <div class="bar-row"><div><span>Positively polite request</span><b>0.567</b></div><div class="bar-track"><div class="bar-value bar-polite" style="width:56.7%"></div></div></div>
+        </div>
+        <p class="figure-insight">A different phrasing, a different study score. This doesn't tell us which wording is universally better.</p>
+        <button class="reveal-button" id="revealMatrix" type="button" aria-controls="matrixPanel" aria-expanded="false">See how the pattern changes across models <span aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+    <div class="matrix-panel" id="matrixPanel" hidden>
+      <div class="matrix-intro"><div><p class="eyebrow">THE PATTERN WIDENS</p><h3>Different models.<br>Different languages.<br><em>No single rule.</em></h3></div><p>Select a result to inspect the exact study score. Change the form of phrasing and watch the pattern shift. The colours help you scan; the numbers carry the evidence.</p></div>
+      <div class="matrix-controls"><label for="toneSelect">Compare prompt wording</label><select id="toneSelect"><option value="BAL">Direct (bald on record)</option><option value="POP">Positive politeness</option><option value="NEP">Negative politeness</option><option value="POI">Positive impoliteness</option><option value="NEI">Negative impoliteness</option></select><span>5 MODELS × 3 LANGUAGES</span></div>
+      <div class="matrix-scroll" tabindex="0" role="region" aria-label="Scrollable courtesy response matrix"><table class="matrix-table" id="courtesyTable"><thead><tr><th scope="col">MODEL</th><th scope="col">ENGLISH</th><th scope="col">HINDI</th><th scope="col">SPANISH</th></tr></thead><tbody></tbody></table></div>
+      <div class="matrix-legend"><span class="legend-low"></span>Lower study score <span class="legend-gradient"></span> Higher study score <span class="legend-note">0–1 scale; not accuracy</span></div>
+      <div class="selection-panel" id="courtesyDetail" aria-live="polite"><strong>Choose a cell.</strong><p>Each reported score has a model, language and prompt category. Comparing across those conditions is informative, but it isn't a recommendation to change your manners.</p></div>
+      <p class="matrix-caution">Separate evidence layers: conversation-history comparisons are available in the <a href="https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix" target="_blank" rel="noopener noreferrer">complete V1.5.1 research matrix</a>. This preview shows Table IV only and does not conflate the two experiments.</p>
+    </div>
+    <div class="bridge"><span>THE QUESTION DEEPENS</span><p>If the score depends on the model and the language, what happens when we measure the <em>work</em> each model performs?</p><a href="#uneven" class="bridge-link">Follow the differences <span aria-hidden="true">↓</span></a></div>
+  </section>
+
+  <section class="scene uneven" id="uneven" aria-labelledby="uneven-title">
+    <div class="section-kicker"><span>PROTOTYPE C / ACT 04</span><span>THE LANGUAGE DIVIDE</span></div>
+    <div class="section-head">
+      <p class="eyebrow">WHAT THE AVERAGE LEAVES OUT</p>
+      <h2 id="uneven-title">Not every language<br><em>gets the same deal.</em></h2>
+      <p class="section-deck">If an AI system appears efficient on average, does that tell us what happens when someone uses it in a different language?</p>
+    </div>
+    <div class="language-intro"><p>In one published benchmark, researchers measured the computation associated with outputs in 122 languages. Each language had its own result. The differences weren't random decoration around a single typical cost: some conditions required substantially more energy per generated token than others.</p><p>We can learn more by starting with the whole population, then changing how we look at it. The <em>median</em> tells us where the middle of the distribution lies. The <em>mean</em> is pulled toward unusually expensive observations. Both are useful; neither is everyone's experience.</p></div>
+    <div class="atlas-card">
+      <div class="atlas-heading"><div><p class="atlas-kicker">122 PUBLISHED LANGUAGE CONDITIONS · QWEN3–8B</p><h3 id="atlasTitle">Every language belongs in the picture.</h3><p id="atlasDescription">Each bubble is one language condition, arranged from lower to higher energy per generated token. All 122 appear without overlap.</p></div><div class="atlas-count"><strong id="languageCount">122 / 122</strong><small>Languages represented</small></div></div>
+      <div class="atlas-stages" role="group" aria-label="Language story progression"><button class="stage-tab is-current" type="button" data-stage="all" aria-pressed="true"><b>01</b> See everyone</button><button class="stage-tab" type="button" data-stage="distribution" aria-pressed="false"><b>02</b> Compare averages</button><button class="stage-tab" type="button" data-stage="evaluation" aria-pressed="false"><b>03</b> Question the score</button></div>
+      <div class="atlas-graphic-wrap" role="region" aria-label="Language bubbles; scroll horizontally for full-width distribution on narrow screens" tabindex="0">
+        <svg id="atlasGraphic" class="atlas-graphic" role="group" aria-label="All 122 language conditions shown as individually selectable points"></svg>
+      </div>
+      <div class="atlas-axis-note" id="atlasAxisNote">LEFT TO RIGHT, TOP TO BOTTOM · LOWER → HIGHER ENERGY PER OUTPUT TOKEN</div>
+      <div class="atlas-find"><label for="languageFinder">Find a language</label><select id="languageFinder"></select><span>Choose a bubble or use this alphabetical selector to inspect every source row.</span></div>
+      <div class="atlas-detail" id="languageDetail" aria-live="polite">
+        <div><span class="detail-eyebrow">SELECTED LANGUAGE / ONE BENCHMARK</span><h4 id="languageName">—</h4><p id="languageDesc">Energy and accuracy are measured under the study's specific model and evaluation rules.</p></div>
+        <div class="detail-metrics"><div><span>ENERGY PER GENERATED TOKEN</span><strong id="energyValue">—</strong><small>Joules, not energy per whole conversation</small></div><div><span>LENIENT ACCURACY</span><strong id="accuracyValue">—</strong><small>Study-defined benchmark score</small></div></div>
+      </div>
+      <div class="accuracy-note" id="accuracyNote" hidden>
+        <p class="eyebrow">A DIFFERENT QUESTION: WHAT COUNTS AS CORRECT?</p><div class="accuracy-charts"><div><span>STRICT SCORING</span><div class="mini-bar"><span id="strictBar"></span></div><b id="strictValue"></b></div><div><span>LENIENT SCORING</span><div class="mini-bar"><span id="lenientBar"></span></div><b id="lenientValue"></b></div></div><p id="accuracyExplanation">A response can fail strict formatting rules while still counting under lenient scoring. This is about the evaluation method, not a complete assessment of a language's users.</p>
+      </div>
+      <div class="atlas-foot"><span class="legend"><i class="swatch swatch-human"></i> Lower-resource source group <i class="swatch swatch-compute"></i> Higher-resource source group</span><span>Groups are source classifications, not quality or value judgements.</span></div>
+    </div>
+    <div class="post-atlas"><p>For this Qwen3–8B benchmark, the energy median is about <strong>0.132 J</strong> per output token, while the mean is about <strong>0.173 J</strong>. The mean is roughly 31% higher, suggesting that the “average” hides an expensive tail.</p><p>And computation isn't the only thing to examine. A scoring rule can change how capable a system appears. That's why a language-accuracy comparison should be read alongside the evaluation method, not mistaken for a judgment about a community.</p><p>Change the model, and the energy profile can change again. The complete research experience includes a separate twelve-language, three-model comparison. It is another study view—not evidence of the energy cost of politeness.</p>
+      <details class="evidence" id="evidence-uneven"><summary><span class="evidence-icon" aria-hidden="true">i</span><span>How do we know?</span><span class="chev" aria-hidden="true">⌄</span></summary><div class="evidence-content"><p><b>Source</b> — Deng et al. (2026), the Qwen3–8B Belebele 0-shot dataset, 122 published language-condition aggregates. This preview recomputes unweighted mean and median from those values.</p><p><b>Boundary</b> — Joules per output token are not energy per full task, and strict versus lenient benchmark accuracy is not a general claim about speakers. Other model measurements belong to a separate cross-model comparison.</p><a href="https://github.com/MichiganNLP/language-energy-divide/blob/master/results/belebele_canonical_Qwen3-8B_0shot.csv" target="_blank" rel="noopener noreferrer">View the source dataset <span aria-hidden="true">↗</span></a></div></details>
+    </div>
+    <div class="end-study"><span class="end-label">THE DESIGN QUESTION</span><h2>What if good AI begins by knowing<br><em>when it has done enough?</em></h2><p>This preview tests the beginning, the courtesy comparison and the language story. The complete six-act V2 will return to the opening “thank you” and ask which kind of closing response actually serves the person.</p><div class="end-links"><a href="https://chrisdhayes.github.io/the-cost-of-courtesy/" target="_blank" rel="noopener noreferrer">Open the verified V1.5.1 experience <span aria-hidden="true">↗</span></a><a href="https://github.com/ChrisDHayes/the-cost-of-courtesy/blob/v2-story-first-design-blueprint/design/V2_0_STORYBOARD.md" target="_blank" rel="noopener noreferrer">Read the six-act storyboard <span aria-hidden="true">↗</span></a></div></div>
+  </section>
+</main>
+<footer class="footer"><span>THE COST OF COURTESY / V2 DESIGN STUDY</span><span>Prototype only. Separate sources. No new empirical measurements.</span><a href="#top">Back to the beginning ↑</a></footer>
+<script src="./data.js"></script><script src="./app.js"></script>
+</body></html>

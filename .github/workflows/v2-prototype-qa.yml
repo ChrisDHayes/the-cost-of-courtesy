@@ -1,0 +1,89 @@
+name: V2 story-first prototype — browser and review gallery
+
+on:
+  pull_request:
+    paths:
+      - 'prototypes/v2-story-first/**'
+      - 'tests/v2-prototype.spec.cjs'
+      - '.github/workflows/v2-prototype-qa.yml'
+  push:
+    branches: [v2-story-first-prototypes]
+    paths:
+      - 'prototypes/v2-story-first/**'
+      - 'tests/v2-prototype.spec.cjs'
+      - '.github/workflows/v2-prototype-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prototype-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test tooling
+        run: npm install --no-audit --no-fund
+      - name: Use available system Chrome, or install Chromium
+        shell: bash
+        run: |
+          BINARY="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
+          if [ -n "$BINARY" ]; then
+            echo "CHROME_BINARY=$BINARY" >> "$GITHUB_ENV"
+            echo "Using system browser: $BINARY"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: Run prototype story interactions (desktop and mobile)
+        run: npx playwright test tests/v2-prototype.spec.cjs -c playwright.v2.system.config.cjs
+      - name: Capture representative story-state screenshots
+        run: |
+          mkdir -p prototype-preview
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/courtesy-prototype-server.log 2>&1 &
+          echo $! > /tmp/courtesy-prototype-server.pid
+          node <<'NODE'
+          const { chromium } = require('@playwright/test');
+          const fs = require('fs');
+          (async () => {
+            const browser = await chromium.launch({headless:true,...(process.env.CHROME_BINARY ? {executablePath:process.env.CHROME_BINARY} : {})});
+            const url='http://127.0.0.1:4173/prototypes/v2-story-first/';
+            const page=await browser.newPage({viewport:{width:1440,height:900}});
+            await page.goto(url);
+            // Avoid a sticky header appearing in the middle of full-section screenshot captures.
+            await page.addStyleTag({content:'.topbar,.progress{display:none!important}'});
+            await page.locator('#opening').screenshot({path:'prototype-preview/A-opening-desktop.png'});
+            await page.locator('#showReply').click();
+            await page.locator('#human-message').screenshot({path:'prototype-preview/A-chat-trace-desktop.png'});
+            await page.locator('#revealMatrix').click();
+            await page.locator('#courtesy').screenshot({path:'prototype-preview/B-courtesy-matrix-desktop.png'});
+            await page.locator('[data-stage="distribution"]').click();
+            await page.locator('#uneven').screenshot({path:'prototype-preview/C-122-language-distribution-desktop.png'});
+            const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,deviceScaleFactor:1});
+            await mobile.goto(url);
+            await mobile.addStyleTag({content:'.topbar,.progress{display:none!important}'});
+            await mobile.locator('#opening').screenshot({path:'prototype-preview/A-opening-mobile.png'});
+            await mobile.locator('#revealMatrix').click();
+            await mobile.locator('#courtesy').screenshot({path:'prototype-preview/B-courtesy-mobile.png'});
+            await mobile.locator('#uneven').screenshot({path:'prototype-preview/C-atlas-mobile.png'});
+            await browser.close();
+            console.log('Created seven desktop/mobile V2 prototype review screenshots.');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - name: Upload preview, sources and QA failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cost-of-courtesy-v2-prototype-review
+          path: |
+            prototype-preview/
+            prototypes/v2-story-first/index.html
+            prototypes/v2-story-first/styles.css
+            prototypes/v2-story-first/app.js
+            prototypes/v2-story-first/data.js
+            playwright-report/
+            test-results/
+          if-no-files-found: warn
