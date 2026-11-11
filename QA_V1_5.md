@@ -48,3 +48,15 @@ Reviewed `index.html`, the research essay, the Substack draft, and the repositor
 **Test harness correction:** An earlier [live QA attempt](https://github.com/ChrisDHayes/the-cost-of-courtesy/actions/runs/43019157255) mistakenly navigated to the domain root `/` rather than the project subpath `/the-cost-of-courtesy/`, causing 404s in the test harness despite the HTTP/source-parity check passing. Corrected relative navigation to `./`, and the rerun passed all tests. This was not an HTML-site defect.
 
 Production verification code was merged via [PR #2](https://github.com/ChrisDHayes/the-cost-of-courtesy/pull/2). It is available for subsequent releases in `tests/live-pages.spec.cjs`, `playwright.live.config.cjs` and `.github/workflows/live-pages-verify.yml`.
+
+## V1.5.1 editorial publication review — November 11, 2026
+
+**Interactive HTML remains locked:** no changes were made to `index.html` during this review. The technically verified production baseline and all existing interactive tests are preserved.
+
+**Research essay:** integrated the PLUM courtesy-response discussion into Section 3 and the separate twelve-language cross-model energy comparison into Section 5, instead of appending new evidence after the conclusion. Added inline source bounds, references [6] and [7], stronger factorial-study criteria, and a conclusion that includes model/language differences without implying a common energy experiment.
+
+**Substack draft:** moved the 5 × 3 courtesy matrix into the prompt-tone discussion and the 12 × 3 energy matrix into the multilingual passage; restored the final human-centred conclusion as the actual ending. Simplified navigation language and confirmed the draft is unpublished.
+
+**Editorial structural checks:** all 18 distinct internal deep-link references across the two documents were checked against actual `id` values in the locked HTML and resolved; research essay references 1–7 are present; title/section flow reviewed. The arXiv PLUM preprint, the peer-reviewed EMNLP multilingual study and the PromptTone paper were independently reviewed for key source claims.
+
+**Remaining scope:** Substack publication remains a manual editorial decision. This review did not publish the draft, conduct a new experiment, revise HTML, or claim that PLUM CQS is task success or that its response scores can be combined directly with MichiganNLP energy values.
