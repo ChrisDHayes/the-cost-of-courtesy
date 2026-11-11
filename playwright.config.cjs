@@ -1,4 +1,5 @@
 const { defineConfig, devices } = require('@playwright/test');
+const chromeLaunch = process.env.CHROME_BINARY ? { launchOptions: { executablePath: process.env.CHROME_BINARY } } : {};
 
 module.exports = defineConfig({
   testDir: './tests',
@@ -13,8 +14,8 @@ module.exports = defineConfig({
     trace: 'retain-on-failure'
   },
   projects: [
-    { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } } },
-    { name: 'mobile-chromium', use: { ...devices['Pixel 7'], browserName: 'chromium' } }
+    { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'], ...chromeLaunch, viewport: { width: 1440, height: 900 } } },
+    { name: 'mobile-chromium', use: { ...devices['Pixel 7'], ...chromeLaunch, browserName: 'chromium' } }
   ],
   webServer: {
     command: 'python3 -m http.server 4173 --bind 127.0.0.1',
