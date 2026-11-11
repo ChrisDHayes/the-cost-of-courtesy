@@ -90,6 +90,34 @@ The question I keep coming back to isn't whether we should be less polite to mac
 
 I'd rather design for that future than ask people to be less human.
 
+## The same courtesy. Different machines.
+
+The most surprising turn in this research was realizing that courtesy may not have a consistent computational effect—even when the question is no longer whether to reply to a thank-you.
+
+A [2026 preprint examining the PLUM corpus](https://arxiv.org/html/2604.16275) tested five language models, three languages and five prompt-tone categories. It scored 22,500 prompt–response pairs using eight automated response measures. The results are not a universal quality ranking: the authors' composite score depends on their scoring definitions and equal weighting. But the differences are revealing.
+
+For English prompts, GPT-4o Mini scored **0.636** under a direct prompting category compared with **0.567** under positive politeness. Claude 3.7 Sonnet showed a different pattern, scoring **0.626** for positive politeness. In Hindi, Llama 3's highest category score was **0.630** for deferential, indirect politeness. These are the study's scores, not accuracy percentages or prescriptions for how humans should behave.
+
+And the preceding conversation mattered too. English-language Llama 3 responses scored **0.639** after a polite interaction history versus **0.578** after an impolite one. Yet in Hindi, DeepSeek-Chat scored marginally higher after impolite than polite histories. The same social signal doesn't produce a uniform response across models and languages.
+
+[**Explore Act 2 — The Courtesy Response Matrix**](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix)
+
+That leads to a distinction I hadn't fully appreciated when I first asked about the cost of saying thank you: **an expression of politeness is not a fixed instruction to a machine. Its effects emerge from the interaction between language, model, history and evaluation.** The preprint is suggestive, not definitive: machine-scored quality can reward different properties than actual task success.
+
+## A language does not have one computational price.
+
+A separate, [peer-reviewed multilingual energy study](https://aclanthology.org/2026.emnlp-main.2113/) shows how computation varies with the model serving the request. Its twelve-language cross-model table reports, for example, Pashto at **0.774 joules per output token** on Qwen3–8B, **2.041** on Qwen3–14B and **0.230** on Llama 3.1–8B. These are source-reported results from a specific experiment—not prices for speaking Pashto everywhere, and not energy per completed task.
+
+[**Explore Act 4 — The Multilingual Energy Matrix**](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix)
+
+I find the juxtaposition important. One study asks how models respond to culturally framed prompt styles; another asks how model architecture and linguistic conditions affect inference energy. **They cannot be merged into a combined politeness-cost score.** Their protocols are different. But together they identify an unusually valuable missing experiment: one that measures verified task success and end-to-end energy across model, language, politeness, and conversation history.
+
+For AI designers and leaders, the practical question becomes less “should users be polite?” and more: **are we building systems that deliver useful outcomes fairly, regardless of how people naturally communicate?**
+
+That is a stronger and more human question than asking whether two courteous words are worth the electricity.
+
+
+
 ---
 
 *Christopher Hayes, CDAIO · Applied AI research, evidence design and human-centred systems.*
