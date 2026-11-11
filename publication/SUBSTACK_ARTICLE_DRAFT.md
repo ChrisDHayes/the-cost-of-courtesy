@@ -48,13 +48,17 @@ My proposed unit is **energy per verified, useful resolution**, not simply energ
 
 ## The average hides who pays
 
-Then I encountered *[The Language–Energy Divide](https://aclanthology.org/2026.emnlp-main.2113/)*. Its authors investigated multilingual inference across 122 languages and reported substantial differences in energy and task accuracy under their measured settings.
+Then I encountered *[The Language–Energy Divide](https://aclanthology.org/2026.emnlp-main.2113/)*. The researchers measured energy and accuracy across **122 languages**. I went to their [published per-language table](https://github.com/MichiganNLP/language-energy-divide/blob/master/results/belebele_canonical_Qwen3-8B_0shot.csv) and asked a simple question: *What changes when we show the distribution, rather than just an average?*
 
-The uncomfortable possibility is a double penalty: **more computation, less reliable results**.
+For that specific Qwen3–8B benchmark, the **median energy per output token was 0.132 joules**; the **mean was 0.173 joules**—roughly **31% higher**. A long, expensive tail was pulling the average away from the middle.
 
-That isn't a statement that any language is inherently inefficient. It's a warning that an aggregate efficiency metric can conceal very different experiences for different users—and that even our definitions of accuracy deserve scrutiny.
+Then the accuracy results went in the other direction: **68.3% median versus 61.5% mean** under the authors' lenient scoring. Those statistics treat all 122 language conditions equally; they're not global usage averages or evidence that a language itself causes higher computing costs.
 
-[**Explore Act 4 — The language divide**](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-4)
+The uncomfortable possibility is a double penalty: **more computation, less reliable results**. But evaluation rules matter, too. In the source data, French's strict and lenient accuracy diverge dramatically because of formatting failures. What looks like a language capability issue can partly be an evaluation design issue.
+
+That's why I've added a new interactive view to the project: **The Median Isn't Neutral**. It places all 122 languages around median and mean reference lines, then reveals energy and accuracy together—without inventing a composite fairness score.
+
+[**Explore the new interactive language distribution**](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution) · [Follow Act 4 in the guided story](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-4)
 
 ## The cloud isn't placeless
 
