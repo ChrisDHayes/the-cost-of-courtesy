@@ -98,3 +98,11 @@ Not yet certified: full WCAG conformance, Safari/Firefox, physical-device field 
 Created by **Christopher Hayes, CDAIO** as an exploration of applied data science, evidence synthesis, data visualization, human-centred information design and responsible Data & AI leadership. Wealth management appears as a secondary applied example; the central research question extends across industries.
 
 **The question worth keeping:** Should people have to change how they communicate to make AI more efficient—or should we design systems that understand human communication while using computation more responsibly?
+## V1.5 — evidence matrices
+
+- [Courtesy Response Matrix — Act 2](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix): five studied models × three languages, with published composite quality scores by five courtesy prompt categories or three prior-conversation histories. Source: [Mehta et al., arXiv:2604.16275](https://arxiv.org/html/2604.16275), Tables IV–V (preprint; not measured task accuracy or energy).
+- [Multilingual Energy Matrix — Act 4](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix): twelve languages × three tested models, exact J/output-token values with sorting, two colour scales and a flagged censored source cell. Source: [MichiganNLP cross-model comparison](https://github.com/MichiganNLP/language-energy-divide/blob/master/results/cross_model_12lang_table.csv).
+- The existing [122-language full-cohort instrument](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution), six-act story, earlier instruments and dark/light palettes remain in the main HTML.
+- Updated [essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md), [Substack article draft](publication/SUBSTACK_ARTICLE_DRAFT.md), [methodology](methods/METHODS.md) and [source attribution](LICENSE_AND_ATTRIBUTION.md). These are cross-study evidence exhibits, not one new experiment.
+
+**QA status:** Source tables independently checked against the published values; static HTML structure and existing data-presence checks pass. Full live browser, keyboard, mobile, Safari/Firefox and accessibility regression testing is not yet verified.
