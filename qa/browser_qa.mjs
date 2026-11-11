@@ -1,4 +1,4 @@
-import { chromium } from 'playwright';
+import { chromium, firefox, webkit } from 'playwright';
 import { createServer } from 'node:http';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { extname, join, resolve, sep } from 'node:path';
@@ -109,6 +109,46 @@ try {
     check('deeplink '+width+': no errors',errors.length===0,errors.join(' | '));
     await context.close();
   }
+
+  // Verify Safari's WebKit rendering on touch/mobile and Firefox on desktop.
+  for (const cfg of [
+    {name:'webkit_mobile_390',engine:webkit,width:390,height:844,isMobile:true},
+    {name:'firefox_desktop_1440',engine:firefox,width:1440,height:900,isMobile:false}
+  ]) {
+    let other;
+    try {
+      other=await cfg.engine.launch({headless:true});
+      const context=await other.newContext({viewport:{width:cfg.width,height:cfg.height},isMobile:cfg.isMobile,hasTouch:cfg.isMobile,reducedMotion:'reduce'});
+      const page=await context.newPage();
+      const errors=[];
+      page.on('pageerror',e=>errors.push(e.message));
+      const result=await page.goto(BASE,{waitUntil:'load'});
+      await page.waitForTimeout(250);
+      check(cfg.name+': site loaded',result?.status()===200);
+      check(cfg.name+': no init errors',errors.length===0,errors.join(' | '));
+      check(cfg.name+': data initialized',await page.locator('#ldLanguageSelect option').count()===122);
+      await page.locator('#exploreMode').click({timeout:8000});
+      check(cfg.name+': explore mode active',await page.locator('#language-distribution').isVisible());
+      check(cfg.name+': full energy and accuracy charts',await page.locator('#ldEnergyChart circle.ld-dot').count()===122 && await page.locator('#ldAccuracyChart circle.ld-dot').count()===122);
+      await page.locator('#ldLanguageSelect').selectOption('fra_Latn');
+      check(cfg.name+': French scores', (await page.locator('#ldLenient').textContent()).includes('91.7'));
+      const measure=await page.evaluate(()=>({sw:document.documentElement.scrollWidth,iw:innerWidth}));
+      check(cfg.name+': no page-wide overflow',measure.sw<=measure.iw+12,JSON.stringify(measure));
+      await page.locator('#language-distribution').scrollIntoViewIfNeeded();
+      await page.screenshot({path:join(OUT,cfg.name+'_language.png'),fullPage:false,animations:'disabled'});
+      check(cfg.name+': no interaction errors',errors.length===0,errors.join(' | '));
+      await context.close();
+    }catch(e){check(cfg.name+': cross-browser smoke completed',false,String(e.stack||e).slice(0,1800));}
+    finally{await other?.close().catch(()=>{});}
+  }
+  // Separate deployment smoke: the public GitHub Pages URL must actually serve the exhibit.
+  try{
+    const live='https://chrisdhayes.github.io/the-cost-of-courtesy/';
+    const response=await fetch(live,{redirect:'follow',signal:AbortSignal.timeout(20000)});
+    check('live Pages HTTP 200',response.status===200,'HTTP '+response.status);
+    const markup=await response.text();
+    check('live Pages serves language exhibit',markup.includes('id="language-distribution"'),'HTML length '+markup.length);
+  }catch(e){check('live Pages can be reached from runner',false,String(e));}
 } catch(e) { check('unhandled QA harness exception',false,e.stack || String(e)); }
 finally {
  await browser.close();
