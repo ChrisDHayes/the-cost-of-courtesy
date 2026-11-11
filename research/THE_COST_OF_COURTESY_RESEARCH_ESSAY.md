@@ -6,9 +6,9 @@
 
 ### Abstract
 
-A simple “thank you” can trigger an additional language-model response. A controlled experiment reports an average of 0.245 watt-hours (Wh) of device-level energy for that response under one Llama 3.1–8B/H100 configuration [1]. Yet this number tells us much less than a universal “cost of politeness.” Courtesy appended **after** a task differs from politeness **within** a task; response length is not task success; hardware energy is not full-stack resource use; and an unknown serving location prevents defensible claims about local water stress. Research on prompt tone, multilingual inference and production environmental accounting shows why the boundaries matter [2–5].
+A simple “thank you” can trigger an additional language-model response. A controlled experiment reports an average of 0.245 watt-hours (Wh) of device-level energy for that response under one Llama 3.1–8B/H100 configuration [1]. Yet this number tells us much less than a universal “cost of politeness.” Courtesy appended **after** a task differs from politeness **within** a task; response length is not task success; hardware energy is not full-stack resource use; and an unknown serving location prevents defensible claims about local water stress. Research on prompt tone, cross-linguistic model responses, multilingual inference and production environmental accounting shows why the boundaries matter [2–6].
 
-This essay proposes a different unit of inquiry: **the resources required to achieve a verified, useful outcome**, alongside the quality of that outcome, the distribution of burdens across users, and the system's ability to recognize when no substantive reply is needed. It presents a structured, source-bounded synthesis—*not* a new experiment or a causal meta-analysis—and articulates five practical frames for human-centred AI design. The accompanying six-act visualization makes observed measurements, derived scenarios, interpretations and missing evidence inspectable.
+This essay proposes a different unit of inquiry: **the resources required to achieve a verified, useful outcome**, alongside the quality of that outcome, the distribution of burdens across users, and the system's ability to recognize when no substantive reply is needed. It presents a structured, source-bounded synthesis—*not* a new experiment or a causal meta-analysis—and articulates five practical frames for human-centred AI design. The accompanying six-act visualization makes observed measurements, derived scenarios, interpretations and missing evidence inspectable, including **separate** matrices for courtesy-response scores and language-related inference energy.
 
 **Keywords:** language models; inference energy; interface design; task resolution; multilingual evaluation; water accounting; evidence visualization; AI governance.
 
@@ -69,6 +69,16 @@ Those values are descriptive arithmetic from published group means: (polite − 
 
 But **characters are not tokens, tokens are not electricity, and shorter output is not necessarily better output**. A model can write fewer characters and still miss requirements. Another can write more characters because it includes essential structure. The experiment's task, language, provider mix, and evaluation scope limit generalization. It would be particularly misleading to merge this dataset with the H100 thank-you experiment to invent a common cost-of-politeness coefficient.
 
+### Cross-linguistic courtesy: a model effect, not a universal rule
+
+A second experiment adds an important dimension without resolving the energy question. Mehta, Saxena, Chhikara and Kumar's 2026 **PLUM preprint** reports 22,500 prompt–response pairs for five language models, English, Hindi and Spanish, five prompt-politeness categories and three previous-interaction conditions [6]. Its **composite quality score (CQS)** equally weights eight automated indicators, including coherence, clarity, depth, responsiveness, context retention, toxicity, conciseness and readability. That score is **not** measured task correctness, a human-preference estimate, energy consumption or a universal quality ranking.
+
+The authors' Table IV shows why the direction cannot be generalized. For English, GPT-4o Mini receives **0.636 CQS** for direct (*bald-on-record*) prompts and **0.567** for positive politeness; Claude 3.7 Sonnet scores **0.626** for positive politeness compared with **0.573** for positive impoliteness. For Hindi, Llama 3 scores **0.630** under negative politeness versus **0.506** under positive politeness. In Spanish, DeepSeek-Chat scores **0.643** for positive impoliteness versus **0.583** for positive politeness. These are **reported condition means**, not instructions to become rude or proof of individual causal effects.
+
+Prior dialogue history is a *different comparison*, reported in the authors' Table V. English Llama 3 scores **0.639** after a polite history and **0.578** after an impolite one. Hindi DeepSeek-Chat scores **0.582** after an impolite history and **0.565** after a polite history. We cannot reconstruct the unreported joint effect of history *and* prompt category by combining these aggregate tables. The [Courtesy Response Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix) deliberately offers two separate controls and source-linked values.
+
+The findings are useful but bounded. PLUM is a **preprint**, not an independently replicated production benchmark. Automated readability and other language-sensitive scoring components may not be equally valid in every language; equal weighting is an analytical choice rather than a universally defensible preference function. Politeness categories themselves need cultural validation. A more careful thesis is therefore: **the way courtesy relates to a model's evaluated response is contingent on language, model, dialogue history and the evaluation instrument**. This does not establish how much energy courtesy consumes.
+
 The distinction is central to the [Act 2 courtesy paradox](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-2): human intent is one dimension; interface behaviour is another; model response is a third. Confusing them leads to confident but ungrounded claims.
 
 ## 4. The missing denominator: value, not just volume
@@ -127,6 +137,12 @@ This changes the governance question. Instead of asking for one average energy-p
 
 [Interactive exhibit — The Median Isn't Neutral: all 122 languages](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution) · [Act 4 guided explanation](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-4)
 
+### Same language, different model energy profiles
+
+The study also publishes a **twelve-language, three-model comparison** separate from the full 122-language Qwen3–8B cohort [3, 7]. The [Multilingual Energy Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix) reports joules **per output token** for Qwen3–8B, Qwen3–14B and Llama 3.1–8B. Pashto measures **0.774**, **2.041** and **0.230 J/output token** in those three conditions, respectively; Shan measures **1.080**, **2.731** and **1.179**. The Qwen3–14B Tibetan value (**2.900**) is explicitly marked *source-censored* and must not be presented as a fully comparable observation.
+
+These numbers are not intrinsic prices of speaking Pashto or Shan. They depend on the models and measurement configurations, and they are not total request energy or energy per successful task. Nor can they be joined to PLUM's courtesy scores: the studies do not share the required models, tasks, prompts, measurements or evaluation conditions. **A multilingual response comparison and a multilingual energy comparison are two evidence surfaces—not a combined experiment.** Their juxtaposition motivates a future controlled study, not a synthetic courtesy-cost coefficient.
+
 ## 6. Two geographies—and an important unknown
 
 Computing happens somewhere. Yet the word *cloud* encourages us to think of infrastructure as placeless.
@@ -151,7 +167,7 @@ The evidence suggests a design problem broader than manners. I use five connecte
 
 **2. Resolution Dividend.** Optimize for outcomes across the full attempt sequence: useful first-pass answers, necessary corrections, verified completion and severity-aware quality. Treat energy per verified resolution as a *candidate measurement goal*, not a number already established.
 
-**3. Linguistic Double-Penalty Atlas.** Expose how efficiency and quality differ across languages under comparable tasks and measurement boundaries, with explicit warning labels for incomplete, strict and lenient evaluation. Use this as an equity diagnostic, not a ranking of communities.
+**3. Linguistic Double-Penalty Atlas.** Expose how efficiency and quality differ across languages **and model configurations**, with explicit warning labels for incomplete, strict and lenient evaluation and a prohibition on joining incompatible source studies. Use this as an equity diagnostic, not a ranking of communities.
 
 **4. Two Geographies of Intelligence.** Separate user location, serving facility location, electricity mix and water-risk context. When a link in that chain cannot be verified, preserve the uncertainty rather than drawing a plausible-looking route.
 
@@ -171,6 +187,7 @@ It would be premature to declare that silent closure or lightweight acknowledgme
 4. Verified task completion and quality, including severity of errors.
 5. Latency, satisfaction and other human outcomes—not only computation saved.
 6. Distribution of effects across language groups, task types and usage contexts.
+7. Where the design calls for a model comparison, culturally reviewed tone categories, prior conversational history, and energy under the **same** task and serving conditions—rather than pooling unrelated published samples.
 
 Prerequisite decisions include consent, logging minimization, safety exclusions and clear stop rules. High-stakes interactions should not be routed solely by an unvalidated gratitude classifier.
 
@@ -178,7 +195,7 @@ This design could adjudicate the central question: can an interface **preserve h
 
 ## 9. Scientific and information-design limitations
 
-This project was built as a **structured cross-study synthesis**, not an exhaustive systematic literature review. Study selection was purposive. No raw H100 energy records were independently acquired or re-measured, no original production prompt traces were obtained, and no harmonized individual-level dataset links energy, response quality, retries, facility site and water accounting. The source-specific comparisons use different tasks, models, serving arrangements and metrics. Some supporting chart values are transparent calculations or model scenarios derived from published authors' results, not new observed facts.
+This project was built as a **structured cross-study synthesis**, not an exhaustive systematic literature review. Study selection was purposive. No raw H100 energy records were independently acquired or re-measured, no original production prompt traces were obtained, and no harmonized individual-level dataset links energy, response quality, retries, facility site and water accounting. The source-specific comparisons use different tasks, models, serving arrangements and metrics. In particular, PLUM's equally weighted automated CQS is not verified task success, and its published category and conversation-history tables are separate marginal summaries rather than a fully observed joint grid [6]. The cross-model energy matrix is a twelve-language source subset, not a 122-language × five-model factorial table [7]. Some supporting chart values are transparent calculations or model scenarios derived from published authors' results, not new observed facts.
 
 That distinction is also a visual obligation. The interactive [Courtesy Constellation](https://chrisdhayes.github.io/the-cost-of-courtesy/#constellation) uses eight conceptual nodes and nine explicitly typed evidence relationships. Act 4's [Language Distance instrument](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution) provides a separate, source-specific distributional view, not another set of network edges. Hundreds of fine radial filaments provide a visual structure; they do **not** represent observation counts, causal effect sizes, measured distances or request routes. Solid source-specific links, interpretive links, gaps and design hypotheses are distinct.
 
@@ -190,45 +207,13 @@ The methods and source-rights documentation distinguish original synthesis from 
 
 I began with a thank-you because it was small enough to make the question approachable. I stayed with it because it exposed the limitations of several metrics that organizations are increasingly tempted to treat as definitive.
 
-A token is not an outcome. A reply is not a resolved task. A device-level watt-hour is not an environmental footprint. An average is not an equitable experience. And a social acknowledgment is not necessarily a request for more work.
+A token is not an outcome. A reply is not a resolved task. A device-level watt-hour is not an environmental footprint. An average is not an equitable experience. And a social acknowledgment is not necessarily a request for more work. **The same expression of courtesy does not generate one uniform evaluated response across languages and models.**
 
 The stronger design objective is **not simply to minimize computation**. It is to use computation proportionately, measure the quality of completed work, surface uncertainty instead of manufacturing certainty, and preserve the human meanings that make an interaction worth having.
 
 I don't think people should have to abandon ordinary courtesy to make AI responsible. I think responsible AI should be capable of recognizing it.
 
 ---
-
-## New evidence: courtesy has no universal model–language response
-
-The [2026 PLUM study by Mehta, Saxena, Chhikara and Kumar](https://arxiv.org/html/2604.16275) adds a useful but methodologically distinct layer to this investigation. It evaluates 22,500 prompt–response pairs across five models (Gemini-Pro, GPT-4o Mini, Claude 3.7 Sonnet, DeepSeek-Chat and Llama 3), English, Hindi and Spanish, five conversational-prompt categories, and three prior-history conditions. The authors report an equally weighted **composite quality score (CQS)** derived from eight automated indicators, including coherence, clarity, depth, responsiveness, context adherence, toxicity, conciseness and readability. This is **not** a task-success rate, human preference estimate, correctness percentage or energy measurement.
-
-The published Table IV gives sharply different within-model patterns. In English, GPT-4o Mini scores **0.636** for the direct bald-on-record category versus **0.567** for positive politeness; Claude 3.7 Sonnet instead reaches **0.626** for positive politeness versus **0.573** for positive impoliteness. For Hindi, Llama 3 scores **0.630** under negative politeness versus **0.506** for positive politeness. In Spanish, DeepSeek-Chat scores **0.643** for positive impoliteness versus **0.583** for positive politeness. Those are associations in the authors' design, not rules for better human conduct, recommendations to be rude, or guarantees of superior answers on real tasks.
-
-Conversation history is a second dimension, not something we can reconstruct by multiplying the paper's marginal tables. In Table V, English Llama 3 scores **0.639** after polite history and **0.578** after impolite history. Yet in Hindi DeepSeek-Chat records **0.582** after impolite history versus **0.565** after polite history. The effect changes across model and language. Our interactive **[Courtesy Response Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix)** lets readers inspect each published mean by category or history, separately, preserving this important distinction.
-
-### What this does—and does not—establish
-
-The contribution is not a universal instruction to say *please*, avoid *please*, or become abrasive. It is a challenge to treating social tone as a uniform parameter of computation. A model's apparent response to a prompt depends on the language and task design, its conversational context and the evaluation instrument. As a secondary synthesis, we should resist assigning causality to individual numerical cells or inferring that the reported CQS differences translate directly into accuracy or user value.
-
-The PLUM preprint offers human-validated prompts, but its cross-linguistic comparison still depends on the validity of automated scoring pipelines. Notably, language-sensitive readability and English-focused automated evaluators can distort comparisons; the eight-factor equal weighting is an analytical choice, not a universally agreed objective function. It is also a preprint rather than independently replicated production-system evidence. Consequently we retain the exact source scores and do not normalize the exhibit into a new, supposedly scientific universal courtesy index.
-
-## Another distinction: language-related computation varies by model
-
-The [Deng et al. EMNLP 2026 study](https://aclanthology.org/2026.emnlp-main.2113/) provides a source-controlled twelve-language cross-model table distinct from its full 122-language Qwen3–8B experiment. The new [Multilingual Energy Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix) compares measured **joules per output token** for Qwen3–8B, Qwen3–14B and Llama 3.1–8B. In this table, Pashto is **0.774**, **2.041** and **0.230 J/token**, respectively; Shan is **1.080**, **2.731** and **1.179 J/token**. The Qwen3–14B Tibetan value **2.900 J/token** is source-censored and is explicitly marked in the exhibit.
-
-A model-level language cost cannot be inferred from national electricity grids, and J/output token is not total J/request. The energy exhibit therefore cannot be directly joined to PLUM's model–language courtesy outcomes: the models, tasks, datasets, metrics and measurement settings differ. **The interaction surface is multilingual; the cost surface is model-dependent; the evidence surfaces are not yet a common experiment.** The research opportunity is to design a factorial experiment measuring language, culturally validated politeness categories, model version, success, generation length, hardware energy and history together.
-
-### An emerging research question: equitable resolution efficiency
-
-A linguistically disadvantaged user may face two distinct burdens: extra inference resources for the same visible unit of output, and a lower probability of a correct or useful completion. We cannot quantify a joint penalty from these two studies. A responsible future metric would use **verified task-resolution energy conditional on language and model** alongside success probability, latency and error costs. This would test whether a shorter, apparently cheaper response actually delivers greater human value or merely shifts the cost to retries and human correction.
-
-**Editorial interpretation:** The duty of courtesy should not be shifted from people to an imagined efficient style. The design duty is to build systems that can recognize closure, perform robustly across linguistic communities, measure useful outcomes and explicitly account for disparate computational burdens.
-
-### New source notes
-
-6. Mehta, H., Saxena, A., Chhikara, G., & Kumar, R. (2026). *No Universal Courtesy: A Cross-Linguistic, Multi-Model Study of Politeness Effects on LLMs Using the PLUM Corpus*. arXiv:2604.16275, version 1, 17 April 2026. Tables IV and V: https://arxiv.org/html/2604.16275. Preprint and automated composite-quality evaluation; no reported energy measurements.
-7. Deng et al. (2026). *The Language–Energy Divide*. EMNLP. Twelve-language cross-model comparison: https://github.com/MichiganNLP/language-energy-divide/blob/master/results/cross_model_12lang_table.csv. One source-censored Qwen3–14B Tibetan value.
-
 
 ## References
 
@@ -237,5 +222,7 @@ A linguistically disadvantaged user may face two distinct burdens: extra inferen
 3. **Deng, N., Shen, A., Feng, Y., Nwatu, J., Chung, J.-W., Chowdhury, M., Chen, Y., & Mihalcea, R.** (2026). The Language–Energy Divide: Measuring Energy Costs of Multilingual LLM Inference. *Proceedings of EMNLP 2026*, 48057–48075. https://doi.org/10.18653/2026.emnlp-main.2113. [Project and methods](https://github.com/MichiganNLP/language-energy-divide).
 4. **Elsworth, C., et al.** (2025). *Measuring the environmental impact of delivering AI at Google Scale*. arXiv. https://arxiv.org/abs/2508.15734. [Google Cloud methodology overview](https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference).
 5. **World Resources Institute.** (2023; ongoing updates). *Aqueduct 4.0 Current and Future Global Maps Data*. https://www.wri.org/data/aqueduct-global-maps-40-data. [Aqueduct licensing and attribution FAQ](https://www.wri.org/aqueduct/faq).
+6. **Mehta, H., Saxena, A., Chhikara, G., & Kumar, R.** (2026). *No Universal Courtesy: A Cross-Linguistic, Multi-Model Study of Politeness Effects on LLMs Using the PLUM Corpus*. arXiv:2604.16275, v1, 17 April 2026. [Preprint and Tables IV–V](https://arxiv.org/html/2604.16275). Composite quality scores are machine-evaluated, not energy measurements.
+7. **Deng, N., et al.** (2026). [Twelve-language cross-model comparison CSV](https://github.com/MichiganNLP/language-energy-divide/blob/master/results/cross_model_12lang_table.csv), accompanying reference [3]. Source-reported J/output token and censored-condition indicator.
 
-**Author's disclosure:** The arguments, frameworks and interactive visualization are my synthesis of published evidence. I have not run new LLM energy experiments, performed a systematic evidence review, or independently replicated all source datasets. Deep links into the interactive exhibit depend on GitHub Pages deployment being enabled.
+**Author's disclosure:** The arguments, frameworks and interactive visualization are my synthesis of published evidence. I have not run new LLM energy experiments, performed a systematic evidence review, or independently replicated all source datasets. The interactive exhibit's live GitHub Pages release was independently verified on 11 November 2026; physical iOS and Safari browser testing remains outstanding.
