@@ -74,7 +74,7 @@ That's why I've added a new interactive view to the project: **The Median Isn't 
 
 [**Explore the new interactive language distribution**](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution) · [Follow Act 4 in the guided story](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-4)
 
-## A language does not have one computational price.
+## A language does not have one computational price
 
 A separate, [peer-reviewed multilingual energy study](https://aclanthology.org/2026.emnlp-main.2113/) shows how computation varies with the model serving the request. Its twelve-language cross-model table reports, for example, Pashto at **0.774 joules per output token** on Qwen3–8B, **2.041** on Qwen3–14B and **0.230** on Llama 3.1–8B. These are source-reported results from a specific experiment—not prices for speaking Pashto everywhere, and not energy per completed task.
 
@@ -82,9 +82,7 @@ A separate, [peer-reviewed multilingual energy study](https://aclanthology.org/2
 
 These findings belong beside—not inside—the courtesy matrix. One study evaluates model responses under tone and history conditions; the other measures inference energy by language and model. **They cannot be merged into a combined politeness-cost score.** Their tasks, prompts, models and measurement boundaries differ. But together they identify an unusually valuable missing experiment: one that measures verified task success and end-to-end energy across model, language, politeness, and conversation history.
 
-For AI designers and leaders, the practical question becomes less “should users be polite?” and more: **are we building systems that deliver useful outcomes fairly, regardless of how people naturally communicate?**
-
-That is a stronger and more human question than asking whether two courteous words are worth the electricity.
+That missing experiment would need to consider more than a model's output. The infrastructure serving the answer matters too—and it isn't necessarily where the user is.
 
 ## The cloud isn't placeless
 
@@ -110,9 +108,9 @@ I built **[The Cost of Courtesy — The Living Constellation](https://chrisdhaye
 
 [**Explore Act 6 — The design choice**](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-6)
 
-The question I keep coming back to isn't whether we should be less polite to machines.
+The question I keep coming back to isn't whether we should be less polite to machines. It's whether designers and leaders are asking the harder question: **are we building systems that deliver useful outcomes fairly, regardless of how people naturally communicate?**
 
-**It's whether we can build systems that preserve human meaning, deliver reliable results across languages and exercise better judgment about computation.**
+**Can we build intelligence that preserves human meaning, delivers reliable results across languages, and exercises better judgment about when computation adds value?**
 
 People should not have to sound less human—or speak the dominant language—to receive an AI system's best effort.
 
