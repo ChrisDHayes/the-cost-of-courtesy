@@ -28,10 +28,18 @@ jobs:
           node-version: '22'
       - name: Install browser test tooling
         run: npm install --no-audit --no-fund
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Use available system Chrome, or install Chromium
+        shell: bash
+        run: |
+          BINARY="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
+          if [ -n "$BINARY" ]; then
+            echo "CHROME_BINARY=$BINARY" >> "$GITHUB_ENV"
+            echo "Using system browser: $BINARY"
+          else
+            npx playwright install --with-deps chromium
+          fi
       - name: Run prototype story interactions (desktop and mobile)
-        run: npx playwright test tests/v2-prototype.spec.cjs
+        run: npx playwright test tests/v2-prototype.spec.cjs -c playwright.v2.system.config.cjs
       - name: Capture representative story-state screenshots
         run: |
           mkdir -p prototype-preview
@@ -41,7 +49,7 @@ jobs:
           const { chromium } = require('@playwright/test');
           const fs = require('fs');
           (async () => {
-            const browser = await chromium.launch({headless:true});
+            const browser = await chromium.launch({headless:true,...(process.env.CHROME_BINARY ? {executablePath:process.env.CHROME_BINARY} : {})});
             const url='http://127.0.0.1:4173/prototypes/v2-story-first/';
             const page=await browser.newPage({viewport:{width:1440,height:900}});
             await page.goto(url);
