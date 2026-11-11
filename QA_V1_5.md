@@ -16,6 +16,7 @@ Reviewed `index.html`, the research essay, the Substack draft, and the repositor
 | Tibetan Qwen3–14B source-censored flag | Preserved and surfaced |
 | Main 122-language cohort | Inline 122 records retained in original dedicated visualization |
 | HTML fragment navigation | Internal `href="#..."` targets checked; no unresolved targets |
+| JavaScript syntax | All five executable inline scripts compile successfully; both embedded JSON blocks parse; 122 language records confirmed |
 | Matrix interactive code | Buttons, select controls, accessible labels, source links and detail containers present |
 | Research essay | Contains PLUM and cross-model energy synthesis with evidence boundaries |
 | Substack draft | Contains PLUM and links to the interactive matrix |
