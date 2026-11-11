@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test('live root serves the updated experience without page errors', async ({page}) => {
   const errors=[]; page.on('pageerror',err=>errors.push(err.message));
-  const response=await page.goto('/');
+  const response=await page.goto('./');
   expect(response?.status()).toBe(200);
   await expect(page).toHaveTitle(/The Cost of Courtesy/);
   await expect(page.locator('#exploreMode')).toBeVisible();
@@ -12,7 +12,7 @@ test('live root serves the updated experience without page errors', async ({page
 
 test('live courtesy matrix deep link opens Explore and responds to controls', async ({page}) => {
   const errors=[]; page.on('pageerror',err=>errors.push(err.message));
-  const response=await page.goto('/#courtesy-response-matrix');
+  const response=await page.goto('./#courtesy-response-matrix');
   expect(response?.status()).toBe(200);
   await expect(page.locator('html')).toHaveClass(/explore/);
   await expect(page.locator('#courtesy-response-matrix')).toBeVisible();
@@ -29,7 +29,7 @@ test('live courtesy matrix deep link opens Explore and responds to controls', as
 
 test('live energy matrix opens, displays all 36 source cells and censorship warning', async ({page}) => {
   const errors=[]; page.on('pageerror',err=>errors.push(err.message));
-  const response=await page.goto('/#language-energy-matrix');
+  const response=await page.goto('./#language-energy-matrix');
   expect(response?.status()).toBe(200);
   await expect(page.locator('html')).toHaveClass(/explore/);
   await expect(page.locator('#language-energy-matrix')).toBeVisible();
@@ -43,7 +43,7 @@ test('live energy matrix opens, displays all 36 source cells and censorship warn
 });
 
 test('live 122-language atlas retains all language records and charts', async ({page}) => {
-  const response=await page.goto('/#language-distribution');
+  const response=await page.goto('./#language-distribution');
   expect(response?.status()).toBe(200);
   await expect(page.locator('#language-distribution')).toBeVisible();
   await expect(page.locator('#ldLanguageSelect option')).toHaveCount(122);
@@ -53,7 +53,7 @@ test('live 122-language atlas retains all language records and charts', async ({
 });
 
 test('live theme toggles without losing Guided / Explore navigation',async ({page})=>{
-  await page.goto('/');
+  await page.goto('./');
   const theme=await page.locator('html').getAttribute('data-theme');
   await page.locator('#themeToggle').click();
   await expect(page.locator('html')).not.toHaveAttribute('data-theme',theme);
