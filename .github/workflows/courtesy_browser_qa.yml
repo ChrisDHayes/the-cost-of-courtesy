@@ -1,0 +1,36 @@
+name: Courtesy Browser and Mobile QA
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'index.html'
+      - 'qa/browser_qa.mjs'
+      - '.github/workflows/courtesy_browser_qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  chromium-regression:
+    name: Chromium responsive and interaction QA
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: npm install --no-save playwright@1.56.1
+      - name: Install headless Chromium and dependencies
+        run: npx playwright install --with-deps chromium
+      - name: Run live-site-build regression on local HTTP server
+        run: node qa/browser_qa.mjs
+      - name: Upload screenshots and QA results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: courtesy-browser-qa
+          path: qa/results/
+          if-no-files-found: warn
