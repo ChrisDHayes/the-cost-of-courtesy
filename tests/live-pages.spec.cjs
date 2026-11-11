@@ -1,64 +1,73 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect }=require('@playwright/test');
 
-test('live root serves the updated experience without page errors', async ({page}) => {
-  const errors=[]; page.on('pageerror',err=>errors.push(err.message));
+test('live story-first homepage responds, credits Christopher Hayes and loads complete language data',async({page})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
   const response=await page.goto('./');
   expect(response?.status()).toBe(200);
-  await expect(page).toHaveTitle(/The Cost of Courtesy/);
-  await expect(page.locator('#exploreMode')).toBeVisible();
-  await expect.poll(()=>page.evaluate(()=>window.CourtesyLanguage122?.rows)).toBe(122);
+  await expect(page).toHaveTitle(/The Cost of Courtesy.*Christopher Hayes/);
+  await expect(page.locator('meta[name="author"]')).toHaveAttribute('content','Christopher Hayes');
+  await expect(page.locator('.author-byline')).toContainText('Christopher Hayes, CDAIO');
+  await expect(page.locator('#implications-title')).toBeVisible();
+  await expect(page.locator('.implications')).toContainText('Data & AI leaders');
+  await expect(page.locator('.implications')).toContainText('wealth-management dealer');
+  await expect.poll(()=>page.evaluate(()=>window.CourtesyV2PrototypeQA?.languageRows)).toBe(122);
   expect(errors).toEqual([]);
 });
 
-test('live courtesy matrix deep link opens Explore and responds to controls', async ({page}) => {
-  const errors=[]; page.on('pageerror',err=>errors.push(err.message));
-  const response=await page.goto('./#courtesy-response-matrix');
-  expect(response?.status()).toBe(200);
-  await expect(page.locator('html')).toHaveClass(/explore/);
-  await expect(page.locator('#courtesy-response-matrix')).toBeVisible();
-  await expect(page.locator('#maToneTable .ma-cell')).toHaveCount(15);
-  await page.locator('#maToneTable .ma-cell').first().click();
-  await expect(page.locator('#maToneDetail')).toContainText('Table IV');
-  await page.locator('#maToneView').selectOption('history');
-  await page.locator('#maToneSetting').selectOption('POL');
-  await expect(page.locator('#maToneTable .ma-cell').first()).toHaveText('0.631');
-  await page.locator('#maToneTable .ma-cell').first().click();
-  await expect(page.locator('#maToneDetail')).toContainText('Table V');
-  expect(errors).toEqual([]);
+test('live response vignette and evidence disclosure remain interactive',async({page})=>{
+  await page.goto('./#opening');
+  await expect(page.locator('#responseTrace')).toBeHidden();
+  await page.locator('#showReply').click();
+  await expect(page.locator('#responseTrace')).toBeVisible();
+  await expect(page.locator('.machine-reply')).toContainText("You're welcome.");
+  await page.locator('#evidence-opening summary').click();
+  await expect(page.locator('#evidence-opening')).toHaveAttribute('open','');
 });
 
-test('live energy matrix opens, displays all 36 source cells and censorship warning', async ({page}) => {
-  const errors=[]; page.on('pageerror',err=>errors.push(err.message));
-  const response=await page.goto('./#language-energy-matrix');
-  expect(response?.status()).toBe(200);
-  await expect(page.locator('html')).toHaveClass(/explore/);
-  await expect(page.locator('#language-energy-matrix')).toBeVisible();
+test('old article courtesy link opens live source-backed matrix',async({page})=>{
+  await page.goto('./#courtesy-response-matrix');
+  await expect(page.locator('#matrixPanel')).toBeVisible();
+  await expect(page.locator('#courtesyTable .matrix-cell')).toHaveCount(15);
+  const englishGpt=page.locator('#courtesyTable tbody tr:nth-child(2) td:nth-child(2) button');
+  await expect(englishGpt).toHaveText('0.636');
+  await page.locator('#toneSelect').selectOption('POP');
+  await expect(englishGpt).toHaveText('0.567');
+  await englishGpt.click();
+  await expect(page.locator('#courtesyDetail')).toContainText('GPT-4o mini');
+});
+
+test('old article language link opens live 122-record distribution',async({page})=>{
+  await page.goto('./#language-distribution');
+  await expect(page.locator('#atlasGraphic .data-dot')).toHaveCount(122);
+  await expect(page.locator('#atlasAxisNote')).toContainText('MEAN');
+  await page.locator('#languageFinder').selectOption('fra_Latn');
+  await expect(page.locator('#languageName')).toHaveText('French');
+});
+
+test('old energy link routes into preserved full six-act research matrix',async({page})=>{
+  await page.goto('./#language-energy-matrix');
+  await expect(page).toHaveURL(/\/archive\/v1\.5\.1\/#language-energy-matrix$/);
   await expect(page.locator('#maEnergyTable .ma-cell')).toHaveCount(36);
   await expect(page.locator('#maEnergyTable .ma-cell[data-censored="true"]')).toHaveCount(1);
-  await page.locator('#maEnergyTable .ma-cell[data-censored="true"]').click();
-  await expect(page.locator('#maEnergyDetail')).toContainText('Source-censored');
-  await page.locator('#maEnergyOrder').selectOption('name');
-  await expect(page.locator('#maEnergyTable tbody tr').first()).toContainText('Chinese (Simplified)');
-  expect(errors).toEqual([]);
 });
 
-test('live 122-language atlas retains all language records and charts', async ({page}) => {
-  const response=await page.goto('./#language-distribution');
-  expect(response?.status()).toBe(200);
-  await expect(page.locator('#language-distribution')).toBeVisible();
-  await expect(page.locator('#ldLanguageSelect option')).toHaveCount(122);
-  await expect(page.locator('#ldEnergyChart .ld-dot')).toHaveCount(122);
-  await page.locator('#ldLanguageSelect').selectOption('zul_Latn');
-  await expect(page.locator('#ldSelected')).toHaveText('Zulu');
+test('complete archive works independently and retains author',async({page})=>{
+  const r=await page.goto('./archive/v1.5.1/');
+  expect(r?.status()).toBe(200);
+  await expect(page.locator('#act-1')).toBeAttached();
+  await expect(page.locator('#act-6')).toBeAttached();
+  await expect(page.locator('#courtesy-response-matrix')).toBeAttached();
+  await expect(page.getByText('Christopher Hayes, CDAIO').first()).toBeAttached();
 });
 
-test('live theme toggles without losing Guided / Explore navigation',async ({page})=>{
+test('mobile story remains usable with theme control and no page-level overflow',async({page,isMobile})=>{
   await page.goto('./');
-  const theme=await page.locator('html').getAttribute('data-theme');
+  const before=await page.locator('html').getAttribute('data-theme');
   await page.locator('#themeToggle').click();
-  await expect(page.locator('html')).not.toHaveAttribute('data-theme',theme);
-  await page.locator('#exploreMode').click();
-  await expect(page.locator('#research-lab')).toBeVisible();
-  await page.locator('#guidedMode').click();
-  await expect(page.locator('#research-lab')).toBeHidden();
+  await expect(page.locator('html')).not.toHaveAttribute('data-theme',before);
+  if(isMobile){
+    const sizes=await page.evaluate(()=>({full:document.documentElement.scrollWidth,view:innerWidth}));
+    expect(sizes.full).toBeLessThanOrEqual(sizes.view+2);
+    await expect(page.locator('.mobile-research-link')).toBeVisible();
+  }
 });

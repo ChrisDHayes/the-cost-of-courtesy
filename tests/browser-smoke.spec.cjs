@@ -1,10 +1,10 @@
 const { test, expect } = require('@playwright/test');
 
-// Regression coverage for self-contained, source-linked evidence instruments.
+// Regression coverage for the preserved complete six-act V1.5.1 research edition.
 test('starts without uncaught browser errors and retains the research narrative', async ({ page }) => {
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
-  await page.goto('/');
+  await page.goto('/archive/v1.5.1/');
   await expect(page).toHaveTitle(/The Cost of Courtesy/);
   await expect(page.locator('#exploreMode')).toBeVisible();
   await expect(page.locator('#guidedMode')).toHaveAttribute('aria-pressed', 'true');
@@ -15,7 +15,7 @@ test('starts without uncaught browser errors and retains the research narrative'
 test('external courtesy-matrix anchor opens Explore and both tone dimensions work', async ({ page }) => {
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
-  await page.goto('/#courtesy-response-matrix');
+  await page.goto('/archive/v1.5.1/#courtesy-response-matrix');
   await expect(page.locator('html')).toHaveClass(/explore/);
   await expect(page.locator('#courtesy-response-matrix')).toBeVisible();
   await expect(page.locator('#maToneTable .ma-cell')).toHaveCount(15);
@@ -35,7 +35,7 @@ test('external courtesy-matrix anchor opens Explore and both tone dimensions wor
 test('cross-model energy matrix has exact coverage and flags the censored observation', async ({ page }) => {
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
-  await page.goto('/#language-energy-matrix');
+  await page.goto('/archive/v1.5.1/#language-energy-matrix');
   await expect(page.locator('html')).toHaveClass(/explore/);
   await expect(page.locator('#language-energy-matrix')).toBeVisible();
   await expect(page.locator('#maEnergyTable .ma-cell')).toHaveCount(36);
@@ -49,7 +49,7 @@ test('cross-model energy matrix has exact coverage and flags the censored observ
 });
 
 test('full 122-language evidence is preserved and all bubbles have unique positions', async ({ page }) => {
-  await page.goto('/#language-distribution');
+  await page.goto('/archive/v1.5.1/#language-distribution');
   await expect(page.locator('#language-distribution')).toBeVisible();
   await expect(page.locator('#ldLanguageSelect option')).toHaveCount(122);
   await expect(page.locator('#ldEnergyChart .ld-dot')).toHaveCount(122);
@@ -64,7 +64,7 @@ test('full 122-language evidence is preserved and all bubbles have unique positi
 });
 
 test('links work after switching modes, and appearance toggle remains functional', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/archive/v1.5.1/');
   await page.locator('#exploreMode').click();
   await expect(page.locator('#research-lab')).toBeVisible();
   await page.locator('#guidedMode').click();

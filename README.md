@@ -1,20 +1,29 @@
 # The Cost of Courtesy
 
-### The Living Constellation · Interactive research experience · V1.5.1
+### A story-first interactive investigation · Main experience · November 2026
 
-**What does it cost when we say “thank you” to AI—and is that the right question?**
+**By Christopher Hayes, CDAIO**
 
-A six-act, evidence-linked investigation into how everyday human communication becomes machine work, how that work relates to useful outcomes, and why its environmental consequences are harder to measure than a token count suggests.
+**What happens when a human ending becomes another task for a machine?**
 
-**[Explore the interactive experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · [Full research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Substack draft](publication/SUBSTACK_ARTICLE_DRAFT.md) · [Methods](methods/METHODS.md) · [Sources & attribution](LICENSE_AND_ATTRIBUTION.md) · [V1.5 verification](QA_V1_5.md) · [V1.4 notes](RELEASE_NOTES_V1_4.md)
+The homepage now opens the **Story-First Edition**, introducing the human thank-you, a five-model/three-language courtesy comparison, and the complete 122-language energy atlas through three more inviting chapters. The original, deeper **six-act V1.5.1 research experience remains available in full**—including the detailed cross-model energy matrix, methodology and research instruments.
 
+**[Read the main Story-First Experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · **[Explore all six research acts](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/)** · [Research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Substack draft](publication/SUBSTACK_ARTICLE_DRAFT.md) · [Methods](methods/METHODS.md) · [Sources and attribution](LICENSE_AND_ATTRIBUTION.md)
 
-**Live deployment verified — November 11, 2026:** [GitHub Actions production browser verification](https://github.com/ChrisDHayes/the-cost-of-courtesy/actions/runs/43019642597) passed **10/10** tests across desktop and mobile Chromium; the public site's HTML matched the repository release exactly. [Full QA record](QA_V1_5.md). Physical-device Safari testing remains outside the test scope.
+#### Editorial lens
+
+The new conclusion offers a **light-touch, illustrative wealth-management-dealer example** and practical questions for **Data & AI leaders**: when work is useful, how responses are evaluated across languages and models, whether data is properly permissioned, and who remains accountable for advice. These are design implications rather than claims about any specific dealer or effects established by the underlying studies.
+
+#### Preserved research edition — V1.5.1
+
+The six-act research edition is archived at [`archive/v1.5.1/index.html`](archive/v1.5.1/index.html), retaining its original code, measurements, charts and author attribution. Existing article/bookmark anchors on the public homepage are mapped into the new chapters where appropriate, or redirected to the preserved research experience. The V1.5.1 publication was independently browser-verified before archival: [original QA](QA_V1_5.md).
+
+The detailed matrices, links and notes below refer to this **complete six-act research edition**.
 
 ### Two new evidence atlases (V1.5)
 
-- **[Courtesy Response Matrix — Act 2](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix):** 5 models × 3 languages using the reported composite-quality means from Mehta et al. (2026), arXiv preprint Tables IV and V. Toggle *prompt category* or *conversation history*. These are distinct aggregated cuts, **not** a joint four-dimensional effect or independently verified response accuracy.
-- **[Language–Energy Matrix — Act 4](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix):** 12 languages × 3 models drawn from Deng et al.'s published cross-model table (J per output token). Switch between within-model and absolute colour scales; the Tibetan Qwen3–14B source-censored record is flagged. **Do not** mistake this subset for complete coverage of 122 languages across five models.
+- **[Courtesy Response Matrix — Act 2](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/#courtesy-response-matrix):** 5 models × 3 languages using the reported composite-quality means from Mehta et al. (2026), arXiv preprint Tables IV and V. Toggle *prompt category* or *conversation history*. These are distinct aggregated cuts, **not** a joint four-dimensional effect or independently verified response accuracy.
+- **[Language–Energy Matrix — Act 4](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/#language-energy-matrix):** 12 languages × 3 models drawn from Deng et al.'s published cross-model table (J per output token). Switch between within-model and absolute colour scales; the Tibetan Qwen3–14B source-censored record is flagged. **Do not** mistake this subset for complete coverage of 122 languages across five models.
 
 Both matrices expose exact numerical values and clickable source-linked detail panels. The existing 122-language atlas is retained. Neither study, by itself or in combination, provides a measured estimate of energy attributable to politeness across languages and models.
 
@@ -22,7 +31,7 @@ Both matrices expose exact numerical values and clickable source-linked detail p
 
 [![Illustrative schematic of the Courtesy Constellation, a radial network of human meaning, computation and consequence](previews/courtesy_constellation_schematic.svg)](https://chrisdhayes.github.io/the-cost-of-courtesy/)
 
-*Illustrative schematic of the interactive Courtesy Constellation (not a screenshot). Select the preview to open the full experience. The fine radial filaments are an artistic structural motif—not individual data records, statistical distances or measured causal links.*
+*Illustrative schematic of the archival research Constellation (not a screenshot). Select the preview to open the story-first experience. The fine radial filaments are an artistic structural motif—not individual data records, statistical distances or measured causal links.*
 
 ## Why this exists
 
@@ -32,7 +41,7 @@ The project puts these otherwise separate findings in conversation with one anot
 
 ## Follow the story
 
-**Select an act to open that chapter in the interactive experience.**
+**Select an act to open it in the story-first homepage or preserved research edition.**
 
 | Act — open in the experience | Question |
 | --- | --- |
@@ -43,7 +52,7 @@ The project puts these otherwise separate findings in conversation with one anot
 | **[05 — The physical footprint](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-5)** | Where do electricity and water impacts actually arise? |
 | **[06 — The design choice](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-6)** | What should responsible AI systems do differently? |
 
-The chapter links point to anchors in the current V1.4 `index.html`. They work once GitHub Pages has successfully deployed.
+These chapter links open the new story where the subject is covered and otherwise lead to the preserved six-act research edition. You can also open all six original acts directly from the archived experience.
 
 Use **Guided Story** to follow 15 scroll-driven evidence checkpoints, **Explore** to inspect the full radial Constellation and supporting instruments, and **Evidence & Methods** to examine measurement boundaries and limitations. Source-linked evidence receipts explain what is measured, derived, inferred or still unknown.
 
@@ -110,8 +119,8 @@ Created by **Christopher Hayes, CDAIO** as an exploration of applied data scienc
 **The question worth keeping:** Should people have to change how they communicate to make AI more efficient—or should we design systems that understand human communication while using computation more responsibly?
 ## V1.5 — evidence matrices
 
-- [Courtesy Response Matrix — Act 2](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix): five studied models × three languages, with published composite quality scores by five courtesy prompt categories or three prior-conversation histories. Source: [Mehta et al., arXiv:2604.16275](https://arxiv.org/html/2604.16275), Tables IV–V (preprint; not measured task accuracy or energy).
-- [Multilingual Energy Matrix — Act 4](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix): twelve languages × three tested models, exact J/output-token values with sorting, two colour scales and a flagged censored source cell. Source: [MichiganNLP cross-model comparison](https://github.com/MichiganNLP/language-energy-divide/blob/master/results/cross_model_12lang_table.csv).
+- [Courtesy Response Matrix — Act 2](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/#courtesy-response-matrix): five studied models × three languages, with published composite quality scores by five courtesy prompt categories or three prior-conversation histories. Source: [Mehta et al., arXiv:2604.16275](https://arxiv.org/html/2604.16275), Tables IV–V (preprint; not measured task accuracy or energy).
+- [Multilingual Energy Matrix — Act 4](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/#language-energy-matrix): twelve languages × three tested models, exact J/output-token values with sorting, two colour scales and a flagged censored source cell. Source: [MichiganNLP cross-model comparison](https://github.com/MichiganNLP/language-energy-divide/blob/master/results/cross_model_12lang_table.csv).
 - The existing [122-language full-cohort instrument](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution), six-act story, earlier instruments and dark/light palettes remain in the main HTML.
 - Updated [essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md), [Substack article draft](publication/SUBSTACK_ARTICLE_DRAFT.md), [methodology](methods/METHODS.md) and [source attribution](LICENSE_AND_ATTRIBUTION.md). These are cross-study evidence exhibits, not one new experiment.
 

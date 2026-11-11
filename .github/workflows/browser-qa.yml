@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'archive/v1.5.1/index.html'
       - 'tests/**'
       - 'package.json'
       - 'playwright.config.cjs'
@@ -12,6 +13,7 @@ on:
   pull_request:
     paths:
       - 'index.html'
+      - 'archive/v1.5.1/index.html'
       - 'tests/**'
       - 'package.json'
       - 'playwright.config.cjs'
@@ -32,10 +34,18 @@ jobs:
           node-version: '22'
       - name: Install test tooling
         run: npm install --no-audit --no-fund
-      - name: Install Chromium and OS dependencies
-        run: npx playwright install --with-deps chromium
-      - name: Run desktop and mobile Chromium regressions
-        run: npx playwright test
+      - name: Use preinstalled Chrome or install Playwright Chromium
+        shell: bash
+        run: |
+          BINARY="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
+          if [ -n "$BINARY" ]; then
+            echo "CHROME_BINARY=$BINARY" >> "$GITHUB_ENV"
+            echo "Using system browser: $BINARY"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: Run homepage and preserved research regressions on desktop/mobile
+        run: npx playwright test tests/v2-main.spec.cjs tests/browser-smoke.spec.cjs
       - name: Upload failure diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
