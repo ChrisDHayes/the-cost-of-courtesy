@@ -40,6 +40,37 @@ jobs:
           fi
       - name: Test existing story, new six acts and preserved V1.5.1 research
         run: npx playwright test tests/v2-main.spec.cjs tests/v2-six-act.spec.cjs tests/browser-smoke.spec.cjs
+      - name: Capture editorial desktop and mobile review screenshots
+        run: |
+          mkdir -p v2-six-act-review
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/v2-review-server.log 2>&1 &
+          node <<'NODE'
+          const {chromium}=require('@playwright/test');
+          (async()=>{
+            const browser=await chromium.launch({headless:true,...(process.env.CHROME_BINARY?{executablePath:process.env.CHROME_BINARY}:{})});
+            for(const [label,viewport] of [['desktop',{width:1440,height:900}],['mobile',{width:390,height:844}]]){
+              const page=await browser.newPage({viewport});
+              await page.goto('http://127.0.0.1:4173/');
+              await page.addStyleTag({content:'.topbar,.progress{display:none!important}'});
+              for(const [id,name] of [['opening','01-opening'],['courtesy','02-courtesy'],['resolution','03-outcomes'],['uneven','04-languages'],['footprint','05-footprint'],['choices','06-ending']]){
+                await page.locator('#'+id).screenshot({path:'v2-six-act-review/'+name+'-'+label+'.png'});
+              }
+              await page.close();
+            }
+            await browser.close();
+            console.log('Saved all 12 responsive chapter review images.');
+          })().catch(err=>{console.error(err);process.exit(1)});
+          NODE
+      - name: Upload review screenshots and complete candidate HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v2-six-act-editorial-review
+          path: |
+            v2-six-act-review/
+            index.html
+            tests/v2-six-act.spec.cjs
+          if-no-files-found: warn
       - name: Preserve diagnostics on failure
         if: failure()
         uses: actions/upload-artifact@v4
