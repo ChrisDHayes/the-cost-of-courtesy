@@ -57,6 +57,6 @@ Production verification code was merged via [PR #2](https://github.com/ChrisDHay
 
 **Substack draft:** moved the 5 × 3 courtesy matrix into the prompt-tone discussion and the 12 × 3 energy matrix into the multilingual passage; restored the final human-centred conclusion as the actual ending. Simplified navigation language and confirmed the draft is unpublished.
 
-**Editorial structural checks:** all 18 distinct internal deep-link references across the two documents were checked against actual `id` values in the locked HTML and resolved; research essay references 1–7 are present; title/section flow reviewed. The arXiv PLUM preprint, the peer-reviewed EMNLP multilingual study and the PromptTone paper were independently reviewed for key source claims.
+**Editorial structural checks:** all 18 document-specific unique deep-link targets (nine in each document) were checked against actual `id` values in the locked HTML and resolved; research essay references 1–7 are present; title/section flow reviewed. The arXiv PLUM preprint, the peer-reviewed EMNLP multilingual study and the PromptTone paper were independently reviewed for key source claims.
 
 **Remaining scope:** Substack publication remains a manual editorial decision. This review did not publish the draft, conduct a new experiment, revise HTML, or claim that PLUM CQS is task success or that its response scores can be combined directly with MichiganNLP energy values.
