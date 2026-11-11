@@ -1,12 +1,12 @@
 # The Cost of Courtesy
 
-### The Living Constellation · Interactive research experience · V1.3
+### The Living Constellation · Interactive research experience · V1.4
 
 **What does it cost when we say “thank you” to AI—and is that the right question?**
 
 A six-act, evidence-linked investigation into how everyday human communication becomes machine work, how that work relates to useful outcomes, and why its environmental consequences are harder to measure than a token count suggests.
 
-**[Explore the interactive experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · [Full research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Substack draft](publication/SUBSTACK_ARTICLE_DRAFT.md) · [Methods](methods/METHODS.md) · [Sources & attribution](LICENSE_AND_ATTRIBUTION.md)
+**[Explore the interactive experience](https://chrisdhayes.github.io/the-cost-of-courtesy/)** · [Full research essay](research/THE_COST_OF_COURTESY_RESEARCH_ESSAY.md) · [Substack draft](publication/SUBSTACK_ARTICLE_DRAFT.md) · [Methods](methods/METHODS.md) · [Sources & attribution](LICENSE_AND_ATTRIBUTION.md) · [V1.4 notes](RELEASE_NOTES_V1_4.md)
 
 > **The argument:** The cost of a conversation is not determined by the words alone. It depends on how systems interpret them, the work they perform, the value they create and the resources they consume.
 
@@ -33,14 +33,15 @@ The project puts these otherwise separate findings in conversation with one anot
 | **[05 — The physical footprint](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-5)** | Where do electricity and water impacts actually arise? |
 | **[06 — The design choice](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-6)** | What should responsible AI systems do differently? |
 
-The chapter links point to anchors present in V1.3's `index.html`. They work once GitHub Pages has successfully deployed.
+The chapter links point to anchors in the current V1.4 `index.html`. They work once GitHub Pages has successfully deployed.
 
 Use **Guided Story** to follow 15 scroll-driven evidence checkpoints, **Explore** to inspect the full radial Constellation and supporting instruments, and **Evidence & Methods** to examine measurement boundaries and limitations. Source-linked evidence receipts explain what is measured, derived, inferred or still unknown.
 
-### Three linked visual instruments
+### Four linked visual instruments
 
 - **The Courtesy Constellation:** an eight-node conceptual network with nine typed research relationships. Relationship styles distinguish within-study evidence, interpretation, evidence gaps and design proposals.
 - **Resolution Signal Plate:** published hardware energy components, explicitly *modelled* GPU sensitivity scenarios and PromptTone output-length comparisons, shown in their own units.
+- **[The Median Isn't Neutral — Act 4](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution):** all 122 published source language records, arithmetic mean/median and IQR, distance-from-median and synchronized cost/accuracy distributions. The original 12 highlighted languages remain available for closer evaluation scrutiny.
 - **Geography of a Thank You:** environmental accounting context without inventing the route, serving region or data centre used by any individual request.
 
 ## Evidence and scientific boundaries
@@ -49,11 +50,11 @@ Use **Guided Story** to follow 15 scroll-driven evidence checkpoints, **Explore*
 | --- | --- | --- |
 | [Delavande, Pierrard & Luccioni (2026), *Small Talk, Big Impact*](https://arxiv.org/abs/2601.22357) | Reported **0.245 Wh** average total hardware energy per generated thank-you response in a specific Llama 3.1–8B / H100 setup | Not a universal ChatGPT figure; GPU/CPU measured and RAM estimated using the study's method |
 | [Andruccioli et al. (2026), *PromptTone*](https://doi.org/10.3390/data11040088) | Model-dependent differences in mean *generated code characters* under different prompt tones | Characters are not tokens, electricity or proven task completion |
-| [Deng et al. (2026), *The Language–Energy Divide*](https://aclanthology.org/2026.emnlp-main.2113/) | Language-dependent energy and evaluation outcomes, including strict versus lenient accuracy | Not a test isolating politeness; this project uses a selected excerpt, not all 122 languages |
+| [Deng et al. (2026), *The Language–Energy Divide*](https://aclanthology.org/2026.emnlp-main.2113/) | Language-dependent energy and evaluation outcomes, including strict versus lenient accuracy | Not a test isolating politeness; the new instrument shows all 122 canonical language rows, with 12 highlighted for guided interpretation |
 | [Elsworth et al. (2025), Google-scale inference measurement](https://arxiv.org/abs/2508.15734) | Published production energy and cooling-water estimates | Not measurements of the thank-you experiment; the numbers must not be fused |
 | [WRI Aqueduct 4.0](https://www.wri.org/data/aqueduct-global-maps-40-data) | Environmental water-stress context | No request-level infrastructure location or site-specific water burden is claimed |
 
-The project uses **reported/measured → derived/modelled → interpreted → unknown/hypothesis** labels. The [methods and evidence contract](methods/METHODS.md) documents the nine typed relationships and explains why the radial filaments are not individual observations. Primary sources, data reuse conditions and attribution are summarized in [LICENSE_AND_ATTRIBUTION.md](LICENSE_AND_ATTRIBUTION.md).
+The project uses **reported/measured → derived/modelled → interpreted → unknown/hypothesis** labels. The [methods and evidence contract](methods/METHODS.md) documents the nine typed relationships, full 122-language distribution methodology and explains why the radial filaments are not individual observations. Primary sources, data reuse conditions and attribution are summarized in [LICENSE_AND_ATTRIBUTION.md](LICENSE_AND_ATTRIBUTION.md).
 
 **What this experience does not claim:** a single causal effect of politeness on AI energy; verified energy per successfully resolved task; real-world routing of a user's prompt; universal national or cultural rankings; or independently replicated raw results for all cited studies.
 
@@ -63,7 +64,8 @@ The project uses **reported/measured → derived/modelled → interpreted → un
 - **[Shorter Substack article draft](publication/SUBSTACK_ARTICLE_DRAFT.md)** — an engaging, personal introduction with links to all six acts; a draft, not a published Substack post.
 - **[Methods and evidence contract](methods/METHODS.md)** — study boundaries, calculations, uncertainty and relationship semantics.
 - **[Sources, licensing and attribution](LICENSE_AND_ATTRIBUTION.md)** — provenance and conditions for third-party material.
-- **[V1.3 release notes](RELEASE_NOTES_V1_3.md)** — what changed in Evidence Threads.
+- **[V1.4 release notes](RELEASE_NOTES_V1_4.md)** — the integrated 122-language analysis, without removing the V1.3 instruments.
+- **[V1.3 release notes](RELEASE_NOTES_V1_3.md)** — the approved Evidence Threads baseline, archived under [releases/v1.3](releases/v1.3/index.html).
 
 ### Open the experience
 
@@ -81,7 +83,7 @@ This repository mixes original writing/code with **third-party research excerpts
 
 ## Quality and publication status
 
-V1.3 is a **research-led interactive release candidate**. Its 15 checkpoints and evidence-link controls were tested in four Chromium viewport emulations, including keyboard selection and return from Explore mode. The verification scope and important limitations are summarized in the [research methods](methods/METHODS.md) and [V1.3 release notes](RELEASE_NOTES_V1_3.md).
+V1.4 is a **research-led interactive release candidate**, extending the archived V1.3 baseline with a full-cohort language instrument. V1.3's 15 checkpoint structure and visual evidence relationships remain intact. Its 15 checkpoints and evidence-link controls were tested in four Chromium viewport emulations, including keyboard selection and return from Explore mode. The verification scope and important limitations are summarized in the [research methods](methods/METHODS.md) and [V1.3 release notes](RELEASE_NOTES_V1_3.md).
 
 Not yet certified: full WCAG conformance, Safari/Firefox, physical-device field testing, an independent academic review or complete replication of all underlying raw datasets.
 
