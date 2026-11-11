@@ -260,11 +260,60 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
       <div class="selection-panel" id="courtesyDetail" aria-live="polite"><strong>Choose a cell.</strong><p>Each reported score has a model, language and prompt category. Comparing across those conditions is informative, but it isn't a recommendation to change your manners.</p></div>
       <p class="matrix-caution">Separate evidence layers: conversation-history comparisons are available in the <a href="./archive/v1.5.1/#courtesy-response-matrix" target="_blank" rel="noopener noreferrer">complete V1.5.1 research matrix</a>. This preview shows Table IV only and does not conflate the two experiments.</p>
     </div>
-    <div class="bridge"><span>THE QUESTION DEEPENS</span><p>If the score depends on the model and the language, what happens when we measure the <em>work</em> each model performs?</p><a href="#uneven" class="bridge-link">Follow the differences <span aria-hidden="true">↓</span></a></div>
+    <div class="bridge"><span>THE QUESTION DEEPENS</span><p>If the score depends on the model and the language, what should we count as a <em>useful answer?</em></p><a href="#useful" class="bridge-link">Look beyond the first reply <span aria-hidden="true">↓</span></a></div>
+  </section>
+
+
+  <section class="scene story-addition resolution" id="useful" aria-labelledby="useful-title">
+    <div class="section-kicker"><span>ACT 03 / THE VALUE QUESTION</span><span>WHAT COUNTS AS EFFICIENT?</span></div>
+    <div class="section-head">
+      <p class="eyebrow">A BETTER QUESTION THAN WHO WROTE LESS</p>
+      <h2 id="useful-title">The cheapest answer<br><em>isn't always the best one.</em></h2>
+      <p class="section-deck">What if the first reply is shorter—but doesn't actually finish the job?</p>
+    </div>
+    <div class="chapter-reading">
+      <p>Imagine asking two assistants to help you write an important message. The first responds immediately with something brief. It looks efficient until you notice that it misses a detail. You ask again. Then you ask for one more correction.</p>
+      <p>The second assistant gives a more complete answer. It takes longer to read, but it may be ready to use. Which approach consumed fewer resources? And which one helped you more?</p>
+      <p>We can't answer either question by looking at the first response alone. We'd need to follow the entire interaction, check whether the work was actually completed, and measure what the retries cost. The research in this experience does not contain that joint measurement.</p>
+    </div>
+    <div class="editorial-figure path-figure" id="resolution-figure">
+      <div class="figure-head"><span>A THOUGHT EXPERIMENT · NOT EXPERIMENTAL DATA</span><span class="figure-source">TWO POSSIBLE CONVERSATIONS</span></div>
+      <div class="figure-intro"><h3>Don't stop counting<br><em>after the first answer.</em></h3><p>Switch the lens. The same opening reply can look different once you consider whether the task is finished.</p></div>
+      <div class="scene-switch" role="group" aria-label="Compare the first reply with the complete task">
+        <button type="button" class="scene-switch-button is-current" id="pathFirst" data-path-view="first" aria-pressed="true">Only the first reply</button>
+        <button type="button" class="scene-switch-button" id="pathWhole" data-path-view="whole" aria-pressed="false">Follow the entire task</button>
+      </div>
+      <div class="route-compare" id="routeCompare" data-stage="first">
+        <div class="route-lane">
+          <div class="route-heading"><span class="route-label">PATH A</span><h4>Short, but incomplete</h4></div>
+          <div class="route-steps">
+            <div class="route-step"><b>First reply</b><p>A short message that misses an important requirement.</p></div>
+            <div class="route-step follow-on"><b>Follow-up</b><p>The person notices the gap and asks again.</p></div>
+            <div class="route-step follow-on"><b>Revision</b><p>Another response is needed before the work can be checked.</p></div>
+            <div class="route-step follow-on route-end"><b>Check the outcome</b><p>Did the corrected answer now meet the original need?</p></div>
+          </div>
+        </div>
+        <div class="route-lane">
+          <div class="route-heading"><span class="route-label">PATH B</span><h4>More complete at first</h4></div>
+          <div class="route-steps">
+            <div class="route-step"><b>First reply</b><p>A fuller message that addresses the request.</p></div>
+            <div class="route-step follow-on route-end"><b>Check the outcome</b><p>The person verifies that the answer is useful before moving on.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="figure-conclusion" id="pathExplanation" aria-live="polite">Looking only at the opening messages tells us nothing reliable about the work required to finish.</div>
+      <p class="visual-note">Illustrative pathways. No numerical energy, time, task-success or probability values have been assigned to either path.</p>
+    </div>
+    <div class="chapter-reading after-figure">
+      <p>This changes the measure I would want a Data &amp; AI leader to use. Not simply <em>energy per response</em>, but resources used to reach a <strong>verified useful outcome</strong>. We would also need to account for accuracy, accessibility and the cost of review.</p>
+      <p>A long answer is not automatically better; nor is a short one automatically efficient. The real unit of progress may be the task, not the message.</p>
+      <details class="evidence" id="evidence-useful"><summary><span class="evidence-icon" aria-hidden="true">i</span><span>Behind this idea</span><span class="chev" aria-hidden="true">⌄</span></summary><div class="evidence-content"><p><b>Evidence status</b> — These conversation pathways are explicitly hypothetical. The proposed measure, resources per verified useful resolution, is a research and product-design question, not a value established by the politeness experiments.</p><p><b>How to test it</b> — Measure the whole task across turns, record retries and actual resource use, verify completion independently, and compare quality across languages and user needs.</p><a href="./archive/v1.5.1/#act-3">See the full research discussion ↗</a></div></details>
+    </div>
+    <div class="bridge"><span>THE NEXT QUESTION</span><p>Even a careful average leaves something out: <em>whose experience does it describe?</em></p><a class="bridge-link" href="#uneven">Meet all 122 languages <span aria-hidden="true">↓</span></a></div>
   </section>
 
   <section class="scene uneven" id="uneven" aria-labelledby="uneven-title">
-    <div class="section-kicker"><span>CHAPTER 03 / THE LANGUAGE DIVIDE</span><span>THE LANGUAGE DIVIDE</span></div>
+    <div class="section-kicker"><span>ACT 04 / THE LANGUAGE DIVIDE</span><span>THE LANGUAGE DIVIDE</span></div>
     <div class="section-head">
       <p class="eyebrow">WHAT THE AVERAGE LEAVES OUT</p>
       <h2 id="uneven-title">Not every language<br><em>gets the same deal.</em></h2>
@@ -291,6 +340,92 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
     <div class="post-atlas"><p>For this Qwen3–8B benchmark, the energy median is about <strong>0.132 J</strong> per output token, while the mean is about <strong>0.173 J</strong>. The mean is roughly 31% higher, suggesting that the “average” hides an expensive tail.</p><p>And computation isn't the only thing to examine. A scoring rule can change how capable a system appears. That's why a language-accuracy comparison should be read alongside the evaluation method, not mistaken for a judgment about a community.</p><p>Change the model, and the energy profile can change again. The complete research experience includes a separate twelve-language, three-model comparison. It is another study view—not evidence of the energy cost of politeness.</p>
       <details class="evidence" id="evidence-uneven"><summary><span class="evidence-icon" aria-hidden="true">i</span><span>How do we know?</span><span class="chev" aria-hidden="true">⌄</span></summary><div class="evidence-content"><p><b>Source</b> — Deng et al. (2026), the Qwen3–8B Belebele 0-shot dataset, 122 published language-condition aggregates. This preview recomputes unweighted mean and median from those values.</p><p><b>Boundary</b> — Joules per output token are not energy per full task, and strict versus lenient benchmark accuracy is not a general claim about speakers. Other model measurements belong to a separate cross-model comparison.</p><a href="https://github.com/MichiganNLP/language-energy-divide/blob/master/results/belebele_canonical_Qwen3-8B_0shot.csv" target="_blank" rel="noopener noreferrer">View the source dataset <span aria-hidden="true">↗</span></a></div></details>
     </div>
+    <div class="bridge"><span>THE STORY CONTINUES</span><p>The work is real—but can we say <em>where it happened?</em></p><a href="#footprint" class="bridge-link">Follow the physical consequences <span aria-hidden="true">↓</span></a></div>
+  </section>
+
+  <section class="scene story-addition footprint" id="footprint" aria-labelledby="footprint-title">
+    <div class="section-kicker"><span>ACT 05 / THE PHYSICAL WORLD</span><span>WHERE DOES THE COMPUTATION HAPPEN?</span></div>
+    <div class="section-head">
+      <p class="eyebrow">THE CLOUD ISN'T PLACELESS</p>
+      <h2 id="footprint-title">Where does<br><em>the work go?</em></h2>
+      <p class="section-deck">Every response depends on physical systems. But the location of a person asking a question isn't necessarily the location of the machines doing the work.</p>
+    </div>
+    <div class="chapter-reading">
+      <p>We talk about AI as though an answer comes from nowhere. In reality, a generated reply requires equipment and electricity. Depending on the system and its surroundings, there may also be water-related consequences from cooling and power generation.</p>
+      <p>There are at least two places in this story: where someone types a request, and where the computing infrastructure processes it. Those places may be far apart. For an everyday conversation, we generally cannot determine the exact facility from the prompt alone.</p>
+      <p>That missing information matters. Without it, a precise-looking map from a person's keyboard to a particular data centre would be an attractive invention—not evidence.</p>
+    </div>
+    <div class="editorial-figure boundary-figure">
+      <div class="figure-head"><span>TWO GEOGRAPHIES · ONE IMPORTANT UNKNOWN</span><span class="figure-source">CONCEPTUAL / NOT A ROUTE MAP</span></div>
+      <h3>A question has an origin.<br><em>The computation may not.</em></h3>
+      <div class="physical-path" role="img" aria-label="The person asking is known in this illustration, while the system's serving facility is unknown; energy and cooling depend on the infrastructure used">
+        <div class="physical-node"><span class="node-index">01 / KNOWN IN PRINCIPLE</span><b>The person asking</b><small>Language, task and context</small></div>
+        <div class="physical-connector" aria-hidden="true"><span>?</span></div>
+        <div class="physical-node physical-unknown"><span class="node-index">02 / NOT OBSERVED HERE</span><b>Serving infrastructure</b><small>Facility, energy mix and cooling systems unknown</small></div>
+        <div class="physical-connector" aria-hidden="true"><span>?</span></div>
+        <div class="physical-node"><span class="node-index">03 / DEPENDS ON CONTEXT</span><b>Environmental effects</b><small>Electricity and water accounting boundaries vary</small></div>
+      </div>
+      <p class="visual-note">The dotted connections indicate missing observations. They are not a measured network route or geographic estimate.</p>
+    </div>
+    <div class="chapter-reading after-figure">
+      <p>Two published energy numbers illustrate why we need to be careful. One Llama/H100 experiment reported a mean of about <strong>0.245 Wh</strong> for generated thank-you replies under its own setup. A separate Google-scale production study reported <strong>0.24 Wh</strong> for a median Gemini Apps text prompt, alongside a water estimate using its own accounting method.</p>
+      <p>The figures look almost identical. Yet they're about different work, different systems and different measurement boundaries. It would be misleading to attach the Google study's water estimate to the thank-you experiment simply because the energy figures appear close.</p>
+    </div>
+    <div class="editorial-figure boundary-compare" id="boundaryCompare">
+      <div class="figure-head"><span>SIMILAR NUMBERS · DIFFERENT EVIDENCE</span><span class="figure-source">SELECT EITHER SOURCE</span></div>
+      <div class="source-switch" role="group" aria-label="Select which research study to inspect">
+        <button id="sourceThankYou" class="source-button is-current" data-study="thanks" type="button" aria-pressed="true"><span class="source-scope">STUDY A · SPECIFIC EXPERIMENT</span><strong>0.245 Wh</strong><span>Mean generated thank-you reply</span></button>
+        <button id="sourceGemini" class="source-button" data-study="gemini" type="button" aria-pressed="false"><span class="source-scope">STUDY B · PRODUCTION ACCOUNTING</span><strong>0.24 Wh</strong><span>Median Gemini Apps text prompt</span></button>
+      </div>
+      <div class="source-detail" id="sourceDetail" aria-live="polite">
+        <b>What this number describes</b><p>An average reported for generated responses to thank-you messages with a specified Llama 3.1–8B/H100 setup. GPU and CPU energy were measured; memory energy was estimated. No water-per-reply figure was established.</p>
+        <a href="https://arxiv.org/abs/2601.22357" target="_blank" rel="noopener noreferrer">Read the original study ↗</a>
+      </div>
+    </div>
+    <div class="chapter-reading after-figure">
+      <p>The lesson is not that environmental effects are unknowable. It's that credible estimates require a declared boundary: which model, which workload, which infrastructure, which measurement method and, for water, which local context.</p>
+      <details class="evidence" id="evidence-footprint"><summary><span class="evidence-icon" aria-hidden="true">i</span><span>How do we know?</span><span class="chev" aria-hidden="true">⌄</span></summary><div class="evidence-content"><p><b>Study A</b> — Delavande, Pierrard and Luccioni report 0.245 Wh for the specific Llama/H100 thank-you experiment.</p><p><b>Study B</b> — Elsworth et al. report 0.24 Wh for a median Gemini Apps text prompt and 0.26 mL of associated water under their full-stack accounting. Neither value establishes the other study's footprint.</p><p><b>Unknown</b> — This project has no facility-level routing observation for an individual chat. Water consumption, withdrawal and local scarcity should not be treated as interchangeable.</p><a href="https://arxiv.org/abs/2508.15734" target="_blank" rel="noopener noreferrer">Read the Google-scale study ↗</a></div></details>
+    </div>
+    <div class="bridge"><span>ONE LAST QUESTION</span><p>If the system doesn't always need to speak, <em>who decides what it should do?</em></p><a class="bridge-link" href="#choice">Explore the design choices <span aria-hidden="true">↓</span></a></div>
+  </section>
+
+
+  <section class="scene story-addition choice" id="choice" aria-labelledby="choice-title">
+    <div class="section-kicker"><span>ACT 06 / THE DESIGN CHOICE</span><span>RETURN TO THE BEGINNING</span></div>
+    <div class="section-head">
+      <p class="eyebrow">SHOULD WE CHANGE OUR MANNERS—OR OUR MACHINES?</p>
+      <h2 id="choice-title">The words stayed<br><em>the same.</em></h2>
+      <p class="section-deck">A human types “Thank you.” What happens next is also a design decision.</p>
+    </div>
+    <div class="chapter-reading">
+      <p>After all these comparisons, it's tempting to invent a new rule of etiquette. Use fewer words. Skip the please. Don't thank the machine. But the research does not establish a universal rule like that—and it would be a strange conclusion to make people less human in order to accommodate a system.</p>
+      <p>Instead, imagine three ways an AI product could handle the same message. A generated reply might feel warm or helpful. A lightweight acknowledgment might provide closure without another full message. Quiet closure might respect a user's intent to finish—or leave someone wondering whether they were heard.</p>
+      <p>These are design possibilities, not measured energy-saving strategies. A good comparison would test whether people understand the behaviour, whether assistance is still available when needed, and what the system actually consumes.</p>
+    </div>
+    <div class="editorial-figure ending-figure" id="endingFigure">
+      <div class="figure-head"><span>ONE HUMAN MESSAGE / THREE POSSIBLE DESIGNS</span><span class="figure-source">HYPOTHESES, NOT A RANKING</span></div>
+      <div class="ending-chat">
+        <span class="ending-small">THE MESSAGE DOES NOT CHANGE</span>
+        <div class="ending-user-message">Thank you.</div>
+        <div id="endingReply" class="ending-response" aria-live="polite"><strong>You're welcome.</strong><p>A new generated message appears.</p></div>
+      </div>
+      <div class="ending-options" role="group" aria-label="Choose what the interface does after thank you">
+        <button type="button" data-ending="generated" class="ending-option is-current" aria-pressed="true"><b>01</b><span>Generated reply</span></button>
+        <button type="button" data-ending="lightweight" class="ending-option" aria-pressed="false"><b>02</b><span>Light acknowledgment</span></button>
+        <button type="button" data-ending="quiet" class="ending-option" aria-pressed="false"><b>03</b><span>Quiet closure</span></button>
+      </div>
+      <div class="ending-insight" id="endingInsight" aria-live="polite">
+        <p><strong>Possible benefit:</strong> A friendly reply may reassure the reader or sustain the conversation.</p>
+        <p><strong>Possible risk:</strong> It can generate another turn when none was wanted.</p>
+        <p><strong>What to test:</strong> Comprehension, task closure, accessibility and actual resource consumption.</p>
+      </div>
+      <p class="visual-note">All three options are conceptual designs. Their relative energy, user satisfaction and task outcomes have not been measured here. Quiet closure does not necessarily mean zero computation.</p>
+    </div>
+    <div class="chapter-reading after-figure">
+      <p>Notice what didn't change: the person's words. What changed was the interface's interpretation of them. The more meaningful research question is whether the next response adds something useful—and how we would know.</p>
+      <p>Perhaps the real cost of courtesy is not in the courtesy itself, but in the gap between what people mean and what the systems we build decide to do.</p>
+      <details class="evidence" id="evidence-choice"><summary><span class="evidence-icon" aria-hidden="true">i</span><span>What evidence would decide this?</span><span class="chev" aria-hidden="true">⌄</span></summary><div class="evidence-content"><p><b>What is established</b> — Published experiments report specific response-energy and language/model differences under defined conditions. They do not compare these three interface endings.</p><p><b>What to test</b> — Randomized, multilingual usability and resource measurements comparing genuine task closure, comprehension, accessibility, rework, user preference and electricity use. Preserve help-seeking and safety-critical requests.</p><a href="./archive/v1.5.1/#act-6">Explore the deeper design discussion ↗</a></div></details>
+    </div>
     <section class="implications" aria-labelledby="implications-title">
       <p class="eyebrow">FROM AN INTERESTING RESULT TO A BETTER DESIGN CHOICE</p>
       <h3 id="implications-title">What does this change<br><em>for people building AI?</em></h3>
@@ -299,8 +434,11 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
       <p><strong>The larger point:</strong> reducing unnecessary computation and improving human outcomes should be evaluated together—not treated as competing goals, or assumed to move in the same direction.</p>
       <a class="quiet-link" href="./archive/v1.5.1/#act-6">Explore the complete design and governance discussion <span aria-hidden="true">↗</span></a>
     </section>
-    <div class="end-study"><span class="end-label">THE DESIGN QUESTION</span><h2>What if good AI begins by knowing<br><em>when it has done enough?</em></h2><p>This story-first edition presents three redesigned chapters. For the remaining questions about useful outcomes, environmental consequences and design choices, the complete six-act research edition remains available.</p><div class="end-links"><a href="./archive/v1.5.1/" target="_blank" rel="noopener noreferrer">Continue into the complete six-act research edition <span aria-hidden="true">↗</span></a><a href="https://github.com/ChrisDHayes/the-cost-of-courtesy/blob/v2-story-first-design-blueprint/design/V2_0_STORYBOARD.md" target="_blank" rel="noopener noreferrer">Read the six-act storyboard <span aria-hidden="true">↗</span></a></div></div>
+
+    <div class="end-study"><span class="end-label">THE DESIGN QUESTION</span><h2>What if good AI begins by knowing<br><em>when it has done enough?</em></h2><p>We began with two words that seemed too small to matter. They mean what they always meant. The question is whether we can design systems that know when another response helps—and when the most respectful response is to stop.</p><div class="end-links"><a href="./archive/v1.5.1/" target="_blank" rel="noopener noreferrer">Continue into the complete six-act research edition <span aria-hidden="true">↗</span></a><a href="https://github.com/ChrisDHayes/the-cost-of-courtesy/blob/v2-story-first-design-blueprint/design/V2_0_STORYBOARD.md" target="_blank" rel="noopener noreferrer">Read the six-act storyboard <span aria-hidden="true">↗</span></a></div></div>
+
   </section>
+
 </main>
 <footer class="footer"><span>© 2026 Christopher Hayes · The Cost of Courtesy</span><span>Three redesigned chapters. Full six-act research edition available. No new experimental measurements.</span><a href="#top">Back to the beginning ↑</a></footer>
 <script>
