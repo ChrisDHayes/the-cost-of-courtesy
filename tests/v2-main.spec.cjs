@@ -19,7 +19,7 @@ test('opening is an interactive human moment, not a fabricated energy measuremen
  await page.locator('#showReply').click();
  await expect(page.locator('#responseTrace')).toBeVisible();
  await expect(page.locator('.machine-reply')).toHaveText("You're welcome.");
- await expect(page.locator('.visual-note')).toContainText('Illustrative chat scene');
+ await expect(page.locator('#opening .visual-note')).toContainText('Illustrative chat scene');
  await page.locator('#showReply').click();
  await expect(page.locator('#responseTrace')).toBeHidden();
  await page.locator('#evidence-opening summary').click();
