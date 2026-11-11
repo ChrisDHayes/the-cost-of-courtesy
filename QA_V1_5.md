@@ -2,7 +2,7 @@
 
 ## Scope and publication state
 
-Reviewed `index.html`, the research essay, the Substack draft, and the repository README. The interactive site is [GitHub Pages](https://chrisdhayes.github.io/the-cost-of-courtesy/). This document records source-level checks and the subsequent V1.5.1 desktop/mobile Chromium automated browser validation. It does not certify real-phone or live GitHub Pages deployment testing.
+Reviewed `index.html`, the research essay, the Substack draft, and the repository README. The interactive site is [GitHub Pages](https://chrisdhayes.github.io/the-cost-of-courtesy/). This document records source-level checks, V1.5.1 desktop/mobile Chromium browser testing against the repository snapshot, and independent testing of the publicly served GitHub Pages website. Real-device Safari and iOS hardware were not tested.
 
 ## Verified checks
 
@@ -29,12 +29,22 @@ Reviewed `index.html`, the research essay, the Substack draft, and the repositor
 
 ## Important limitations and release gate
 
-- The V1.5.1 GitHub Actions suite successfully exercised desktop and mobile Chromium browser simulations. Safari, real hardware and the separately deployed GitHub Pages site have not been independently tested.
-- Before a publication announcement, open the GitHub Pages URL in a real browser, navigate to both anchors, toggle every matrix option, select first/last/censored cells, verify source links, inspect narrow-screen horizontal scrolling, switch light/dark mode, and check the browser console for uncaught errors.
+- **Automated deployment verification passed.** GitHub Pages returned HTTP 200, the deployed HTML matched the checked-in release byte for byte, and desktop and mobile Chromium successfully exercised the published site's core interactions.
+- **Not tested:** real Android/iOS hardware, iOS Safari, macOS Safari, Firefox, visual contrast review on physical screens or an exhaustive WCAG accessibility audit. A final human editorial and design review is appropriate before publicizing widely.
 - No new experimental results were generated. The two matrices are **separate study surfaces**. The evidence does not establish a joint model × language × politeness × energy experiment.
 
 ## V1.5.1 browser test update — November 11, 2026
 
 **Passed: 10 of 10 Playwright browser tests** in GitHub Actions run [43017445936](https://github.com/ChrisDHayes/the-cost-of-courtesy/actions/runs/43017445936) on an Ubuntu 24.04 runner. Five tests ran in desktop Chromium and five in mobile Chromium, exercising direct links, the courtesy and energy matrices, row selection, the Tibetan Qwen3–14B censored flag, all 122 distinct language bubbles, theme switching and guided/explore navigation. The QA runner fix was merged in [PR #1](https://github.com/ChrisDHayes/the-cost-of-courtesy/pull/1).
 
-**Boundary:** these are real browser tests against a local static server serving the repository snapshot, not independent verification of the live GitHub Pages deployment or real Android/iOS hardware. The live GitHub Pages URL could not be fetched by the current external checker; its deployed state is not yet separately confirmed.
+**Boundary:** the 10 local tests verify the repository snapshot. Separate production-hosted tests are documented below. Neither suite uses physical Android/iOS devices.
+
+## V1.5.1 live GitHub Pages verification — November 11, 2026
+
+**Passed: 10 of 10 production-hosted Playwright tests** in GitHub Actions [run 43019642597](https://github.com/ChrisDHayes/the-cost-of-courtesy/actions/runs/43019642597). Five desktop and five Pixel 7-profile Chromium tests loaded the actual public URL, validated the root page, exercised direct links into the two source-backed matrices, checked the 122-language cohort, and verified dark/light and Guided/Explore interactions. The final run showed no uncaught JavaScript runtime errors in its tested views.
+
+**HTTP and source parity:** GET https://chrisdhayes.github.io/the-cost-of-courtesy/ returned **HTTP 200** and **259,489 bytes**. The deployed body exactly matched the repository `index.html` at verification time (SHA-256: `d67cd1a357dcadce2279304fc579778455ecc00d1206c09ae656ea1930b85e9a`). This confirms the release code is being publicly served.
+
+**Test harness correction:** An earlier [live QA attempt](https://github.com/ChrisDHayes/the-cost-of-courtesy/actions/runs/43019157255) mistakenly navigated to the domain root `/` rather than the project subpath `/the-cost-of-courtesy/`, causing 404s in the test harness despite the HTTP/source-parity check passing. Corrected relative navigation to `./`, and the rerun passed all tests. This was not an HTML-site defect.
+
+Production verification code was merged via [PR #2](https://github.com/ChrisDHayes/the-cost-of-courtesy/pull/2). It is available for subsequent releases in `tests/live-pages.spec.cjs`, `playwright.live.config.cjs` and `.github/workflows/live-pages-verify.yml`.
