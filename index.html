@@ -7,7 +7,7 @@
 <meta content="dark light" name="color-scheme"/>
 <meta content="#111827" name="theme-color"/>
 <meta content="A six-act scroll-driven research investigation into AI politeness, computational work, task value and environmental consequences. Source-linked evidence and open methods." name="description"/>
-<title>The Cost of Courtesy — Evidence Threads + Language Divide (V1.4)</title>
+<title>The Cost of Courtesy — Evidence Threads + Language Divide (V1.4.1)</title>
 <style>
 :root{font-synthesis:none;--bg:#111827;--bg2:#151f2b;--panel:#1a2634;--panel2:#243344;--paper:#121d29;--text:#f1f1ed;--muted:#b2becb;--subtle:#91a0af;--rule:#455365;--rule2:#324050;--accent:#a6c8e9;--human:#e5a18a;--compute:#a6c8e9;--value:#e9c783;--environment:#add0ad;--caution:#f1c28b;--unknown:#b0becd;--glow:rgba(109,151,187,.14);--human-glow:rgba(201,121,93,.12);--compute-glow:rgba(76,120,168,.16);--environment-glow:rgba(94,139,99,.08);--shade:rgba(0,0,0,.23);--map-badge-fill:#151f2b;--active-ink:#101b28;--rail:237px;color-scheme:dark}
 html[data-theme="light"]{--bg:#f7f6f2;--bg2:#f0f1ef;--panel:#ffffff;--panel2:#e9edf0;--paper:#fbfbf8;--text:#202d36;--muted:#506173;--subtle:#596b7c;--rule:#b7c5ce;--rule2:#d3dce1;--accent:#315d87;--human:#99513a;--compute:#315d87;--value:#77551c;--environment:#3a6846;--caution:#895b23;--unknown:#536273;--glow:rgba(76,120,168,.10);--human-glow:rgba(201,121,93,.10);--compute-glow:rgba(76,120,168,.09);--environment-glow:rgba(94,139,99,.07);--shade:rgba(24,31,41,.06);--map-badge-fill:#f7f6f2;--active-ink:#f1f5f7;color-scheme:light}
@@ -1553,12 +1553,21 @@ all('[data-ld-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.
 select.addEventListener('change',()=>{selected=select.value;render();});
 get('#ldAccuracySelect').addEventListener('change',e=>{accuracy=e.target.value;render();});
 function stage(){
- const st=stats.energy,L=18,R=615,X=v=>L+(Math.log2(v/st.median)+.55)/(3.4)*(R-L);
- let svg='<svg viewBox="0 0 640 180" role="img" aria-label="122 language points showing a right-tailed energy per token distribution; median and mean marked">';
- for(const d of data){const cy=76+((hash(d.code)%13)-6)*6.6;svg+='<circle cx="'+X(d.energy).toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="2.65" fill="'+(d.resource==='Low'?'var(--human)':'var(--compute)')+'" fill-opacity=".65"/>';}
- svg+='<line x1="'+X(st.median)+'" x2="'+X(st.median)+'" y1="20" y2="137" stroke="var(--value)" stroke-width="2"/><line x1="'+X(st.mean)+'" x2="'+X(st.mean)+'" y1="20" y2="137" stroke="var(--compute)" stroke-width="2" stroke-dasharray="5 4"/>';
- svg+='<text x="'+X(st.median)+'" y="12" fill="var(--value)" text-anchor="middle" font-size="11">MEDIAN</text><text x="'+X(st.mean)+'" y="158" fill="var(--compute)" text-anchor="middle" font-size="11">MEAN</text></svg>';
- return '<div class="stage-visual-inner language-dist-stage"><div class="ld-ministats"><div><strong>'+num(st.median,3)+' J</strong><span>Median per output token</span></div><div><strong>'+num(st.mean,3)+' J</strong><span>Mean per output token</span></div></div>'+svg+'<p class="ld-mini-note">All 122 published language conditions. Mean +'+num((st.mean/st.median-1)*100,1)+'% above median. Each circle is a language, not a request. Explore → Act 4 for the linked accuracy view.</p></div>';
+ const st=stats.energy;
+ // A one-to-one bubble ledger: unlike an overplotted jitter strip, every
+ // source language gets its own non-overlapping visible circle.
+ const ordered=data.slice().sort((a,b)=>a.energy-b.energy);
+ const cols=18, gapX=32.3, gapY=19.8, left=27, top=25;
+ let svg='<svg viewBox="0 0 640 200" role="img" aria-label="All 122 languages shown as 122 separate bubbles, ordered by energy per generated token from lowest to highest">';
+ for(let i=0;i<ordered.length;i++){
+   const d=ordered[i],cx=left+(i%cols)*gapX,cy=top+Math.floor(i/cols)*gapY;
+   const colour=d.resource==='Low'?'var(--human)':'var(--compute)';
+   const title=d.language+' · '+num(d.energy,3)+' joules per output token · '+d.resource+' resource group';
+   svg+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="7.0" fill="'+colour+'" fill-opacity=".91" stroke="var(--bg)" stroke-width="1.1"><title>'+title+'</title></circle>';
+ }
+ svg+='<text x="19" y="183" font-size="10" fill="var(--muted)">LOWER ENERGY / OUTPUT TOKEN</text>';
+ svg+='<text x="619" y="183" font-size="10" fill="var(--muted)" text-anchor="end">HIGHER ENERGY / OUTPUT TOKEN</text></svg>';
+ return '<div class="stage-visual-inner language-dist-stage"><div class="ld-ministats"><div><strong>122 / 122</strong><span>Each language represented by one separate bubble</span></div><div><strong>+'+num((st.mean/st.median-1)*100,1)+'%</strong><span>Mean energy above median</span></div></div>'+svg+'<p class="ld-mini-note">Every bubble is one published language condition, ordered by energy (left to right, then top to bottom). Terracotta = lower-resource; blue = higher-resource source grouping. Bubble size is constant, not an energy measure. Explore → Act 4 for precise energy positions, language names and linked accuracy.</p></div>';
 }
 window.CourtesyLanguage122={stage,stats,rows:data.length,render,mode:function(v){mode=v==='distance'?'distance':'linked';render();}};
 render();
