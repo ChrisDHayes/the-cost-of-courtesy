@@ -53,6 +53,8 @@ jobs:
             const url='http://127.0.0.1:4173/prototypes/v2-story-first/';
             const page=await browser.newPage({viewport:{width:1440,height:900}});
             await page.goto(url);
+            // Avoid a sticky header appearing in the middle of full-section screenshot captures.
+            await page.addStyleTag({content:'.topbar,.progress{display:none!important}'});
             await page.locator('#opening').screenshot({path:'prototype-preview/A-opening-desktop.png'});
             await page.locator('#showReply').click();
             await page.locator('#human-message').screenshot({path:'prototype-preview/A-chat-trace-desktop.png'});
@@ -62,6 +64,7 @@ jobs:
             await page.locator('#uneven').screenshot({path:'prototype-preview/C-122-language-distribution-desktop.png'});
             const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,deviceScaleFactor:1});
             await mobile.goto(url);
+            await mobile.addStyleTag({content:'.topbar,.progress{display:none!important}'});
             await mobile.locator('#opening').screenshot({path:'prototype-preview/A-opening-mobile.png'});
             await mobile.locator('#revealMatrix').click();
             await mobile.locator('#courtesy').screenshot({path:'prototype-preview/B-courtesy-mobile.png'});
