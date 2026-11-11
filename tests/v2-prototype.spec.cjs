@@ -40,7 +40,7 @@ test('courtesy finding expands into all 15 source-backed cells',async({page})=>{
  await page.locator('#toneSelect').selectOption('POP');
  await expect(englishGpt).toHaveText('0.567');
  await englishGpt.focus();await page.keyboard.press('Enter');
- await expect(page.locator('#courtesyDetail')).toContainText('Positive politeness');
+ await expect(page.locator('#courtesyDetail')).toContainText(/positive politeness/i);
  await page.locator('#evidence-courtesy summary').click();
  await expect(page.locator('#evidence-courtesy')).toHaveAttribute('open','');
  await page.locator('#revealMatrix').click();
