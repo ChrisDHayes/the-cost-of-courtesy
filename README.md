@@ -81,6 +81,12 @@ The [preview](previews/courtesy_constellation_schematic.svg) is an **illustrativ
 
 This repository mixes original writing/code with **third-party research excerpts that may have different licenses**. In particular, selected MichiganNLP rows are adapted from [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) data and must retain attribution and applicable ShareAlike conditions. PromptTone is cited with the paper's identified CC BY 4.0 dataset license; no full third-party PromptTone dataset is redistributed. The independently hosted thank-you measurement records are not redistributed here while their separate reuse terms remain unresolved. See [LICENSE_AND_ATTRIBUTION.md](LICENSE_AND_ATTRIBUTION.md) before reusing or redistributing any component. No blanket open-source license for all repository contents is implied.
 
+## Browser and mobile QA
+
+**V1.4 verification: 192 of 192 automated checks passed** across Chromium desktop/tablet/mobile viewports (including 320px), WebKit mobile emulation and Firefox desktop. The public GitHub Pages URL also returned HTTP 200 with the integrated Act 4 language exhibit. The 320px Guided/Explore navigation and mobile chart swipe affordances were corrected during testing. See the [QA report](qa/QA_REPORT_V1_4.md), [reproducible browser tests](qa/browser_qa.mjs), and [GitHub Actions results](https://github.com/ChrisDHayes/the-cost-of-courtesy/actions/runs/43005103583).
+
+**Limits:** this is not physical-device or formal WCAG certification; see the documented scope and outstanding checks.
+
 ## Quality and publication status
 
 V1.4 is a **research-led interactive release candidate**, extending the archived V1.3 baseline with a full-cohort language instrument. V1.3's 15 checkpoint structure and visual evidence relationships remain intact. Its 15 checkpoints and evidence-link controls were tested in four Chromium viewport emulations, including keyboard selection and return from Explore mode. The verification scope and important limitations are summarized in the [research methods](methods/METHODS.md) and [V1.3 release notes](RELEASE_NOTES_V1_3.md).
