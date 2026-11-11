@@ -75,3 +75,5 @@ test('links work after switching modes, and appearance toggle remains functional
   await page.locator('#themeToggle').click();
   await expect(page.locator('html')).not.toHaveAttribute('data-theme', before);
 });
+
+// This pull request validates the new browser QA workflow before it becomes a release gate.
