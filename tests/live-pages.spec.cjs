@@ -71,3 +71,31 @@ test('mobile story remains usable with theme control and no page-level overflow'
     await expect(page.locator('.mobile-research-link')).toBeVisible();
   }
 });
+
+test('live six-act path and a more meaningful task outcome interaction are available',async({page})=>{
+  await page.goto('./#act-3');
+  await expect(page).toHaveURL(/#useful$/);
+  await expect(page.locator('section.scene')).toHaveCount(6);
+  await expect(page.locator('#routeCompare')).toHaveAttribute('data-stage','first');
+  await page.locator('#pathWhole').click();
+  await expect(page.locator('#routeCompare')).toHaveAttribute('data-stage','whole');
+  await expect(page.locator('#pathExplanation')).toContainText('hypothetical');
+});
+test('live source accounting keeps the two energy and water studies separate',async({page})=>{
+  await page.goto('./#act-5');
+  await expect(page).toHaveURL(/#footprint$/);
+  await page.locator('#sourceGemini').click();
+  await expect(page.locator('#sourceDetail')).toContainText('0.26 mL');
+  await expect(page.locator('#sourceDetail')).toContainText('must not be applied');
+  await page.locator('#sourceThankYou').click();
+  await expect(page.locator('#sourceDetail')).toContainText('No water-per-reply');
+});
+test('live closing loops back to the original thank-you with three testable designs',async({page})=>{
+  await page.goto('./#act-6');
+  await expect(page).toHaveURL(/#choice$/);
+  await expect(page.locator('.ending-user-message')).toHaveText('Thank you.');
+  await page.locator('[data-ending="quiet"]').click();
+  await expect(page.locator('#endingReply')).toContainText('No visible reply');
+  await expect(page.locator('#endingInsight')).toContainText('Silence may feel abrupt');
+  await expect(page.locator('.ending-user-message')).toHaveText('Thank you.');
+});
