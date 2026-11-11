@@ -7,7 +7,7 @@
 <meta content="dark light" name="color-scheme"/>
 <meta content="#111827" name="theme-color"/>
 <meta content="A six-act scroll-driven research investigation into AI politeness, computational work, task value and environmental consequences. Source-linked evidence and open methods." name="description"/>
-<title>The Cost of Courtesy — Evidence Threads + Language Divide (V1.4.1)</title>
+<title>The Cost of Courtesy — Evidence Threads + Model–Language Atlases (V1.5)</title>
 <style>
 :root{font-synthesis:none;--bg:#111827;--bg2:#151f2b;--panel:#1a2634;--panel2:#243344;--paper:#121d29;--text:#f1f1ed;--muted:#b2becb;--subtle:#91a0af;--rule:#455365;--rule2:#324050;--accent:#a6c8e9;--human:#e5a18a;--compute:#a6c8e9;--value:#e9c783;--environment:#add0ad;--caution:#f1c28b;--unknown:#b0becd;--glow:rgba(109,151,187,.14);--human-glow:rgba(201,121,93,.12);--compute-glow:rgba(76,120,168,.16);--environment-glow:rgba(94,139,99,.08);--shade:rgba(0,0,0,.23);--map-badge-fill:#151f2b;--active-ink:#101b28;--rail:237px;color-scheme:dark}
 html[data-theme="light"]{--bg:#f7f6f2;--bg2:#f0f1ef;--panel:#ffffff;--panel2:#e9edf0;--paper:#fbfbf8;--text:#202d36;--muted:#506173;--subtle:#596b7c;--rule:#b7c5ce;--rule2:#d3dce1;--accent:#315d87;--human:#99513a;--compute:#315d87;--value:#77551c;--environment:#3a6846;--caution:#895b23;--unknown:#536273;--glow:rgba(76,120,168,.10);--human-glow:rgba(201,121,93,.10);--compute-glow:rgba(76,120,168,.09);--environment-glow:rgba(94,139,99,.07);--shade:rgba(24,31,41,.06);--map-badge-fill:#f7f6f2;--active-ink:#f1f5f7;color-scheme:light}
@@ -389,6 +389,32 @@ html{scroll-padding-top:154px}
 @media(max-width:750px){#language-distribution .ld-stats{grid-template-columns:repeat(2,minmax(0,1fr))}#language-distribution .ld-details{grid-template-columns:repeat(2,minmax(0,1fr))}#language-distribution .ld-modes{width:100%}#language-distribution button.ld-mode{flex:1}#language-distribution .ld-plot{overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--compute) var(--panel2)}#language-distribution .ld-plot::before{content:'SWIPE CHART HORIZONTALLY  ↔';display:block;margin:0 14px 3px;font-size:10px;letter-spacing:.06em;color:var(--muted)}#language-distribution svg.ld-chart{min-width:460px;min-height:0}}
 @media(max-width:430px){#language-distribution .ld-controls{align-items:stretch}#language-distribution select{max-width:100%;width:100%}#language-distribution .ld-details{gap:10px}#language-distribution .ld-stats{gap:13px}}
 
+
+/* V1.5: source-bounded model x language evidence matrices */
+.matrix-atlas{margin:34px 0 38px;border:1px solid var(--rule);background:var(--paper);overflow:hidden;scroll-margin-top:100px}
+.matrix-atlas .ma-head{padding:23px clamp(15px,2.4vw,28px) 16px;border-bottom:1px solid var(--rule2)}
+.matrix-atlas .ma-kicker{color:var(--human);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.matrix-atlas h3{font-family:Georgia,serif;font-weight:400;font-size:clamp(25px,3vw,37px);letter-spacing:-.025em;margin:8px 0 10px}
+.matrix-atlas .ma-head p,.matrix-atlas .ma-foot{font-size:12px;color:var(--muted);line-height:1.75;margin:0}
+.matrix-atlas .ma-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:13px 20px;background:var(--panel2);border-bottom:1px solid var(--rule2)}
+.matrix-atlas .ma-controls label{font-size:11px;color:var(--muted)}
+.matrix-atlas select{border:1px solid var(--rule);background:var(--panel);color:var(--text);font-size:12px;padding:8px;max-width:100%}
+.matrix-atlas .ma-scroll{overflow-x:auto;padding:18px 20px 8px}
+.matrix-atlas .ma-table{width:100%;min-width:520px;border-spacing:5px;border-collapse:separate;table-layout:fixed}
+.matrix-atlas .ma-table th{font-size:11px;color:var(--muted);font-weight:600;padding:6px;text-align:center}
+.matrix-atlas .ma-table th:first-child{text-align:left;width:155px}
+.matrix-atlas .ma-table td:first-child{font-size:12px;color:var(--text);font-weight:600}
+.matrix-atlas .ma-cell{width:100%;border:1px solid transparent;border-radius:3px;min-height:45px;padding:8px 4px;display:flex;align-items:center;justify-content:center;font-size:12px;font-variant-numeric:tabular-nums;font-weight:650;cursor:pointer}
+.matrix-atlas .ma-cell:hover,.matrix-atlas .ma-cell[aria-pressed=true]{outline:2px solid var(--text);outline-offset:1px}
+.matrix-atlas .ma-cell:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.matrix-atlas .ma-cell[data-censored=true]{border:2px dashed var(--caution)}
+.matrix-atlas .ma-legend{padding:8px 24px 17px;color:var(--muted);font-size:11px;line-height:1.55}
+.matrix-atlas .ma-detail{margin:0 20px 18px;padding:16px 19px;background:var(--panel2);border-left:3px solid var(--accent);min-height:85px}
+.matrix-atlas .ma-detail strong{font-size:17px;display:block;margin:4px 0;color:var(--text)}
+.matrix-atlas .ma-detail p{font-size:12px;line-height:1.65;margin:5px 0;color:var(--muted)}
+.matrix-atlas .ma-foot{padding:14px 20px;border-top:1px solid var(--rule2)}
+.matrix-atlas a{color:var(--compute)}
+@media(max-width:730px){.matrix-atlas .ma-scroll{padding:14px 10px 8px}.matrix-atlas .ma-scroll:before{content:"SWIPE THE MATRIX HORIZONTALLY ↔";display:block;font-size:10px;color:var(--muted);margin:0 8px 8px}.matrix-atlas .ma-detail{margin:0 12px 14px}}
 </style>
 </head>
 <body>
@@ -506,7 +532,7 @@ html{scroll-padding-top:154px}
 <div class="stage-evidence-bar"><div><span class="evidence-kind" id="stageEvidenceTag">INTERPRETATION</span><span id="stageEvidenceSource">Source R01</span></div><button class="stage-source" data-source="R01" id="stageSource" type="button">Evidence receipt ↗</button></div>
 <div class="stage-actions"><button id="stageOpenLab" type="button">Explore the full instrument ↗</button><span class="stage-hint">Scroll to unfold the evidence ↓</span><div aria-label="Navigate the fifteen story checkpoints" class="stage-skip"><button id="prevStoryStep" type="button" aria-label="Previous story checkpoint" title="Previous finding" disabled>←</button><button id="nextStoryStep" type="button" aria-label="Next story checkpoint" title="Next finding">→</button></div></div><span class="sr-only" id="stageAnnouncement" aria-live="polite" aria-atomic="true"></span>
 <div aria-label="Story checkpoint progress" class="stage-mark" id="stageMark"></div>
-</div></aside></div><section aria-label="Explore the original research instruments" class="research-lab" id="research-lab"><div class="lab-head"><span class="instrument-tag">EXPLORE · FULL RESEARCH INSTRUMENTS</span><h2>Go beyond the story.</h2><p>The full, source-linked interactive instruments remain available here. The story uses selected views of those findings; this studio exposes the controls, methods and counterarguments.</p><button class="primary-link" id="resumeStory" type="button">← Return to the story</button></div><div class="lab-index"><a href="#constellation">Courtesy Constellation</a><a href="#signal">Resolution Signal Plate</a><a href="#language">Multilingual data</a><a href="#geography">Geography</a><a href="#design-boundary">Design choices</a></div><section class="act lab-act" data-act="1" id="lab-act-1">
+</div></aside></div><section aria-label="Explore the original research instruments" class="research-lab" id="research-lab"><div class="lab-head"><span class="instrument-tag">EXPLORE · FULL RESEARCH INSTRUMENTS</span><h2>Go beyond the story.</h2><p>The full, source-linked interactive instruments remain available here. The story uses selected views of those findings; this studio exposes the controls, methods and counterarguments.</p><button class="primary-link" id="resumeStory" type="button">← Return to the story</button></div><div class="lab-index"><a href="#constellation">Courtesy Constellation</a><a href="#courtesy-response-matrix">Courtesy response matrix</a><a href="#signal">Resolution Signal Plate</a><a href="#language-distribution">122-language atlas</a><a href="#language-energy-matrix">Cross-model energy matrix</a><a href="#language">Multilingual data</a><a href="#geography">Geography</a><a href="#design-boundary">Design choices</a></div><section class="act lab-act" data-act="1" id="lab-act-1">
 <div class="act-kicker"><span>ACT 01</span><span class="line"></span><span>MEANING → ACTION</span></div>
 <h2>What does a<br/><em>thank you</em> do?</h2>
 <p class="lead">As a human gesture, “thank you” can mark the end of an exchange. In a conversational AI interface, those same words may initiate another full inference.</p>
@@ -525,6 +551,18 @@ html{scroll-padding-top:154px}
 <p class="lead">A separate thank-you is not the same thing as a polite phrase inside a request that would have happened anyway.</p>
 <p>In the <em>PromptTone</em> programming benchmark, polite versus neutral phrasing coincided with <strong>shorter mean code outputs for GPT and Gemini, but longer ones for Claude</strong>. These are differences in <strong>characters</strong> from a published summary table—not tokens, energy savings or verified code quality. <button class="source-inline" data-source="R02" type="button">Study receipt ↗</button></p>
 <div class="insight"><span class="insight-num">02 / THE CONTRADICTION</span><strong>Courtesy's effect depends on the intervention, model and task. A universal rule would misrepresent the evidence.</strong></div>
+
+<div class="matrix-atlas" id="courtesy-response-matrix">
+  <div class="ma-head"><span class="ma-kicker">Act 02 · Published preprint · Model × language evidence</span>
+    <h3>The same courtesy. Different machines.</h3>
+    <p>Five studied models × three languages. Switch between the authors' five prompt-courtesy categories and three conversational-history conditions. Each cell is a <strong>published composite quality score (CQS)</strong>, not measured accuracy, energy, causality or an independently validated model ranking.</p>
+  </div>
+  <div class="ma-controls"><label for="maToneView">Compare by</label><select id="maToneView"><option value="category">Prompt courtesy category (Table IV)</option><option value="history">Previous conversational tone (Table V)</option></select><label for="maToneSetting">Condition</label><select id="maToneSetting"></select></div>
+  <div class="ma-scroll"><table class="ma-table" id="maToneTable" aria-label="Published composite quality score by model and language"><thead><tr><th scope="col">Model</th><th scope="col">English</th><th scope="col">Hindi</th><th scope="col">Spanish</th></tr></thead><tbody></tbody></table></div>
+  <p class="ma-legend">Colour indicates CQS within this study only: muted terracotta = lower composite score; steel blue = higher composite score. Numbers are shown in every cell. Switching dimensions does not estimate the joint effect of a particular prompt category AND conversational history.</p>
+  <div class="ma-detail" id="maToneDetail" role="status" aria-live="polite"><strong>Select a cell to inspect a published result.</strong><p>Source and methodological boundaries appear here.</p></div>
+  <div class="ma-foot">Source: Mehta et al. (17 April 2026), <a target="_blank" rel="noopener" href="https://arxiv.org/html/2604.16275">No Universal Courtesy (arXiv preprint)</a>, Tables IV and V. Five categories: POP = positive politeness, NEP = negative politeness, POI = positive impoliteness, NEI = negative impoliteness, BAL = bald on record. History categories: RAW, POL (polite), IMP (impolite). Equal-weight CQS combines eight automated dimensions; multilingual validity and weighting require independent validation. Neither study investigates the energy of politeness in these cells.</div>
+</div>
 <div class="instrument" id="signal">
 <div class="instrument-head"><div><span class="instrument-tag">INSTRUMENT 02 · EVIDENCE PLATE</span><h3>Resolution Signal Plate</h3><p>Four separate analytical tracks, with each measurement kept in its native unit.</p></div><button class="text-action" data-method="signal" type="button">Measurement protocol ↗</button></div>
 <div aria-label="Signal Plate evidence tracks" class="viz-tools multi" role="group"><button aria-pressed="true" class="pill is-active" data-signal="hardware" type="button">Measured energy</button><button aria-pressed="false" class="pill" data-signal="sensitivity" type="button">Modeled GPU sensitivity</button><button aria-pressed="false" class="pill" data-signal="tone" type="button">Prompt tone</button><button aria-pressed="false" class="pill" data-signal="resolution" type="button">Task resolution</button></div>
@@ -579,6 +617,18 @@ html{scroll-padding-top:154px}
 </div>
 <p style="font-size:12px;color:var(--muted);line-height:1.7;margin:4px 0 16px">For a closer examination of evaluation rules, the original <strong>12-language scatterplot</strong> remains below. It shows how strict and lenient scoring can change the interpretation of a specific source record.</p>
 
+
+<div class="matrix-atlas" id="language-energy-matrix">
+  <div class="ma-head"><span class="ma-kicker">Act 04 · Peer-reviewed measurements · Energy matrix</span>
+    <h3>One language. Three different energy profiles.</h3>
+    <p>Published cross-model comparison for twelve language conditions, with source-reported <strong>joules per output token</strong>. This is deliberately a 12 × 3 subset, <em>not</em> a 122 × 5 complete model comparison. The 122-language primary distribution remains above.</p>
+  </div>
+  <div class="ma-controls"><label for="maEnergyOrder">Order languages</label><select id="maEnergyOrder"><option value="source">Published source order</option><option value="name">Alphabetically</option><option value="qwen">Highest Qwen3–8B cost first</option></select><label for="maEnergyMetric">Colour scale</label><select id="maEnergyMetric"><option value="relative">Within-model relative level</option><option value="absolute">Absolute J/output token</option></select></div>
+  <div class="ma-scroll"><table class="ma-table" id="maEnergyTable" aria-label="Measured joules per output token across 12 languages and three models"><thead><tr><th scope="col">Language</th><th scope="col">Qwen3–8B</th><th scope="col">Qwen3–14B</th><th scope="col">Llama 3.1–8B</th></tr></thead><tbody></tbody></table></div>
+  <p class="ma-legend">Numbers are source-reported J/output token; the within-model colour view shows each model's own range and should not be read as equivalent absolute energy. Dashed amber outline = source-censored Qwen3–14B Tibetan condition; inspect before comparing. No missing cells are silently imputed.</p>
+  <div class="ma-detail" id="maEnergyDetail" role="status" aria-live="polite"><strong>Select an energy cell.</strong><p>Inspect the language, model, exact reported value and potential censoring.</p></div>
+  <div class="ma-foot">Source: Deng et al., <a href="https://aclanthology.org/2026.emnlp-main.2113/" target="_blank" rel="noopener">The Language–Energy Divide, EMNLP 2026</a> · <a href="https://github.com/MichiganNLP/language-energy-divide/blob/master/results/cross_model_12lang_table.csv" target="_blank" rel="noopener">published twelve-language cross-model table</a>. The authors report persistent disparities across a broader model/hardware/task program; these specific matrix cells cover only three models. Source cohort categories LOW/MID/HIGH describe resource groupings, not the measured joules.</div>
+</div>
 <div class="instrument language-panel" id="language">
 <div class="instrument-head"><div><span class="instrument-tag">ANALYTICAL LENS · SOURCE-SPECIFIC EXCERPT</span><h3>The linguistic double penalty</h3><p>Examine 12 deliberately selected source-viewer rows—not a statistically representative sample of 122 languages.</p></div><button class="text-action" data-source="R06" type="button">Dataset terms ↗</button></div>
 <div class="language-tools"><label for="languageSelect">Inspect language</label><select aria-label="Choose a language from the illustrative excerpt" id="languageSelect"></select><div class="metric-control"><span>Accuracy definition</span><label><input name="accuracyMode" type="radio" value="strict"/> Strict</label><label><input checked="" name="accuracyMode" type="radio" value="lenient"/> Lenient</label></div></div>
@@ -1572,4 +1622,73 @@ function stage(){
 window.CourtesyLanguage122={stage,stats,rows:data.length,render,mode:function(v){mode=v==='distance'?'distance':'linked';render();}};
 render();
 })();
-</script></body></html>
+</script>
+<script>
+/* V1.5 independent evidence atlases: each visualization has its own publication source. */
+(function(){
+'use strict';
+const languages=['English','Hindi','Spanish'];
+const modelNames=['Gemini Pro','GPT-4o mini','Claude 3.7 Sonnet','DeepSeek-Chat','Llama 3'];
+const tones=['POP','NEP','POI','NEI','BAL'], histories=['RAW','POL','IMP'];
+// Mehta et al. (2026), Table IV, printed model order x prompt categories.
+const category={
+ English:[[.586,.587,.621,.635,.624],[.567,.615,.580,.611,.636],[.626,.585,.573,.587,.617],[.612,.622,.567,.598,.643],[.585,.583,.652,.613,.618]],
+ Hindi:[[.419,.512,.422,.370,.523],[.571,.515,.541,.530,.547],[.482,.533,.512,.476,.489],[.577,.544,.532,.587,.531],[.506,.630,.579,.550,.558]],
+ Spanish:[[.490,.494,.620,.529,.560],[.453,.492,.560,.525,.501],[.501,.518,.539,.537,.534],[.583,.587,.643,.602,.591],[.490,.521,.583,.567,.533]]
+};
+// Mehta et al. (2026), Table V; RAW, POL and IMP previous conversation conditions.
+const history={
+ English:[[.609,.631,.591],[.575,.620,.611],[.563,.620,.609],[.616,.627,.582],[.613,.639,.578]],
+ Hindi:[[.468,.442,.437],[.513,.559,.550],[.485,.518,.493],[.515,.565,.582],[.548,.570,.575]],
+ Spanish:[[.522,.540,.555],[.491,.520,.508],[.505,.518,.555],[.625,.620,.559],[.530,.540,.546]]
+};
+const energy=[
+ ['English','eng_Latn',.197,.312,.164,false],['Spanish','spa_Latn',.216,.345,.189,false],
+ ['Chinese (Simplified)','zho_Hans',.199,.289,.206,false],['Vietnamese','vie_Latn',.214,.348,.181,false],
+ ['Russian','rus_Cyrl',.239,.378,.188,false],['Hindi','hin_Deva',.365,.604,.215,false],
+ ['Thai','tha_Thai',.238,.630,.337,false],['French','fra_Latn',.515,.415,.187,false],
+ ['Pashto','pbt_Arab',.774,2.041,.230,false],['Tigrinya','tir_Ethi',.934,.529,.417,false],
+ ['Shan','shn_Mymr',1.080,2.731,1.179,false],['Tibetan','bod_Tibt',1.348,2.900,1.025,true]
+];
+const el=id=>document.getElementById(id);
+const colour=t=>{const v=Math.max(0,Math.min(1,t));return 'color-mix(in srgb, var(--human) '+Math.round((1-v)*78+10)+'%, var(--compute))';};
+function tone(){
+ const kind=el('maToneView').value,sel=el('maToneSetting'),codes=kind==='category'?tones:histories,old=sel.value;
+ sel.replaceChildren();codes.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=({POP:'Positive politeness',NEP:'Negative politeness',POI:'Positive impoliteness',NEI:'Negative impoliteness',BAL:'Direct (bald on record)',RAW:'Raw / no primed history',POL:'Polite history',IMP:'Impolite history'})[s];sel.append(o);});
+ sel.value=codes.includes(old)?old:codes[0];paintTone();
+}
+function paintTone(){
+ const kind=el('maToneView').value,code=el('maToneSetting').value,idx=(kind==='category'?tones:histories).indexOf(code),src=kind==='category'?category:history;
+ const tbody=el('maToneTable').tBodies[0];tbody.replaceChildren();
+ modelNames.forEach((m,i)=>{const tr=document.createElement('tr'),th=document.createElement('td');th.textContent=m;tr.append(th);
+ languages.forEach(l=>{const n=src[l][i][idx],td=document.createElement('td'),b=document.createElement('button');
+ b.type='button';b.className='ma-cell';b.style.background=colour((n-.35)/.32);b.style.color='#0e1a29';b.textContent=n.toFixed(3);b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',m+' in '+l+': '+n.toFixed(3)+' CQS');
+ b.addEventListener('click',()=>{tbody.querySelectorAll('.ma-cell').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');el('maToneDetail').innerHTML='<strong>'+m+' · '+l+' · '+n.toFixed(3)+' CQS</strong><p>Study condition: '+selLabel(code)+' ('+(kind==='category'?'prompt courtesy / Table IV':'prior interaction history / Table V')+'). This score is the average of eight study-defined automated metrics; it does not validate task accuracy or energy and cannot isolate the other tone dimension. <a href="https://arxiv.org/html/2604.16275#S6" target="_blank" rel="noopener">Inspect original research</a>.</p>';});
+ td.append(b);tr.append(td);});tbody.append(tr);});
+}
+function selLabel(v){return ({POP:'positive politeness',NEP:'negative politeness',POI:'positive impoliteness',NEI:'negative impoliteness',BAL:'direct/bald on record',RAW:'raw conversational history',POL:'polite conversational history',IMP:'impolite conversational history'})[v];}
+function paintEnergy(){
+ const order=el('maEnergyOrder').value,scale=el('maEnergyMetric').value,rows=energy.slice();
+ if(order==='name')rows.sort((a,b)=>a[0].localeCompare(b[0]));if(order==='qwen')rows.sort((a,b)=>b[2]-a[2]);
+ const mins=[2,3,4].map(j=>Math.min(...energy.filter(d=>!(j===3&&d[5])).map(d=>d[j])));
+ const maxs=[2,3,4].map(j=>Math.max(...energy.filter(d=>!(j===3&&d[5])).map(d=>d[j])));
+ const tbody=el('maEnergyTable').tBodies[0];tbody.replaceChildren();
+ rows.forEach(d=>{const tr=document.createElement('tr'),td=document.createElement('td');td.textContent=d[0];tr.append(td);
+ [2,3,4].forEach((j,k)=>{const n=d[j],censored=j===3&&d[5],cell=document.createElement('td'),b=document.createElement('button');
+ b.type='button';b.className='ma-cell';b.textContent=n.toFixed(3);b.dataset.censored=String(censored);b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',d[0]+' '+['Qwen3–8B','Qwen3–14B','Llama 3.1–8B'][k]+' '+n.toFixed(3)+' joules per output token'+(censored?' censored':''));
+ const t=scale==='relative'?(n-mins[k])/(maxs[k]-mins[k]):Math.log1p(n)/Math.log1p(2.9);
+ b.style.background=colour(t);b.style.color='#0e1a29';
+ b.addEventListener('click',()=>{tbody.querySelectorAll('.ma-cell').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');el('maEnergyDetail').innerHTML='<strong>'+d[0]+' · '+['Qwen3–8B','Qwen3–14B','Llama 3.1–8B'][k]+' · '+n.toFixed(3)+' J/output token</strong><p>Source language ID: '+d[1]+'. '+(censored?'<strong>Source-censored / incomplete:</strong> this record must not be treated as a fully observed comparable run. ':'')+'Reported in the twelve-language cross-model comparison. This is computation per output token, not total energy per request and not a politeness benchmark. <a target="_blank" rel="noopener" href="https://github.com/MichiganNLP/language-energy-divide/blob/master/results/cross_model_12lang_table.csv">View original table</a>.</p>';});
+ cell.append(b);tr.append(cell);});tbody.append(tr);});
+}
+if(el('maToneTable')&&el('maEnergyTable')){
+ el('maToneView').addEventListener('change',tone);
+ el('maToneSetting').addEventListener('change',paintTone);
+ el('maEnergyOrder').addEventListener('change',paintEnergy);
+ el('maEnergyMetric').addEventListener('change',paintEnergy);
+ tone();paintEnergy();
+ window.CourtesyEvidenceMatrices={toneRows:15,energyRows:12,energyModels:3,render:()=>{paintTone();paintEnergy();}};
+}
+})();
+</script>
+</body></html>
