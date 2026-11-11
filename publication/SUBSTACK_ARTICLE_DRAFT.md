@@ -22,7 +22,7 @@ That's a meaningful measurement. But it is not a universal figure for a ChatGPT 
 
 The study made me ask a more interesting question: **Why must an expression of closure become another computational event?**
 
-[**Explore Act 1 — Two words**](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-1)
+[**Explore Act 1 — Two words**](https://chrisdhayes.github.io/the-cost-of-courtesy/#opening)
 
 ## Politeness is not one thing
 
@@ -32,7 +32,7 @@ The [2026 PromptTone study](https://doi.org/10.3390/data11040088) found model-de
 
 It measured **code characters**—not energy, not tokens, and not the value of a completed task. The results are useful precisely because they resist an easy generalization.
 
-[**Explore Act 2 — The contradiction**](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-2)
+[**Explore Act 2 — The contradiction**](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy)
 
 ## The same courtesy. Different machines.
 
@@ -44,7 +44,7 @@ For English prompts, GPT-4o Mini scored **0.636** under a direct prompting categ
 
 And the preceding conversation mattered too. English-language Llama 3 responses scored **0.639** after a polite interaction history versus **0.578** after an impolite one. Yet in Hindi, DeepSeek-Chat scored marginally higher after impolite than polite histories. Conversational history is associated with different composite scores across models and languages; the study does not prove a universal effect of being polite.
 
-[**Explore Act 2 — The Courtesy Response Matrix**](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix)
+[**Explore the story's courtesy comparison**](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy)
 
 This adds a distinction to the original question: **an expression of politeness is not a fixed instruction to a machine. Its effects emerge from the interaction between language, model, history and evaluation.** The preprint is suggestive, not definitive: machine-scored quality can reward different properties than actual task success.
 
@@ -58,7 +58,7 @@ We can't tell from the first-response length alone. And I haven't conducted that
 
 My proposed unit is **energy per verified, useful resolution**, not simply energy per generated reply. It would account for retries, quality thresholds and the consequences of getting a task wrong. We don't yet have a dataset here that can calculate it.
 
-[**Explore Act 3 — The value question**](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-3)
+[**Explore Act 3 — The value question**](https://chrisdhayes.github.io/the-cost-of-courtesy/#useful)
 
 ## The average hides who pays
 
@@ -70,15 +70,15 @@ Then the accuracy results went in the other direction: **68.3% median versus 61.
 
 The uncomfortable possibility is a double penalty: **more computation, less reliable results**. But evaluation rules matter, too. In the source data, French's strict and lenient accuracy diverge dramatically because of formatting failures. What looks like a language capability issue can partly be an evaluation design issue.
 
-That's why I've added a new interactive view to the project: **The Median Isn't Neutral**. It places all 122 languages around median and mean reference lines, then reveals energy and accuracy together—without inventing a composite fairness score.
+That's why the interactive story first shows **all 122 language conditions**, then lets readers switch to an energy distribution with separate median and mean markers and inspect strict versus lenient scoring. The figures are kept distinct; I haven't invented a combined fairness score.
 
-[**Explore the new interactive language distribution**](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution) · [Follow Act 4 in the guided story](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-4)
+[**Explore the 122-language distribution**](https://chrisdhayes.github.io/the-cost-of-courtesy/#uneven) · [Follow Act 4 in the guided story](https://chrisdhayes.github.io/the-cost-of-courtesy/#uneven)
 
 ## A language does not have one computational price
 
 A separate, [peer-reviewed multilingual energy study](https://aclanthology.org/2026.emnlp-main.2113/) shows how computation varies with the model serving the request. Its twelve-language cross-model table reports, for example, Pashto at **0.774 joules per output token** on Qwen3–8B, **2.041** on Qwen3–14B and **0.230** on Llama 3.1–8B. These are source-reported results from a specific experiment—not prices for speaking Pashto everywhere, and not energy per completed task.
 
-[**Explore Act 4 — The Multilingual Energy Matrix**](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix)
+[**Explore the complete cross-model energy matrix in the Research Studio**](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/#language-energy-matrix)
 
 These findings belong beside—not inside—the courtesy matrix. One study evaluates model responses under tone and history conditions; the other measures inference energy by language and model. **They cannot be merged into a combined politeness-cost score.** Their tasks, prompts, models and measurement boundaries differ. But together they identify an unusually valuable missing experiment: one that measures verified task success and end-to-end energy across model, language, politeness, and conversation history.
 
@@ -92,7 +92,7 @@ The apparent similarity between **0.24 Wh** and the thank-you experiment's **0.2
 
 We generally don't know which facility served any particular consumer prompt. Without that evidence, attaching its water impact to a specific community would be a guess, no matter how polished the map.
 
-[**Explore Act 5 — The physical footprint**](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-5)
+[**Explore Act 5 — The physical footprint**](https://chrisdhayes.github.io/the-cost-of-courtesy/#footprint)
 
 ## I don't think the answer is to stop saying thank you
 
@@ -110,7 +110,7 @@ One practical implication matters to me as a Data & AI leader: **don't measure t
 
 Consider a wealth-management dealer as one example, not a study finding about any particular organization. An advisor preparing for a client meeting might value an answer that is complete, permissioned and accurate more than one that is merely concise. Any automated explanation should remain reviewable, with appropriate human accountability for advice. In that setting, the goal isn't to make the model talk less. It's to make every additional response earn its place.
 
-[**Explore Act 6 — Three ways a conversation could end**](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-6)
+[**Explore Act 6 — Three ways a conversation could end**](https://chrisdhayes.github.io/the-cost-of-courtesy/#choice)
 
 The question I keep coming back to isn't whether we should be less polite to machines. It's whether designers and leaders are asking the harder question: **are we building systems that deliver useful outcomes fairly, regardless of how people naturally communicate?**
 
