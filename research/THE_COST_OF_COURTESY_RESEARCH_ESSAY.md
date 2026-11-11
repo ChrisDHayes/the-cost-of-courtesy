@@ -24,7 +24,7 @@ Neither of these descriptions is a complete theory of human communication or mod
 
 When people are encouraged to stop being polite to reduce computing costs, we risk asking humans to accommodate an architecture that may be capable of making more proportionate decisions itself. The interesting design question is not whether manners should survive AI. It is whether systems should understand the difference between an instruction, an acknowledgment, a correction and a request for further work.
 
-[Interactive exhibit — Act 1: the meaning-to-inference transition](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-1)
+[Interactive exhibit — Act 1: the meaning-to-inference transition](https://chrisdhayes.github.io/the-cost-of-courtesy/#opening)
 
 ## 2. What the “thank you” experiment actually establishes
 
@@ -75,11 +75,11 @@ A second experiment adds an important dimension without resolving the energy que
 
 The authors' Table IV shows why the direction cannot be generalized. For English, GPT-4o Mini receives **0.636 CQS** for direct (*bald-on-record*) prompts and **0.567** for positive politeness; Claude 3.7 Sonnet scores **0.626** for positive politeness compared with **0.573** for positive impoliteness. For Hindi, Llama 3 scores **0.630** under negative politeness versus **0.506** under positive politeness. In Spanish, DeepSeek-Chat scores **0.643** for positive impoliteness versus **0.583** for positive politeness. These are **reported condition means**, not instructions to become rude or proof of individual causal effects.
 
-Prior dialogue history is a *different comparison*, reported in the authors' Table V. English Llama 3 scores **0.639** after a polite history and **0.578** after an impolite one. Hindi DeepSeek-Chat scores **0.582** after an impolite history and **0.565** after a polite history. We cannot reconstruct the unreported joint effect of history *and* prompt category by combining these aggregate tables. The [Courtesy Response Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy-response-matrix) deliberately offers two separate controls and source-linked values.
+Prior dialogue history is a *different comparison*, reported in the authors' Table V. English Llama 3 scores **0.639** after a polite history and **0.578** after an impolite one. Hindi DeepSeek-Chat scores **0.582** after an impolite history and **0.565** after a polite history. We cannot reconstruct the unreported joint effect of history *and* prompt category by combining these aggregate tables. The [Courtesy Response Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/#courtesy-response-matrix) deliberately offers two separate controls and source-linked values.
 
 The findings are useful but bounded. PLUM is a **preprint**, not an independently replicated production benchmark. Automated readability and other language-sensitive scoring components may not be equally valid in every language; equal weighting is an analytical choice rather than a universally defensible preference function. Politeness categories themselves need cultural validation. A more careful thesis is therefore: **the way courtesy relates to a model's evaluated response is contingent on language, model, dialogue history and the evaluation instrument**. This does not establish how much energy courtesy consumes.
 
-The distinction is central to the [Act 2 courtesy paradox](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-2): human intent is one dimension; interface behaviour is another; model response is a third. Confusing them leads to confident but ungrounded claims.
+The distinction is central to the [Act 2 courtesy paradox](https://chrisdhayes.github.io/the-cost-of-courtesy/#courtesy): human intent is one dimension; interface behaviour is another; model response is a third. Confusing them leads to confident but ungrounded claims.
 
 ## 4. The missing denominator: value, not just volume
 
@@ -104,7 +104,7 @@ Even this measure is incomplete. Failed or harmful outputs are not interchangeab
 
 This is the **Resolution Dividend**: the possibility that better first-pass judgment reduces total rework even when individual responses are longer. The hypothesis is plausible, not proven by the existing cross-study synthesis. A proper test would compare complete task histories with quality outcomes and energy observations under comparable conditions.
 
-[Interactive exhibit — Act 3: the missing denominator](https://chrisdhayes.github.io/the-cost-of-courtesy/#beat-3-1)
+[Interactive exhibit — Act 3: the missing denominator](https://chrisdhayes.github.io/the-cost-of-courtesy/#useful)
 
 ## 5. The inequity hiding inside “average” inference costs
 
@@ -135,11 +135,11 @@ The updated Act 4 instrument displays **all 122** language records, independent 
 
 This changes the governance question. Instead of asking for one average energy-per-token KPI, an AI service may need to examine **quality, resource cost and accessibility by language, task and user context**. A system optimized only for the most common language can look efficient in a consolidated dashboard while shifting cost and frustration to others.
 
-[Interactive exhibit — The Median Isn't Neutral: all 122 languages](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution) · [Act 4 guided explanation](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-4)
+[Interactive exhibit — 122 language conditions and the energy distribution](https://chrisdhayes.github.io/the-cost-of-courtesy/#uneven) · [Act 4 guided explanation](https://chrisdhayes.github.io/the-cost-of-courtesy/#uneven)
 
 ### Same language, different model energy profiles
 
-The study also publishes a **twelve-language, three-model comparison** separate from the full 122-language Qwen3–8B cohort [3, 7]. The [Multilingual Energy Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-energy-matrix) reports joules **per output token** for Qwen3–8B, Qwen3–14B and Llama 3.1–8B. Pashto measures **0.774**, **2.041** and **0.230 J/output token** in those three conditions, respectively; Shan measures **1.080**, **2.731** and **1.179**. The Qwen3–14B Tibetan value (**2.900**) is explicitly marked *source-censored* and must not be presented as a fully comparable observation.
+The study also publishes a **twelve-language, three-model comparison** separate from the full 122-language Qwen3–8B cohort [3, 7]. The [Multilingual Energy Matrix](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/#language-energy-matrix) reports joules **per output token** for Qwen3–8B, Qwen3–14B and Llama 3.1–8B. Pashto measures **0.774**, **2.041** and **0.230 J/output token** in those three conditions, respectively; Shan measures **1.080**, **2.731** and **1.179**. The Qwen3–14B Tibetan value (**2.900**) is explicitly marked *source-censored* and must not be presented as a fully comparable observation.
 
 These numbers are not intrinsic prices of speaking Pashto or Shan. They depend on the models and measurement configurations, and they are not total request energy or energy per successful task. Nor can they be joined to PLUM's courtesy scores: the studies do not share the required models, tasks, prompts, measurements or evaluation conditions. **A multilingual response comparison and a multilingual energy comparison are two evidence surfaces—not a combined experiment.** Their juxtaposition motivates a future controlled study, not a synthetic courtesy-cost coefficient.
 
@@ -157,7 +157,7 @@ And water is not a single interchangeable quantity. Withdrawals and consumption 
 
 An honest visualization sometimes needs to show an **unknown** rather than a pin on a map.
 
-[Interactive exhibit — Act 5: the physical footprint](https://chrisdhayes.github.io/the-cost-of-courtesy/#act-5)
+[Interactive exhibit — Act 5: the physical footprint](https://chrisdhayes.github.io/the-cost-of-courtesy/#footprint)
 
 ## 7. Five practical frames for responsible design
 
@@ -197,7 +197,7 @@ This design could adjudicate the central question: can an interface **preserve h
 
 This project was built as a **structured cross-study synthesis**, not an exhaustive systematic literature review. Study selection was purposive. No raw H100 energy records were independently acquired or re-measured, no original production prompt traces were obtained, and no harmonized individual-level dataset links energy, response quality, retries, facility site and water accounting. The source-specific comparisons use different tasks, models, serving arrangements and metrics. In particular, PLUM's equally weighted automated CQS is not verified task success, and its published category and conversation-history tables are separate marginal summaries rather than a fully observed joint grid [6]. The cross-model energy matrix is a twelve-language source subset, not a 122-language × five-model factorial table [7]. Some supporting chart values are transparent calculations or model scenarios derived from published authors' results, not new observed facts.
 
-That distinction is also a visual obligation. The [six-act Story-First Edition](https://chrisdhayes.github.io/the-cost-of-courtesy/) foregrounds the narrative and offers contextual sources, while the archived [Courtesy Constellation](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/#constellation) preserves eight conceptual nodes and nine explicitly typed evidence relationships. Act 4's [Language Distance instrument](https://chrisdhayes.github.io/the-cost-of-courtesy/#language-distribution) provides a separate, source-specific distributional view, not another set of network edges. Hundreds of fine radial filaments provide a visual structure; they do **not** represent observation counts, causal effect sizes, measured distances or request routes. Solid source-specific links, interpretive links, gaps and design hypotheses are distinct.
+That distinction is also a visual obligation. The [six-act Story-First Edition](https://chrisdhayes.github.io/the-cost-of-courtesy/) foregrounds the narrative and offers contextual sources, while the archived [Courtesy Constellation](https://chrisdhayes.github.io/the-cost-of-courtesy/archive/v1.5.1/#constellation) preserves eight conceptual nodes and nine explicitly typed evidence relationships. Act 4's [language distribution](https://chrisdhayes.github.io/the-cost-of-courtesy/#uneven) provides a separate, source-specific distributional view, not another set of network edges. Hundreds of fine radial filaments provide a visual structure; they do **not** represent observation counts, causal effect sizes, measured distances or request routes. Solid source-specific links, interpretive links, gaps and design hypotheses are distinct.
 
 If a reader cannot determine what was measured, what was calculated, what was interpreted and what remains unobserved, the visualization has not done its job—regardless of how polished it looks.
 
