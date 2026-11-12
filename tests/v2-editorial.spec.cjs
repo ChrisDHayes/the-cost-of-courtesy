@@ -40,3 +40,14 @@ test('narrow-phone story has visible navigation and readable content',async({pag
    await expect(page.locator('#endingReply')).toBeVisible();
  }
 });
+
+
+test('six-act closing connects author motivation to documented research instead of internal design notes',async({page})=>{
+ await page.goto('/#choice');
+ await expect(page.locator('.author-reflection')).toContainText('data and AI');
+ const essay=page.locator('.end-study a[href*="THE_COST_OF_COURTESY_RESEARCH_ESSAY.md"]');
+ await expect(essay).toBeVisible();
+ await expect(essay).toHaveAttribute('target','_blank');
+ await expect(page.locator('.end-study a[href="./archive/v1.5.1/"]')).toBeVisible();
+ await expect(page.locator('.end-study')).not.toContainText('Read the six-act storyboard');
+});
