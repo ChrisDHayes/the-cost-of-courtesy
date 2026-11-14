@@ -109,7 +109,7 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
 .stage-tab b{color:var(--subtle);font-size:10px}.stage-tab.is-current{background:var(--surface);color:var(--ink);box-shadow:inset 0 -3px var(--compute)}.stage-tab.is-current b{color:var(--compute)}
 .atlas-graphic-wrap{width:100%;padding:25px clamp(13px,2vw,30px) 4px;overflow-x:auto;scrollbar-color:var(--compute) var(--paper-2)}
 .atlas-graphic{width:100%;display:block;min-height:150px;overflow:visible}.atlas-graphic circle.data-dot{cursor:pointer;stroke:var(--dot-border);stroke-width:1.7;transition:opacity .2s,stroke-width .2s}
-.atlas-graphic circle.data-dot:hover,.atlas-graphic circle.data-dot[aria-pressed="true"]{stroke:var(--value);stroke-width:3}.atlas-graphic text{font:11px "Segoe UI",Arial,sans-serif;fill:var(--muted)}
+.atlas-graphic circle.data-dot:hover,.atlas-graphic circle.data-dot[aria-pressed="true"]{stroke:var(--value);stroke-width:3}.atlas-graphic .selected-halo{fill:none;stroke:var(--value);stroke-width:2.5;pointer-events:none}.atlas-graphic .selected-marker-label{fill:var(--ink);font-weight:750;font-size:13px;paint-order:stroke;stroke:var(--paper);stroke-width:5px;stroke-linejoin:round;pointer-events:none}.atlas-graphic text{font:11px "Segoe UI",Arial,sans-serif;fill:var(--muted)}
 .atlas-graphic .axis-line{stroke:var(--line);stroke-width:1}.atlas-graphic .stat-line{stroke:var(--value);stroke-width:2;stroke-dasharray:5 5}.atlas-graphic .mean-line{stroke:var(--compute);stroke-width:2;stroke-dasharray:5 5}
 .atlas-axis-note{font-size:10px;text-align:center;letter-spacing:.09em;color:var(--subtle);padding:9px 15px 21px}
 .atlas-find{display:flex;align-items:center;flex-wrap:wrap;gap:13px 18px;border-top:1px solid var(--line-soft);padding:18px clamp(20px,3vw,40px)}.atlas-find label{font-size:13px;font-weight:700}.atlas-find select{min-width:185px}.atlas-find input{min-width:min(100%,245px);flex:1 1 245px;padding:11px 15px;border-radius:4px;border:1px solid var(--line);background:var(--paper-2);color:var(--ink);font:inherit;font-size:14px}.atlas-find input::placeholder{color:var(--subtle)}.atlas-find>span{color:var(--muted);font-size:12px;flex:1 1 100%}.atlas-graphic circle.data-dot.is-search-muted{opacity:.38}.atlas-graphic circle.data-dot[aria-pressed="true"]{opacity:1;stroke:var(--value);stroke-width:4;filter:drop-shadow(0 0 6px var(--value))}@media(max-width:600px){.atlas-find input,.atlas-find select{width:100%;min-width:0}}
@@ -595,7 +595,28 @@ window.COURTESY_V2_DATA={"provenance":{"languageDataset":"https://github.com/Mic
   }
   let stage='all',selectedCode='eng_Latn';
   const byCode=code=>all.find(x=>x.code===code)||all[0];
-  function selectLanguage(code, sync=true){
+  function focusSelectedPoint(reveal=false){
+    const svg=$('atlasGraphic');
+    svg.querySelectorAll('.selected-halo,.selected-marker-label').forEach(el=>el.remove());
+    const dot=Array.from(svg.querySelectorAll('.data-dot')).find(el=>el.dataset.code===selectedCode);
+    if(!dot)return;
+    // Keep the selected bubble in front and draw a non-interactive locator halo.
+    svg.append(dot);
+    const x=Number(dot.getAttribute('cx')),y=Number(dot.getAttribute('cy')),radius=Number(dot.getAttribute('r'));
+    svg.append(makeSvg('circle',{cx:x,cy:y,r:radius+7,class:'selected-halo','aria-hidden':'true'}));
+    const name=byCode(selectedCode).language,viewWidth=svg.viewBox.baseVal.width;
+    const labelX=Math.max(28,Math.min(viewWidth-28,x)),labelY=y<37?y+radius+24:y-radius-14;
+    svg.append(makeSvg('text',{x:labelX,y:labelY,'text-anchor':'middle',class:'selected-marker-label','aria-hidden':'true'},name));
+    if(reveal){
+      // Pan only the chart's horizontal scrolling region; never scroll the full document.
+      const viewport=svg.closest('.atlas-graphic-wrap');
+      const box=dot.getBoundingClientRect(),frame=viewport.getBoundingClientRect();
+      const delta=box.left+box.width/2-(frame.left+frame.width/2);
+      if(viewport.scrollWidth>viewport.clientWidth+2&&Math.abs(delta)>frame.width*.22)
+        viewport.scrollLeft+=delta;
+    }
+  }
+  function selectLanguage(code, sync=true, reveal=false){
     const d=byCode(code);selectedCode=d.code;
     find.value=d.code;if(sync){search.value=d.language;matchingCodes=null;}
     $('languageName').textContent=d.language;
@@ -609,13 +630,14 @@ window.COURTESY_V2_DATA={"provenance":{"languageDataset":"https://github.com/Mic
     $('accuracyExplanation').textContent='For '+d.language+', the study recorded '+fmt(d.format,0)+' formatting failures across '+fmt(d.n,0)+' benchmark items. Different scoring rules can change the apparent result; they do not measure the ability of people who speak this language.';
     $('atlasGraphic').querySelectorAll('.data-dot').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.code===d.code)));
     syncSearchHighlight();
+    focusSelectedPoint(reveal);
   }
   const drawCircle=(svg,d,x,y,r) => {
     const circle=makeSvg('circle',{cx:x,cy:y,r,fill:d.resource==='Low'?'var(--human)':'var(--compute)',class:'data-dot','data-code':d.code,tabindex:'0',role:'button','aria-pressed':String(selectedCode===d.code),'aria-label':d.language+' · '+fmt(d.energy,3)+' joules per output token'});
     circle.dataset.code=d.code;
     circle.append(makeSvg('title',{},d.language+' · '+fmt(d.energy,3)+' J per output token · '+percent(d.lenient)+' lenient accuracy'));
-    circle.addEventListener('click',()=>selectLanguage(d.code));
-    circle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectLanguage(d.code)}});
+    circle.addEventListener('click',()=>selectLanguage(d.code,true,true));
+    circle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectLanguage(d.code,true,true)}});
     svg.append(circle);
   };
   function drawGrid(svg){
@@ -681,9 +703,9 @@ window.COURTESY_V2_DATA={"provenance":{"languageDataset":"https://github.com/Mic
     if(stage==='evaluation')selectedCode='fra_Latn';
     renderAtlas();
   }));
-  find.addEventListener('change',()=>{selectLanguage(find.value);hint.textContent='Selected '+byCode(find.value).language+'. All 122 bubbles remain visible.'});
+  find.addEventListener('change',()=>{selectLanguage(find.value,true,true);hint.textContent='Selected '+byCode(find.value).language+'. All 122 bubbles remain visible.'});
   search.addEventListener('input',searchLanguages);
-  search.addEventListener('keydown',e=>{if(e.key==='Enter'){const term=normalizeLanguage(search.value),match=alpha.find(d=>normalizeLanguage(d.language)===term)||alpha.find(d=>normalizeLanguage(d.language).includes(term));if(match){e.preventDefault();selectLanguage(match.code);hint.textContent='Selected '+match.language+'. All 122 bubbles remain visible.'}}});
+  search.addEventListener('keydown',e=>{if(e.key==='Enter'){const term=normalizeLanguage(search.value),match=alpha.find(d=>normalizeLanguage(d.language)===term)||alpha.find(d=>normalizeLanguage(d.language).includes(term));if(match){e.preventDefault();selectLanguage(match.code,true,true);hint.textContent='Selected '+match.language+'. All 122 bubbles remain visible.'}}});
   // Reflow the point ledger only when the breakpoint changes (not on each width change).
   let breakpoint=innerWidth<=540?'small':innerWidth<=820?'medium':'wide';
   addEventListener('resize',()=>{
