@@ -112,7 +112,7 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
 .atlas-graphic circle.data-dot:hover,.atlas-graphic circle.data-dot[aria-pressed="true"]{stroke:var(--value);stroke-width:3}.atlas-graphic text{font:11px "Segoe UI",Arial,sans-serif;fill:var(--muted)}
 .atlas-graphic .axis-line{stroke:var(--line);stroke-width:1}.atlas-graphic .stat-line{stroke:var(--value);stroke-width:2;stroke-dasharray:5 5}.atlas-graphic .mean-line{stroke:var(--compute);stroke-width:2;stroke-dasharray:5 5}
 .atlas-axis-note{font-size:10px;text-align:center;letter-spacing:.09em;color:var(--subtle);padding:9px 15px 21px}
-.atlas-find{display:flex;align-items:center;flex-wrap:wrap;gap:13px 18px;border-top:1px solid var(--line-soft);padding:18px clamp(20px,3vw,40px)}.atlas-find label{font-size:13px;font-weight:700}.atlas-find select{min-width:235px}.atlas-find>span{color:var(--muted);font-size:12px;flex:1}
+.atlas-find{display:flex;align-items:center;flex-wrap:wrap;gap:13px 18px;border-top:1px solid var(--line-soft);padding:18px clamp(20px,3vw,40px)}.atlas-find label{font-size:13px;font-weight:700}.atlas-find select{min-width:185px}.atlas-find input{min-width:min(100%,245px);flex:1 1 245px;padding:11px 15px;border-radius:4px;border:1px solid var(--line);background:var(--paper-2);color:var(--ink);font:inherit;font-size:14px}.atlas-find input::placeholder{color:var(--subtle)}.atlas-find>span{color:var(--muted);font-size:12px;flex:1 1 100%}.atlas-graphic circle.data-dot.is-search-muted{opacity:.38}.atlas-graphic circle.data-dot[aria-pressed="true"]{opacity:1;stroke:var(--value);stroke-width:4;filter:drop-shadow(0 0 6px var(--value))}@media(max-width:600px){.atlas-find input,.atlas-find select{width:100%;min-width:0}}
 .atlas-detail{border-top:1px solid var(--line-soft);padding:28px clamp(20px,3vw,40px);display:grid;grid-template-columns:1fr 1.2fr;gap:25px;background:var(--paper-2)}.detail-eyebrow{color:var(--human);letter-spacing:.1em;font-weight:700;font-size:10px}.atlas-detail h4{font-family:Georgia,serif;font-size:30px;margin:8px 0}.atlas-detail p{font-size:13px;line-height:1.6;color:var(--muted);max-width:460px;margin:0}
 .detail-metrics{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}.detail-metrics>div{border-top:1px solid var(--line);padding-top:10px}.detail-metrics span{color:var(--muted);display:block;font-size:10px;letter-spacing:.06em}.detail-metrics strong{display:block;font-size:clamp(23px,2.7vw,35px);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.5}.detail-metrics small{font-size:11px;color:var(--muted);line-height:1.4;display:block}
 .accuracy-note{border-top:1px solid var(--line);padding:24px clamp(20px,3vw,40px);background:var(--paper)}.accuracy-charts{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:12px 0 18px}.accuracy-charts>div>span{font-size:11px;color:var(--muted);display:block;margin-bottom:7px}.mini-bar{background:var(--surface);height:12px;width:100%;overflow:hidden;border-radius:3px}.mini-bar>span{display:block;height:100%;background:var(--compute)}.accuracy-charts>div:first-child .mini-bar>span{background:var(--human)}.accuracy-charts b{font-size:18px;display:block;margin-top:5px}.accuracy-note>p:last-child{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
@@ -330,7 +330,7 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
         <svg id="atlasGraphic" class="atlas-graphic" role="group" aria-label="All 122 language conditions shown as individually selectable points"></svg>
       </div>
       <div class="atlas-axis-note" id="atlasAxisNote">LEFT TO RIGHT, TOP TO BOTTOM · LOWER → HIGHER ENERGY PER OUTPUT TOKEN</div>
-      <div class="atlas-find"><label for="languageFinder">Find a language</label><select id="languageFinder"></select><span>Choose a bubble or use this alphabetical selector to inspect every source row.</span></div>
+      <div class="atlas-find"><label for="languageSearch">Find a language</label><input id="languageSearch" type="search" autocomplete="off" list="languageSuggestions" placeholder="Type a language name…" aria-describedby="languageSearchHint"><datalist id="languageSuggestions"></datalist><select id="languageFinder" aria-label="Browse all 122 languages alphabetically"></select><span id="languageSearchHint" role="status" aria-live="polite">Search by language name or choose from the complete alphabetical list. All 122 bubbles stay visible.</span></div>
       <div class="atlas-detail" id="languageDetail" aria-live="polite">
         <div><span class="detail-eyebrow">SELECTED LANGUAGE / ONE BENCHMARK</span><h4 id="languageName">—</h4><p id="languageDesc">Energy and accuracy are measured under the study's specific model and evaluation rules.</p></div>
         <div class="detail-metrics"><div><span>ENERGY PER GENERATED TOKEN</span><strong id="energyValue">—</strong><small>Joules, not energy per whole conversation</small></div><div><span>LENIENT ACCURACY</span><strong id="accuracyValue">—</strong><small>Study-defined benchmark score</small></div></div>
@@ -577,13 +577,27 @@ window.COURTESY_V2_DATA={"provenance":{"languageDataset":"https://github.com/Mic
   const energyValues=all.map(x=>x.energy);
   const mean=energyValues.reduce((a,b)=>a+b,0)/all.length;
   const median=(energyValues[60]+energyValues[61])/2;
-  const find=$('languageFinder');
-  alpha.forEach(d=>{const o=document.createElement('option');o.value=d.code;o.textContent=d.language;find.append(o)});
+  const find=$('languageFinder'),search=$('languageSearch'),hint=$('languageSearchHint'),suggestions=$('languageSuggestions');
+  alpha.forEach(d=>{const o=document.createElement('option');o.value=d.code;o.textContent=d.language;find.append(o);const suggestion=document.createElement('option');suggestion.value=d.language;suggestions.append(suggestion)});
+  const normalizeLanguage=x=>x.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase().trim();
+  let matchingCodes=null;
+  function syncSearchHighlight(){
+    $('atlasGraphic').querySelectorAll('.data-dot').forEach(c=>c.classList.toggle('is-search-muted',matchingCodes!==null&&!matchingCodes.has(c.dataset.code)));
+  }
+  function searchLanguages(){
+    const term=normalizeLanguage(search.value);
+    if(!term){matchingCodes=null;hint.textContent='Search by language name or choose from the complete alphabetical list. All 122 bubbles stay visible.';syncSearchHighlight();return;}
+    const matches=alpha.filter(d=>normalizeLanguage(d.language).includes(term)||normalizeLanguage(d.code).includes(term));
+    matchingCodes=new Set(matches.map(d=>d.code));
+    hint.textContent=matches.length+' of 122 languages match. Every bubble remains visible; matches are emphasized.';
+    if(matches.length===1)selectLanguage(matches[0].code,false);
+    syncSearchHighlight();
+  }
   let stage='all',selectedCode='eng_Latn';
   const byCode=code=>all.find(x=>x.code===code)||all[0];
   function selectLanguage(code, sync=true){
     const d=byCode(code);selectedCode=d.code;
-    if(sync)find.value=d.code;
+    if(sync){find.value=d.code;search.value=d.language;matchingCodes=null;}
     $('languageName').textContent=d.language;
     $('languageDesc').textContent='Published Qwen3–8B / Belebele language-condition aggregate · '+(d.resource==='Low'?'lower':'higher')+'-resource source category. The category is not an individual attribute.';
     $('energyValue').textContent=fmt(d.energy,3)+' J';
@@ -594,6 +608,7 @@ window.COURTESY_V2_DATA={"provenance":{"languageDataset":"https://github.com/Mic
     $('lenientBar').style.width=(d.lenient*100).toFixed(2)+'%';
     $('accuracyExplanation').textContent='For '+d.language+', the study recorded '+fmt(d.format,0)+' formatting failures across '+fmt(d.n,0)+' benchmark items. Different scoring rules can change the apparent result; they do not measure the ability of people who speak this language.';
     $('atlasGraphic').querySelectorAll('.data-dot').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.code===d.code)));
+    syncSearchHighlight();
   }
   const drawCircle=(svg,d,x,y,r) => {
     const circle=makeSvg('circle',{cx:x,cy:y,r,fill:d.resource==='Low'?'var(--human)':'var(--compute)',class:'data-dot','data-code':d.code,tabindex:'0',role:'button','aria-pressed':String(selectedCode===d.code),'aria-label':d.language+' · '+fmt(d.energy,3)+' joules per output token'});
@@ -666,7 +681,9 @@ window.COURTESY_V2_DATA={"provenance":{"languageDataset":"https://github.com/Mic
     if(stage==='evaluation')selectedCode='fra_Latn';
     renderAtlas();
   }));
-  find.addEventListener('change',()=>selectLanguage(find.value));
+  find.addEventListener('change',()=>{selectLanguage(find.value);hint.textContent='Selected '+byCode(find.value).language+'. All 122 bubbles remain visible.'});
+  search.addEventListener('input',searchLanguages);
+  search.addEventListener('keydown',e=>{if(e.key==='Enter'){const term=normalizeLanguage(search.value),match=alpha.find(d=>normalizeLanguage(d.language)===term)||alpha.find(d=>normalizeLanguage(d.language).includes(term));if(match){e.preventDefault();selectLanguage(match.code);hint.textContent='Selected '+match.language+'. All 122 bubbles remain visible.'}}});
   // Reflow the point ledger only when the breakpoint changes (not on each width change).
   let breakpoint=innerWidth<=540?'small':innerWidth<=820?'medium':'wide';
   addEventListener('resize',()=>{
