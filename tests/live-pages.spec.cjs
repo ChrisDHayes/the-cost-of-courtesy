@@ -42,6 +42,8 @@ test('old article language link opens live 122-record distribution',async({page}
   await expect(page.locator('#atlasAxisNote')).toContainText('MEAN');
   await page.locator('#languageFinder').selectOption('fra_Latn');
   await expect(page.locator('#languageName')).toHaveText('French');
+  await expect(page.locator('#atlasGraphic .selected-marker-label')).toHaveText('French');
+  await expect(page.locator('#atlasGraphic [data-code="fra_Latn"]')).toHaveAttribute('aria-pressed','true');
 });
 
 test('old energy link routes into preserved full six-act research matrix',async({page})=>{
@@ -79,7 +81,15 @@ test('live six-act path and a more meaningful task outcome interaction are avail
   await expect(page.locator('#routeCompare')).toHaveAttribute('data-stage','first');
   await page.locator('#pathWhole').click();
   await expect(page.locator('#routeCompare')).toHaveAttribute('data-stage','whole');
-  await expect(page.locator('#pathExplanation')).toContainText('hypothetical');
+  await expect(page.locator('#pathExplanation')).toContainText('energy use would need to be measured');
+  await expect(page.locator('#useful')).toContainText('energy per completed task');
+  await page.locator('#useful .bridge-link').click();
+  await expect(page).toHaveURL(/#uneven$/);
+  await expect(page.locator('#uneven .language-intro')).toContainText('A token is a small piece of text');
+  const studioLink=page.locator('#uneven .post-atlas').getByRole('link',{name:/Research Studio/});
+  await studioLink.click();
+  await expect(page).toHaveURL(/\/archive\/v1\.5\.1\/#language-energy-matrix$/);
+  await expect(page.locator('#maEnergyTable .ma-cell')).toHaveCount(36);
 });
 test('live source accounting keeps the two energy and water studies separate',async({page})=>{
   await page.goto('./#act-5');

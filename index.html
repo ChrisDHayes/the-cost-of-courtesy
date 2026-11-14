@@ -10,6 +10,8 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Cost of Courtesy — by Christopher Hayes">
 <meta property="og:description" content="Two ordinary words lead to a bigger question about the work AI performs, for whom, and why. A story-first interactive investigation.">
+<link rel="canonical" href="https://chrisdhayes.github.io/the-cost-of-courtesy/">
+<meta property="og:url" content="https://chrisdhayes.github.io/the-cost-of-courtesy/">
 <meta name="twitter:card" content="summary_large_image">
 <title>The Cost of Courtesy — Six-Act Story by Christopher Hayes</title>
 <style>
@@ -271,13 +273,13 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
     <div class="section-kicker"><span>ACT 03 / THE VALUE QUESTION</span><span>WHAT COUNTS AS EFFICIENT?</span></div>
     <div class="section-head">
       <p class="eyebrow">A BETTER QUESTION THAN WHO WROTE LESS</p>
-      <h2 id="useful-title">The cheapest answer<br><em>isn't always the best one.</em></h2>
+      <h2 id="useful-title">What does it take<br><em>to finish the task?</em></h2>
       <p class="section-deck">What if the first reply is shorter—but doesn't actually finish the job?</p>
     </div>
     <div class="chapter-reading">
       <p>Imagine asking two assistants to help you write an important message. The first responds immediately with something brief. It looks efficient until you notice that it misses a detail. You ask again. Then you ask for one more correction.</p>
       <p>The second assistant gives a more complete answer. It takes longer to read, but it may be ready to use. Which approach consumed fewer resources? And which one helped you more?</p>
-      <p>We can't answer either question by looking at the first response alone. We'd need to follow the entire interaction, check whether the work was actually completed, and measure what the retries cost. The research in this experience does not contain that joint measurement.</p>
+      <p>To compare the two, we would follow the whole interaction, check that the answer was useful, and measure the resources used across all replies and retries.</p>
     </div>
     <div class="editorial-figure path-figure" id="resolution-figure">
       <div class="figure-head"><span>A THOUGHT EXPERIMENT · NOT EXPERIMENTAL DATA</span><span class="figure-source">TWO POSSIBLE CONVERSATIONS</span></div>
@@ -304,15 +306,14 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
           </div>
         </div>
       </div>
-      <div class="figure-conclusion" id="pathExplanation" aria-live="polite">Looking only at the opening messages tells us nothing reliable about the work required to finish.</div>
+      <div class="figure-conclusion" id="pathExplanation" aria-live="polite">At this point, we’ve seen one reply from each assistant. We still need to see what it takes to finish the message.</div>
       <p class="visual-note">Illustrative pathways. No numerical energy, time, task-success or probability values have been assigned to either path.</p>
     </div>
     <div class="chapter-reading after-figure">
-      <p>This changes the measure I would want a Data &amp; AI leader to use. Not simply <em>energy per response</em>, but resources used to reach a <strong>verified useful outcome</strong>. We would also need to account for accuracy, accessibility and the cost of review.</p>
-      <p>A long answer is not automatically better; nor is a short one automatically efficient. The real unit of progress may be the task, not the message.</p>
+      <p>To compare <strong>energy per completed task</strong>, I’d add up the energy across every AI reply, then check that the final message was ready to use. I’d also track the person’s time spent reviewing and asking for corrections.</p>
       <details class="evidence" id="evidence-useful"><summary><span class="evidence-icon" aria-hidden="true">i</span><span>Behind this idea</span><span class="chev" aria-hidden="true">⌄</span></summary><div class="evidence-content"><p><b>Evidence status</b> — These conversation pathways are explicitly hypothetical. The proposed measure, resources per verified useful resolution, is a research and product-design question, not a value established by the politeness experiments.</p><p><b>How to test it</b> — Measure the whole task across turns, record retries and actual resource use, verify completion independently, and compare quality across languages and user needs.</p><a href="./archive/v1.5.1/#act-3">See the full research discussion ↗</a></div></details>
     </div>
-    <div class="bridge"><span>THE NEXT QUESTION</span><p>Even a careful average leaves something out: <em>whose experience does it describe?</em></p><a class="bridge-link" href="#uneven">Meet all 122 languages <span aria-hidden="true">↓</span></a></div>
+    <div class="bridge"><span>THE NEXT QUESTION</span><p>Now zoom in on one part of that work. <em>Does the energy to write a piece of text change with the language?</em></p><a class="bridge-link" href="#uneven">Meet all 122 languages <span aria-hidden="true">↓</span></a></div>
   </section>
 
   <section class="scene uneven" id="uneven" aria-labelledby="uneven-title">
@@ -320,9 +321,9 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
     <div class="section-head">
       <p class="eyebrow">WHAT THE AVERAGE LEAVES OUT</p>
       <h2 id="uneven-title">Not every language<br><em>gets the same deal.</em></h2>
-      <p class="section-deck">If an AI system appears efficient on average, does that tell us what happens when someone uses it in a different language?</p>
+      <p class="section-deck">How much energy does the model use for each piece of text it writes? The answer varies by language in this benchmark.</p>
     </div>
-    <div class="language-intro"><p>In one published benchmark, researchers measured the computation associated with outputs in 122 languages. Each language had its own result. The differences weren't random decoration around a single typical cost: some conditions required substantially more energy per generated token than others.</p><p>We can learn more by starting with the whole population, then changing how we look at it. The <em>median</em> tells us where the middle of the distribution lies. The <em>mean</em> is pulled toward unusually expensive observations. Both are useful; neither is everyone's experience.</p></div>
+    <div class="language-intro"><p>Act 3 followed an entire task, including retries. Here, each bubble shows <strong>energy per output token</strong> for one of 122 tested language conditions. A token is a small piece of text the model generates, often a word or part of one. To work out the energy for a completed task, you’d need to measure all the AI turns it took to finish it.</p><p>Start with every result from the study. Then compare the <em>median</em>, the middle of the sorted values, with the <em>mean</em>, the arithmetic average. A few high values can pull the mean well above the median.</p></div>
     <div class="atlas-card">
       <div class="atlas-heading"><div><p class="atlas-kicker">122 PUBLISHED LANGUAGE CONDITIONS · QWEN3–8B</p><h3 id="atlasTitle">Every language belongs in the picture.</h3><p id="atlasDescription">Each bubble is one language condition, arranged from lower to higher energy per generated token. All 122 appear without overlap.</p></div><div class="atlas-count"><strong id="languageCount">122 / 122</strong><small>Languages represented</small></div></div>
       <div class="atlas-stages" role="group" aria-label="Language story progression"><button class="stage-tab is-current" type="button" data-stage="all" aria-pressed="true"><b>01</b> See everyone</button><button class="stage-tab" type="button" data-stage="distribution" aria-pressed="false"><b>02</b> Compare averages</button><button class="stage-tab" type="button" data-stage="evaluation" aria-pressed="false"><b>03</b> Question the score</button></div>
@@ -333,14 +334,14 @@ main{margin-left:clamp(165px,17.5vw,230px)}.scene{max-width:1600px;margin:auto;p
       <div class="atlas-find"><label for="languageSearch">Find a language</label><input id="languageSearch" type="search" autocomplete="off" list="languageSuggestions" placeholder="Type a language name…" aria-describedby="languageSearchHint"><datalist id="languageSuggestions"></datalist><select id="languageFinder" aria-label="Browse all 122 languages alphabetically"></select><span id="languageSearchHint" role="status" aria-live="polite">Search by language name or choose from the complete alphabetical list. All 122 bubbles stay visible.</span></div>
       <div class="atlas-detail" id="languageDetail" aria-live="polite">
         <div><span class="detail-eyebrow">SELECTED LANGUAGE / ONE BENCHMARK</span><h4 id="languageName">—</h4><p id="languageDesc">Energy and accuracy are measured under the study's specific model and evaluation rules.</p></div>
-        <div class="detail-metrics"><div><span>ENERGY PER GENERATED TOKEN</span><strong id="energyValue">—</strong><small>Joules, not energy per whole conversation</small></div><div><span>LENIENT ACCURACY</span><strong id="accuracyValue">—</strong><small>Study-defined benchmark score</small></div></div>
+        <div class="detail-metrics"><div><span>ENERGY PER OUTPUT TOKEN</span><strong id="energyValue">—</strong><small>Average for one token in this benchmark</small></div><div><span>LENIENT ACCURACY</span><strong id="accuracyValue">—</strong><small>Study-defined benchmark score</small></div></div>
       </div>
       <div class="accuracy-note" id="accuracyNote" hidden>
         <p class="eyebrow">A DIFFERENT QUESTION: WHAT COUNTS AS CORRECT?</p><div class="accuracy-charts"><div><span>STRICT SCORING</span><div class="mini-bar"><span id="strictBar"></span></div><b id="strictValue"></b></div><div><span>LENIENT SCORING</span><div class="mini-bar"><span id="lenientBar"></span></div><b id="lenientValue"></b></div></div><p id="accuracyExplanation">A response can fail strict formatting rules while still counting under lenient scoring. This is about the evaluation method, not a complete assessment of a language's users.</p>
       </div>
       <div class="atlas-foot"><span class="legend"><i class="swatch swatch-human"></i> Lower-resource source group <i class="swatch swatch-compute"></i> Higher-resource source group</span><span>Groups are source classifications, not quality or value judgements.</span></div>
     </div>
-    <div class="post-atlas"><p>For this Qwen3–8B benchmark, the energy median is about <strong>0.132 J</strong> per output token, while the mean is about <strong>0.173 J</strong>. The mean is roughly 31% higher, suggesting that the “average” hides an expensive tail.</p><p>And computation isn't the only thing to examine. A scoring rule can change how capable a system appears. That's why a language-accuracy comparison should be read alongside the evaluation method, not mistaken for a judgment about a community.</p><p>Change the model, and the energy profile can change again. The complete research experience includes a separate twelve-language, three-model comparison. It is another study view—not evidence of the energy cost of politeness.</p>
+    <div class="post-atlas"><p>For this Qwen3–8B benchmark, the energy median is about <strong>0.132 J</strong> per output token, while the mean is about <strong>0.173 J</strong>. The mean is roughly 31% higher, suggesting that the “average” hides an expensive tail.</p><p>And computation isn't the only thing to examine. A scoring rule can change how capable a system appears. That's why a language-accuracy comparison should be read alongside the evaluation method, not mistaken for a judgment about a community.</p><p>Change the model, and the energy profile can change again. The <a href="./archive/v1.5.1/#language-energy-matrix">Research Studio’s language–energy matrix</a> shows the separate 12-language, three-model comparison.</p>
       <details class="evidence" id="evidence-uneven"><summary><span class="evidence-icon" aria-hidden="true">i</span><span>How do we know?</span><span class="chev" aria-hidden="true">⌄</span></summary><div class="evidence-content"><p><b>Source</b> — Deng et al. (2026), the Qwen3–8B Belebele 0-shot dataset, 122 published language-condition aggregates. The unweighted mean and median here are recalculated from those published records.</p><p><b>Boundary</b> — Joules per output token are not energy per full task, and strict versus lenient benchmark accuracy is not a general claim about speakers. Other model measurements belong to a separate cross-model comparison.</p><a href="https://github.com/MichiganNLP/language-energy-divide/blob/master/results/belebele_canonical_Qwen3-8B_0shot.csv" target="_blank" rel="noopener noreferrer">View the source dataset <span aria-hidden="true">↗</span></a></div></details>
     </div>
     <div class="bridge"><span>THE STORY CONTINUES</span><p>The work is real—but can we say <em>where it happened?</em></p><a href="#footprint" class="bridge-link">Follow the physical consequences <span aria-hidden="true">↓</span></a></div>

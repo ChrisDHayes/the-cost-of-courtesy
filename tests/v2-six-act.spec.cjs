@@ -20,7 +20,7 @@ test('Act 3 makes the full-task context visible without claiming any invented co
   await expect(page.locator('#routeCompare')).toHaveAttribute('data-stage','whole');
   await expect(page.locator('#routeCompare .follow-on').first()).toBeVisible();
   await expect(page.locator('#pathWhole')).toHaveAttribute('aria-pressed','true');
-  await expect(page.locator('#pathExplanation')).toContainText('hypothetical');
+  await expect(page.locator('#pathExplanation')).toContainText('energy use would need to be measured');
   await page.locator('#pathFirst').click();
   await expect(page.locator('#routeCompare .follow-on').first()).toBeHidden();
   await page.locator('#evidence-useful summary').click();

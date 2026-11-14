@@ -2,6 +2,8 @@
 
 *Two ordinary words led me to a much bigger question about AI: what are we optimizing, and for whom?*
 
+[Explore the six-act interactive story](https://chrisdhayes.github.io/the-cost-of-courtesy/)
+
 I started with a question that sounded almost ridiculous.
 
 **Does saying “thank you” to an AI assistant have an environmental cost?**
@@ -56,7 +58,7 @@ Which one was more efficient?
 
 We can't tell from the first-response length alone. And I haven't conducted that experiment; it's an illustration of what we'd need to measure.
 
-My proposed unit is **energy per verified, useful resolution**, not simply energy per generated reply. It would account for retries, quality thresholds and the consequences of getting a task wrong. We don't yet have a dataset here that can calculate it.
+I’d measure **energy per completed task** by adding up the energy across all AI turns, including retries, and checking that the result was useful. I’d track human review and rework alongside it. The studies in this essay don’t measure those things together.
 
 [**Explore Act 3 — The value question**](https://chrisdhayes.github.io/the-cost-of-courtesy/#useful)
 
@@ -64,7 +66,7 @@ My proposed unit is **energy per verified, useful resolution**, not simply energ
 
 Then I encountered *[The Language–Energy Divide](https://aclanthology.org/2026.emnlp-main.2113/)*. The researchers measured energy and accuracy across **122 languages**. I went to their [published per-language table](https://github.com/MichiganNLP/language-energy-divide/blob/master/results/belebele_canonical_Qwen3-8B_0shot.csv) and asked a simple question: *What changes when we show the distribution, rather than just an average?*
 
-For that specific Qwen3–8B benchmark, the **median energy per output token was 0.132 joules**; the **mean was 0.173 joules**—roughly **31% higher**. A long, expensive tail was pulling the average away from the middle.
+This benchmark measures energy for each token, a small piece of generated text, often a word or part of one. For Qwen3–8B, the **median was 0.132 joules per output token**. The **mean was 0.173 joules**, roughly **31% higher**. A few high values pulled the average up. Estimating the energy for a completed task would require measuring all the turns it took to finish.
 
 Then the accuracy results went in the other direction: **68.3% median versus 61.5% mean** under the authors' lenient scoring. Those statistics treat all 122 language conditions equally; they're not global usage averages or evidence that a language itself causes higher computing costs.
 
@@ -72,7 +74,7 @@ The uncomfortable possibility is a double penalty: **more computation, less reli
 
 That's why the interactive story first shows **all 122 language conditions**, then lets readers switch to an energy distribution with separate median and mean markers and inspect strict versus lenient scoring. The figures are kept distinct; I haven't invented a combined fairness score.
 
-[**Explore the 122-language distribution**](https://chrisdhayes.github.io/the-cost-of-courtesy/#uneven) · [Follow Act 4 in the guided story](https://chrisdhayes.github.io/the-cost-of-courtesy/#uneven)
+[**Explore the 122-language distribution**](https://chrisdhayes.github.io/the-cost-of-courtesy/#uneven)
 
 ## A language does not have one computational price
 

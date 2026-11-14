@@ -14,8 +14,8 @@
   // Act 3: focus first on the reply; then consider the whole task.
   const pathStage=$('routeCompare');
   const pathCopy={
-    first:'Looking only at the opening messages tells us nothing reliable about the work required to finish.',
-    whole:'Across an entire task, a short first reply may need corrections, while a fuller answer might not. Neither hypothetical path has measured energy or a guaranteed outcome.'
+    first:'At this point, we’ve seen one reply from each assistant. We still need to see what it takes to finish the message.',
+    whole:'The first path adds a follow-up and a revision. Both paths end with a person checking the result. The example shows the extra steps. Their energy use would need to be measured.'
   };
   const changePath=stage=>{
     if(!pathStage)return;
