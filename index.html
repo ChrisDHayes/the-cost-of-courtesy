@@ -597,7 +597,7 @@ window.COURTESY_V2_DATA={"provenance":{"languageDataset":"https://github.com/Mic
   const byCode=code=>all.find(x=>x.code===code)||all[0];
   function selectLanguage(code, sync=true){
     const d=byCode(code);selectedCode=d.code;
-    if(sync){find.value=d.code;search.value=d.language;matchingCodes=null;}
+    find.value=d.code;if(sync){search.value=d.language;matchingCodes=null;}
     $('languageName').textContent=d.language;
     $('languageDesc').textContent='Published Qwen3–8B / Belebele language-condition aggregate · '+(d.resource==='Low'?'lower':'higher')+'-resource source category. The category is not an individual attribute.';
     $('energyValue').textContent=fmt(d.energy,3)+' J';
